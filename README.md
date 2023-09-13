@@ -1,16 +1,5 @@
-# product_listtt
+# IEatBread
+IEatBread merupakan sebuah aplikasi mobile yang dikembangkan oleh Kelompok Flutter.io. Aplikasi ini memungkinkan pengguna untuk melakukan pemesanan roti dan kue dengan mudah dan nyaman. Aplikasi ini menawarkan beragam pilihan mulai dari roti hingga kue yang lezat dan berkualitas, yang dapat dipesan dengan beberapa ketukan jari. Pengguna dapat menjelajahi berbagai macam pilihan roti ataupun kue serta promo menarik yang sedang berlangsung, memilih item yang diinginkan, menambahkannya ke keranjang belanja, dan melakukan transaksi pesanan dengan cepat.  
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+IEatBread memberikan pengalaman pemesanan roti dan kue yang praktis serta efisien, menjadikannya solusi sempurna untuk bread & cake lovers yang ingin menikmati hidangan berkualitas tanpa repot. 
+>>>>>>> 8b22b9b (Deskripsi aplikasi)
