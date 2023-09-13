@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "name": "product_listtt",
     "short_name": "product_listtt",
+=======
+    "name": "flutter_application",
+    "short_name": "flutter_application",
+>>>>>>> 742d1a3 (first commit)
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
