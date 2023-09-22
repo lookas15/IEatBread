@@ -27,7 +27,7 @@ final List<Menu> listMenu = [
     ),
     Menu(
     id: 02,
-    name: 'Pain au Chocolate + Croissant',
+    name: 'Pain au + Croissant',
     price: '30.000',
     imageUrl: 'assets/img/croau.png',
     isFavorite: false,
@@ -35,7 +35,7 @@ final List<Menu> listMenu = [
     ),
     Menu(
     id: 03,
-    name: 'Choux au Craquelin + Cream Puff',
+    name: 'Choux Pastry + Puff',
     price: '15.000',
     imageUrl: 'assets/img/chouxpuff.png',
     isFavorite: true,
@@ -43,7 +43,7 @@ final List<Menu> listMenu = [
     ),
     Menu(
     id: 04,
-    name: ' Coffee Bun + Melonpan',
+    name: ' Bun + Melonpan',
     price: '18.000',
     imageUrl: 'assets/img/panbun.png',
     isFavorite: false,
