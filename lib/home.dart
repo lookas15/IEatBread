@@ -31,13 +31,15 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
           )),
         backgroundColor: Color.fromARGB(255, 245, 89, 81),
         elevation: 0.0,
-        // centerTitle: true,
+        centerTitle: true,
         leading: IconButton(
           icon: const Icon(
             Icons.breakfast_dining_rounded,
             color: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: () {
+            // Navigator.push(context, MaterialPageRoute(builder: (context) => isiNamaPage()));
+          },
         ),
         actions: [
           IconButton(
@@ -65,6 +67,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
             isScrollable: true,
             // labelPadding: const EdgeInsets.symmetric(horizontal: 50),
             unselectedLabelColor: Color.fromARGB(255, 137, 137, 137),
+            padding: EdgeInsets.fromLTRB(25,5,5,5),
             tabs: const [
               Tab(
                 child: Text('Deals',
