@@ -80,7 +80,12 @@ class _ItemListState extends State<ItemList> {
                                                             fontSize: 15,
                                                         ),
                                                     ),
-                                                    Text('Rp ${item.price}'),
+                                                    Text('Rp ${item.price}',
+                                                        style: TextStyle(
+                                                            color: Colors.green[600],
+                                                            fontWeight: FontWeight.bold,
+                                                            fontStyle: FontStyle.italic,
+                                                        )), // Text
                                                     Expanded(
                                                         flex: 1,
                                                         child: ClipRRect(
