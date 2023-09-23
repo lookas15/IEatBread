@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:product_listtt/OrderCart.dart';
+import 'package:product_listtt/MenuList.dart';
 
 class NavbarWidget extends StatefulWidget {
   final int selectedIndex;
@@ -56,6 +58,29 @@ class _NavbarWidgetState extends State<NavbarWidget> {
       ),
       onPressed: () {
         widget.onTabChanged(index);
+        // Handle navigation here
+        switch (index) {
+          case 0:
+            // Home
+            Navigator.of(context).popUntil((route) => route.isFirst);
+            break;
+          case 1:
+            // Navigate to Menu screen
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => MenuList()),
+            );
+            break;
+          case 2:
+            // Handle other navigations
+            // For example, navigate to another screen.
+            break;
+          case 3:
+            // Navigate to OrderCart screen
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => OrderCart()),
+            );
+            break;
+        }
       },
     );
   }
