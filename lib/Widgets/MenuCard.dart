@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:product_listtt/data/menu.dart';
 
-class MenuPage extends StatelessWidget {
+class MenuCard extends StatelessWidget {
   final String category;
-  const MenuPage({Key? key, required this.category}) : super(key: key);
+  const MenuCard({Key? key, required this.category}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
