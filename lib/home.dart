@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:product_listtt/Widgets/NavbarWidget.dart';
 import 'package:product_listtt/menupage.dart';
-import 'package:product_listtt/Widgets/navbar_widget.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -14,6 +14,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   final List<String> categories = ['Deals', 'Bread', 'Pastry', 'Drinks'];
   int selectedTabIndex = 0; // Tab awal yang dipilih
+  int selectedBottomNavIndex = 0; // Indeks ikon bawah yang dipilih
+
 
   @override
   void initState() {
@@ -98,7 +100,14 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           ),
         ],
       ),
-      bottomNavigationBar: const NavbarWidget(),
+      bottomNavigationBar: NavbarWidget(
+        selectedIndex: selectedBottomNavIndex,
+        onTabChanged: (index) {
+          setState(() {
+            selectedBottomNavIndex = index;
+          });
+        },
+      ),
     );
   }
 }
