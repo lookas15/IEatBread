@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:product_listtt/data/menu.dart';
 
 class MenuPage extends StatelessWidget {
-  // const MenuPage({Key? key}) : super(key: key);
   final String category;
   const MenuPage({Key? key, required this.category}) : super(key: key);
 
