@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:product_listtt/Widgets/NavbarWidget.dart';
-import 'package:product_listtt/menupage.dart';
+import 'package:product_listtt/Widgets/MenuCard.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class MenuList extends StatefulWidget {
+  const MenuList({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<MenuList> createState() => _MenuListState();
 }
 
-class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+class _MenuListState extends State<MenuList> with SingleTickerProviderStateMixin {
   TabController? _tabController;
 
   final List<String> categories = ['Deals', 'Bread', 'Pastry', 'Drinks'];
   int selectedTabIndex = 0; // Tab awal yang dipilih
-  int selectedBottomNavIndex = 0; // Indeks ikon bawah yang dipilih
+  int selectedBottomNavIndex = 1; // Indeks ikon bawah yang dipilih
 
 
   @override
@@ -46,7 +46,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             color: Colors.white,
           ),
           onPressed: () {
-            // Navigator.push(context, MaterialPageRoute(builder: (context) => isiNamaPage()));
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => MenuList()),
+            );
           },
         ),
         actions: [
@@ -94,7 +96,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             child: TabBarView(
               controller: _tabController,
               children: categories.map((category) {
-                return MenuPage(category: category);
+                return MenuCard(category: category);
               }).toList(),
             ),
           ),
