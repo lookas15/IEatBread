@@ -59,8 +59,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       ),
       body: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
-            child: Center(
+          SliverAppBar(
+            pinned: true,
+            backgroundColor: Color.fromARGB(255, 240, 240, 240),
+            title: Center(
               child: TabBar(
                 controller: _tabController,
                 indicatorColor: Colors.transparent,
