@@ -2,38 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:product_listtt/data/menu.dart';
 
 class MenuPage extends StatelessWidget {
-  const MenuPage({Key? key}) : super(key: key);
+  // const MenuPage({Key? key}) : super(key: key);
+  final String category;
+  const MenuPage({Key? key, required this.category}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 240, 240, 240),
-        body: ListView(
-          children: [
-            // const SizedBox(height: 10.0),
-            Container(
-                padding: const EdgeInsets.only(right: 15.0),
-                width: MediaQuery.of(context).size.width - 30.0,
-                height: MediaQuery.of(context).size.height - 180.0,
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10.0,
-                    mainAxisSpacing: 15.0,
-                    childAspectRatio: 0.63,
-                  ),
-                  itemBuilder: (context, index) {
-                    return _buildCard(listMenu[index], context);
-                  },
-                  itemCount: listMenu.length,
-                )),
-          ],
-        ));
+      backgroundColor: Color.fromARGB(255, 240, 240, 240),
+      body: ListView(
+        children: [
+          Container(
+            padding: const EdgeInsets.fromLTRB(15,0,15,0),
+            width: MediaQuery.of(context).size.width - 30.0,
+            height: MediaQuery.of(context).size.height - 190.0,
+            child: ListView.builder(
+              itemCount: listMenu.length,
+              itemBuilder: (context, index) {
+                if (listMenu[index].category == category) {
+                  return _buildCard(listMenu[index], context);
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _buildCard(Menu menu, context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(5,5,5,10),
+      padding: const EdgeInsets.fromLTRB(5, 5, 5, 10),
       child: InkWell(
           onTap: () {},
           child: Container(
@@ -60,12 +61,9 @@ class MenuPage extends StatelessWidget {
                                 Icons.favorite,
                                 color: Color.fromARGB(255, 245, 89, 81),
                               )
-                            :  SizedBox(
-                                height: 25.0
-                              )
+                            : SizedBox(height: 25.0)
                       ],
-                    )
-                ),
+                    )),
                 Hero(
                   tag: menu.imageUrl,
                   child: Container(
@@ -98,20 +96,20 @@ class MenuPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(5,30,5,10),
+                  padding: const EdgeInsets.fromLTRB(5, 30, 5, 10),
                   child: Container(
                     color: Color.fromARGB(255, 231, 231, 231),
                     height: 0.8,
                   ),
                 ),
                 InkWell(
-                  onTap: () {
-                    print("Added to Cart"); 
-                  }, 
-                  child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                    onTap: () {
+                      print("Added to Cart");
+                    },
+                    child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                         child: Container(
-                          padding: EdgeInsets.all(5),
+                          padding: EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             color: Color(0xffF55951),
                             borderRadius: BorderRadiusDirectional.circular(10),
@@ -135,9 +133,7 @@ class MenuPage extends StatelessWidget {
                               ),
                             ],
                           ),
-                        )
-                  )
-                )
+                        )))
               ],
             ),
           )),
