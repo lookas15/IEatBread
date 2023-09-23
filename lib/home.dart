@@ -60,28 +60,30 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
-            child: TabBar(
-              controller: _tabController,
-              indicatorColor: Colors.transparent,
-              labelColor: const Color.fromARGB(255, 245, 89, 81),
-              isScrollable: true,
-              unselectedLabelColor: Color.fromARGB(255, 137, 137, 137),
-              padding: EdgeInsets.fromLTRB(40, 5, 5, 5),
-              tabs: categories.map((category) {
-                return Tab(
-                  child: Text(
-                    category,
-                    style: TextStyle(
-                      fontSize: 16.0,
+            child: Center(
+              child: TabBar(
+                controller: _tabController,
+                indicatorColor: Colors.transparent,
+                labelColor: const Color.fromARGB(255, 245, 89, 81),
+                isScrollable: true,
+                unselectedLabelColor: Color.fromARGB(255, 137, 137, 137),
+                padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                tabs: categories.map((category) {
+                  return Tab(
+                    child: Text(
+                      category,
+                      style: TextStyle(
+                        fontSize: 16.0,
+                      ),
                     ),
-                  ),
-                );
-              }).toList(),
-              onTap: (index) {
-                setState(() {
-                  selectedTabIndex = index;
-                });
-              },
+                  );
+                }).toList(),
+                onTap: (index) {
+                  setState(() {
+                    selectedTabIndex = index;
+                  });
+                },
+              ),
             ),
           ),
           SliverFillRemaining(
