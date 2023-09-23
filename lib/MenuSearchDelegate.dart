@@ -24,7 +24,7 @@ class MenuSearchDelegate extends SearchDelegate<String> {
             )
           : IconButton(
               onPressed: () {
-                isSearching = true; // Masuk ke mode pencarian
+                isSearching = true; // Masuk ke Mode pencarian
                 showSuggestions(context); // Menampilkan saran berdasarkan query saat ini
               },
               icon: Icon(Icons.search),
