@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:product_listtt/Widgets/NavbarWidget.dart';
 import 'package:product_listtt/Widgets/MenuCard.dart';
+import 'package:product_listtt/data/menu.dart';
+import 'package:product_listtt/screens/OrderCart.dart'; // Import OrderCart
 
 class MenuList extends StatefulWidget {
-  const MenuList({super.key});
+  const MenuList({Key? key}) : super(key: key);
 
   @override
   State<MenuList> createState() => _MenuListState();
@@ -15,7 +17,6 @@ class _MenuListState extends State<MenuList> with SingleTickerProviderStateMixin
   final List<String> categories = ['Deals', 'Bread', 'Pastry', 'Drinks'];
   int selectedTabIndex = 0; // Tab awal yang dipilih
   int selectedBottomNavIndex = 1; // Indeks ikon bawah yang dipilih
-
 
   @override
   void initState() {
