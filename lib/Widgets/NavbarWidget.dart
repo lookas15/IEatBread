@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:product_listtt/data/CartProvider.dart';
 import 'package:product_listtt/screens/OrderCart.dart';
 import 'package:product_listtt/screens/MenuList.dart';
+import 'package:provider/provider.dart';
+import 'package:badges/badges.dart' as badges;
 
 class NavbarWidget extends StatefulWidget {
   final int selectedIndex;
@@ -40,7 +43,8 @@ class _NavbarWidgetState extends State<NavbarWidget> {
             buildNavbarIcon(Icons.home_outlined, 0),
             buildNavbarIcon(Icons.breakfast_dining_outlined, 1),
             buildNavbarIcon(Icons.discount_outlined, 2),
-            buildNavbarIcon(Icons.shopping_basket_outlined, 3),
+            buildShoppingBasketIcon(
+                context, 3), // Menambahkan icon keranjang belanja
           ],
         ),
       ),
@@ -82,6 +86,45 @@ class _NavbarWidgetState extends State<NavbarWidget> {
             break;
         }
       },
+    );
+  }
+
+  // Fungsi untuk membangun icon keranjang belanja dengan Badge
+  Widget buildShoppingBasketIcon(BuildContext context, int index) {
+    final isSelected = widget.selectedIndex == index;
+    final colors = isSelected ? Color.fromARGB(255, 245, 89, 81) : Colors.black;
+
+    return badges.Badge(
+      badgeContent: Consumer<CartProvider>(
+        builder: (context, value, child) {
+          return Text(
+            value.getCounter().toString(),
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          );
+        },
+      ),
+      position: badges.BadgePosition.topEnd(
+          top: -5, end: -5), // Sesuaikan posisi sesuai kebutuhan
+      child: IconButton(
+        icon: Icon(
+          Icons.shopping_cart_outlined,
+          color: colors
+        ),
+        onPressed: () {
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => const OrderCart(),
+          //   ),
+          // );
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => OrderCart()),
+            );
+        },
+      ),
     );
   }
 }
