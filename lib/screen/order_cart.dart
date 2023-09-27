@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/screen/MenuList.dart';
-import 'package:flutter_application/widget/NavbarWidget.dart';
+import 'package:flutter_application/screen/menu_list.dart';
+import 'package:flutter_application/widget/navbar_widget.dart';
 
 class OrderCart extends StatefulWidget {
   const OrderCart({super.key});

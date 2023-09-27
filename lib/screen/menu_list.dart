@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/widget/MenuCard.dart';
-import 'package:flutter_application/widget/NavbarWidget.dart';
+import 'package:flutter_application/widget/menu_card.dart';
+import 'package:flutter_application/widget/navbar_widget.dart';
 
 class MenuList extends StatefulWidget {
   const MenuList({Key? key}) : super(key: key);
