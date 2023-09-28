@@ -42,12 +42,6 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void removeCounter() {
-    _counter--;
-    _setPrefsItems();
-    notifyListeners();
-  }
-
   int getCounter() {
     _getPrefsItems();
     return _counter;
@@ -56,6 +50,9 @@ class CartProvider with ChangeNotifier {
   void addQuantity(int id) {
     final index = cart.indexWhere((element) => element.id == id);
     cart[index].quantity!.value = cart[index].quantity!.value + 1;
+    dbHelper.updateQuantity(cart[index]);
+    addTotalPrice(cart[index].productPrice!.toDouble());
+    _counter++;
     _setPrefsItems();
     notifyListeners();
   }
@@ -63,26 +60,28 @@ class CartProvider with ChangeNotifier {
   void deleteQuantity(int id) {
     final index = cart.indexWhere((element) => element.id == id);
     final currentQuantity = cart[index].quantity!.value;
-    if (currentQuantity <= 1) {
-      currentQuantity == 1;
-    } else {
+    if (currentQuantity > 1) {
       cart[index].quantity!.value = currentQuantity - 1;
+      addTotalPrice(cart[index].productPrice!.toDouble());
+      _counter--;
     }
+    dbHelper.updateQuantity(cart[index]);
     _setPrefsItems();
     notifyListeners();
   }
 
   void removeItem(int id) {
-    final index = cart.indexWhere((element) => element.id == id);
-    cart.removeAt(index);
+  final index = cart.indexWhere((element) => element.id == id);
+  if (index != -1) {
+    final removedItem = cart[index];
+    removeTotalPrice(removedItem.productPrice!.toDouble());
     _setPrefsItems();
+    _counter -= removedItem.quantity!.value;
+    cart.removeAt(index);
+    dbHelper.deleteCartItem(removedItem.id!);
     notifyListeners();
   }
-
-  int getQuantity(int quantity) {
-    _getPrefsItems();
-    return _quantity;
-  }
+}
 
   void addTotalPrice(double productPrice) {
     _totalPrice = _totalPrice + productPrice;
@@ -94,10 +93,5 @@ class CartProvider with ChangeNotifier {
     _totalPrice = _totalPrice - productPrice;
     _setPrefsItems();
     notifyListeners();
-  }
-
-  double getTotalPrice() {
-    _getPrefsItems();
-    return _totalPrice;
   }
 }
