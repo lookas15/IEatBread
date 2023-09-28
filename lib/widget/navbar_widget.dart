@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/data/cart_provider.dart';
 import 'package:flutter_application/screen/menu_list.dart';
 import 'package:flutter_application/screen/order_cart.dart';
+import 'package:provider/provider.dart';
+import 'package:badges/badges.dart' as badges;
 
 class NavbarWidget extends StatefulWidget {
   final int selectedIndex;
@@ -40,7 +43,8 @@ class _NavbarWidgetState extends State<NavbarWidget> {
             buildNavbarIcon(Icons.home_outlined, 0),
             buildNavbarIcon(Icons.breakfast_dining_outlined, 1),
             buildNavbarIcon(Icons.discount_outlined, 2),
-            buildNavbarIcon(Icons.shopping_basket_outlined, 3),
+            buildShoppingBasketIcon(
+                context, 3), 
           ],
         ),
       ),
@@ -58,30 +62,57 @@ class _NavbarWidgetState extends State<NavbarWidget> {
       ),
       onPressed: () {
         widget.onTabChanged(index);
-        // Handle navigation here
         switch (index) {
           case 0:
-            // Home
             Navigator.of(context).popUntil((route) => route.isFirst);
             break;
           case 1:
-            // Navigate to Menu screen
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (context) => MenuList()),
             );
             break;
           case 2:
-            // Handle other navigations
-            // For example, navigate to another screen.
+
             break;
           case 3:
-            // Navigate to OrderCart screen
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (context) => OrderCart()),
             );
             break;
         }
       },
+    );
+  }
+
+  Widget buildShoppingBasketIcon(BuildContext context, int index) {
+    final isSelected = widget.selectedIndex == index;
+    final colors = isSelected ? Color.fromARGB(255, 245, 89, 81) : Colors.black;
+
+    return badges.Badge(
+      badgeContent: Consumer<CartProvider>(
+        builder: (context, value, child) {
+          return Text(
+            value.getCounter().toString(),
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          );
+        },
+      ),
+      position: badges.BadgePosition.topEnd(
+          top: -5, end: -5), 
+      child: IconButton(
+        icon: Icon(
+          Icons.shopping_cart_outlined,
+          color: colors
+        ),
+        onPressed: () {
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => OrderCart()),
+          );
+        },
+      ),
     );
   }
 }

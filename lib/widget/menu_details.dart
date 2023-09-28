@@ -1,8 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
+import 'package:flutter_application/data/color.dart';
+import 'package:flutter_application/widget/button.dart';
 
-class MenuDetails extends StatelessWidget {
+class MenuDetails extends StatefulWidget {
   final String assetPath;
   final String price;
   final String name;
@@ -15,211 +15,204 @@ class MenuDetails extends StatelessWidget {
       required this.price,
       required this.name,
       required this.details,
-      required this.category});
+      required this.category,
+      });
+
+  @override
+  State<MenuDetails> createState() => _MenuDetailsState();
+}
+
+class _MenuDetailsState extends State<MenuDetails> {
+  // quantity
+  int quantityCount = 0;
+
+  // decrement quantity
+  void decrementQuantity() {
+    setState(() {
+      if (quantityCount > 0) {
+        quantityCount--;
+      }
+    });
+  }
+
+  // increment quantity
+  void incrementQuantity() {
+    setState(() {
+      quantityCount++;
+    });
+  }
+
+  // add to cart
+  void addToCart() {
+
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 245, 89, 81),
-        elevation: 0,
+        backgroundColor: primaryColor,
+        title: const Text("Details"),
         centerTitle: true,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        title: Text(
-          'Pilihan',
-          style: TextStyle(
-            fontFamily: 'Varela',
-            fontSize: 20.0,
-            color: Colors.white,
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.notifications_none,
-              color: Colors.white,
-            ),
-          ),
-        ],
       ),
-      body: ListView(
+      body: Column(
         children: [
-          SizedBox(
-            height: 15.0,
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 20.0),
-            child: Text(
-              category,
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 42.0,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 245, 89, 81),
+          // listview of details
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: ListView(
+                children: [
+                  // category
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10.0),
+                    child: Text(
+                      widget.category,
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 42.0,
+                        fontWeight: FontWeight.bold,
+                        color: primaryColor,
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(
+                    height: 15.0,
+                  ),
+                  // image
+                  Hero(
+                    tag: widget.assetPath,
+                    child: Image.asset(
+                      widget.assetPath,
+                      height: 220,
+                    ),
+                  ),
+
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  // food name
+                  Text(
+                    widget.name,
+                    style: TextStyle(
+                        color: primaryColor,
+                        fontFamily: 'Poppins',
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold),
+                  ),
+
+                  // food price
+                  Text(
+                    'Rp ${widget.price}',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 22.0,
+                      fontWeight: FontWeight.bold,
+                      color: primaryColor,
+                    ),
+                  ),
+
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  // description
+                  Text(
+                    "Description",
+                    style: TextStyle(
+                        color: Colors.grey[900],
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20),
+                  ),
+
+                  Text(
+                    widget.details,
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 16.0,
+                      color: Colors.grey[600],
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
-          SizedBox(
-            height: 15.0,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
-            child: Hero(
-              tag: assetPath,
-              child: Container(
-                height: 250,
-                width: 200,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    image: DecorationImage(
-                      fit: BoxFit.contain,
-                      image: AssetImage(assetPath),
-                    )),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 25.0,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20.0),
-            child: Text(
-              name,
-              style: TextStyle(
-                color: Color.fromARGB(255, 245, 89, 81),
-                fontFamily: 'Poppins',
-                fontSize: 24.0,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20.0),
-            child: Text(
-              'Rp $price',
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 22.0,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 245, 89, 81),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width - 50.0,
-              child: Text(
-                details,
-                maxLines: 6,
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: 16.0,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
+
           const SizedBox(height: 20,),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+
+          // price + quantity + add to cart button
+          Container(
+            padding: const EdgeInsets.all(25.0),
+            color: primaryColor,
             child: Column(
               children: [
+                // quantity
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'Item Quantity',
-                      style: TextStyle(fontSize: 20),
+                    // item quantity text
+                    const Text(
+                      "Item Quantity",
+                      style: TextStyle(
+                          fontSize: 18.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
                     ),
+
+                    // plus and minus button
                     Row(
                       children: [
+                        // minus button
                         Container(
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 245, 89, 81),
-                            shape: BoxShape.circle,
-                          ),
-                          child: IconButton(
-                            onPressed: () {}, 
-                            icon: Icon(Icons.remove, color: Colors.white,),
-                            iconSize: 20,
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(109, 140, 94, 91),
+                              shape: BoxShape.circle,
+                            ),
+                            child: IconButton(
+                                onPressed: decrementQuantity,
+                                icon: const Icon(
+                                  Icons.remove,
+                                  color: Colors.white,
+                                ))),
+
+                        // quantity
+                        SizedBox(
+                          width: 40,
+                          child: Center(
+                            child: Text(
+                              quantityCount.toString(),
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
                           ),
                         ),
-                        const SizedBox(width: 20,),
-                        Text(
-                          '1',
-                          style: TextStyle(
-                            fontSize: 20
-                          ),
-                        ),
-                        const SizedBox(width: 20,),
+
+                        // plus button
                         Container(
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 245, 89, 81),
-                            shape: BoxShape.circle,
-                          ),
-                          child: IconButton(
-                            onPressed: () {}, 
-                            icon: Icon(Icons.add, color: Colors.white,),
-                            iconSize: 20,
-                          ),
-                        ),
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(109, 140, 94, 91),
+                              shape: BoxShape.circle,
+                            ),
+                            child: IconButton(
+                                onPressed: incrementQuantity,
+                                icon: const Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                ))),
                       ],
                     )
                   ],
                 ),
+
                 const SizedBox(height: 20,),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 245, 89, 81),
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)
-                      )
-                    ),
-                    onPressed: () {}, 
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        'Add to Cart',
-                        style: TextStyle(
-                          fontSize: 20
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                // add to cart
+                MyButton(text: "Add To Cart", onTap: addToCart),
               ],
             ),
           )
-
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal: 50),
-          //   child: ElevatedButton(
-          //       onPressed: () {},
-          //       child: Row(
-          //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //         children: [
-          //           IconButton(onPressed: () {}, icon: Icon(Icons.remove)),
-          //           Text('Add to Cart'),
-          //           IconButton(onPressed: () {}, icon: Icon(Icons.add)),
-          //         ],
-          //       )),
-          // ),
         ],
       ),
     );
