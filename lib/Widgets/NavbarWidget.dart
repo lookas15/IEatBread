@@ -44,7 +44,7 @@ class _NavbarWidgetState extends State<NavbarWidget> {
             buildNavbarIcon(Icons.breakfast_dining_outlined, 1),
             buildNavbarIcon(Icons.discount_outlined, 2),
             buildShoppingBasketIcon(
-                context, 3), // Menambahkan icon keranjang belanja
+                context, 3), 
           ],
         ),
       ),
@@ -62,24 +62,19 @@ class _NavbarWidgetState extends State<NavbarWidget> {
       ),
       onPressed: () {
         widget.onTabChanged(index);
-        // Handle navigation here
         switch (index) {
           case 0:
-            // Home
             Navigator.of(context).popUntil((route) => route.isFirst);
             break;
           case 1:
-            // Navigate to Menu screen
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (context) => MenuList()),
             );
             break;
           case 2:
-            // Handle other navigations
-            // For example, navigate to another screen.
+
             break;
           case 3:
-            // Navigate to OrderCart screen
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (context) => OrderCart()),
             );
@@ -89,7 +84,6 @@ class _NavbarWidgetState extends State<NavbarWidget> {
     );
   }
 
-  // Fungsi untuk membangun icon keranjang belanja dengan Badge
   Widget buildShoppingBasketIcon(BuildContext context, int index) {
     final isSelected = widget.selectedIndex == index;
     final colors = isSelected ? Color.fromARGB(255, 245, 89, 81) : Colors.black;
@@ -107,22 +101,16 @@ class _NavbarWidgetState extends State<NavbarWidget> {
         },
       ),
       position: badges.BadgePosition.topEnd(
-          top: -5, end: -5), // Sesuaikan posisi sesuai kebutuhan
+          top: -5, end: -5), 
       child: IconButton(
         icon: Icon(
           Icons.shopping_cart_outlined,
           color: colors
         ),
         onPressed: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) => const OrderCart(),
-          //   ),
-          // );
           Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (context) => OrderCart()),
-            );
+          );
         },
       ),
     );
