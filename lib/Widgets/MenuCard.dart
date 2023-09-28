@@ -3,6 +3,7 @@ import 'package:product_listtt/data/CartProvider.dart';
 import 'package:product_listtt/data/DBHelper.dart';
 import 'package:product_listtt/models/menu_model.dart' as menu_model;
 import 'package:product_listtt/models/cart_model.dart';
+import 'package:product_listtt/screens/OrderCart.dart';
 import 'package:provider/provider.dart';
 
 class MenuCard extends StatefulWidget {
@@ -21,8 +22,7 @@ class _MenuCardState extends State<MenuCard> {
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
     void saveData(int index) {
-      dbHelper
-          .insert(
+      dbHelper.insertOrUpdate(
         Cart(
           id: index,
           productId: menu[index].id.toString(),
@@ -34,11 +34,12 @@ class _MenuCardState extends State<MenuCard> {
           image: menu[index].imageUrl,
         ),
       )
-          .then((value) {
+      .then((value) {
         cart.addTotalPrice(menu[index].price.toDouble());
         cart.addCounter();
         print('Product Added to cart');
-      }).onError((error, stackTrace) {
+      })
+      .onError((error, stackTrace) {
         print(error.toString());
       });
     }
@@ -131,6 +132,21 @@ class _MenuCardState extends State<MenuCard> {
                               InkWell(
                                   onTap: () {
                                     saveData(index);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                                        content: const Text(
+                                          'Menu successfully added to cart.',
+                                          style: TextStyle(
+                                            color: Colors.black
+                                          ),
+                                        ),
+                                        behavior: SnackBarBehavior.floating,
+                                        duration: Duration(
+                                            seconds: 1
+                                        ),
+                                      ),
+                                    );
                                   },
                                   child: Padding(
                                       padding: const EdgeInsets.symmetric(
