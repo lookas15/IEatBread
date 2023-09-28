@@ -14,8 +14,7 @@ class Menu {
       required this.imageUrl,
       required this.isFavorite,
       required this.category,
-      required this.description
-      });
+      required this.description});
 }
 
 final List<Menu> listMenu = [
@@ -26,7 +25,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/croissbrew.png',
     isFavorite: true,
     category: 'Deals',
-    description: '',
+    description:
+        'Gurihnya mentega yang dipadu dengan segarnya kopi, pilihan terbaik untuk menu di pagi hari',
   ),
   Menu(
     id: 02,
@@ -35,7 +35,7 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/croau.png',
     isFavorite: false,
     category: 'Deals',
-    description: '',
+    description: 'Combo spesial untuk kamu penikmat makanan asin-manis',
   ),
   Menu(
     id: 03,
@@ -44,7 +44,7 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/chouxpuff.png',
     isFavorite: true,
     category: 'Deals',
-    description: '',
+    description: 'Combo pastry yang cocok dipadu dengan minuman apapun',
   ),
   Menu(
     id: 04,
@@ -62,7 +62,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/pizzabomb.png',
     isFavorite: false,
     category: 'Bread',
-    description: 'Roti berbentuk bulat yang renyah di bagian luar dan memiliki kejutan di bagian dalam berupa paduan saus tomat, keju dan pepperoni.',
+    description:
+        'Roti berbentuk bulat yang renyah di bagian luar dan memiliki kejutan di bagian dalam berupa paduan saus tomat, keju dan pepperoni.',
   ),
   Menu(
     id: 11,
@@ -71,7 +72,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/cinroll.png',
     isFavorite: true,
     category: 'Bread',
-    description: 'Roti gulung yang berisikan gula palem dengan bubuk kayu manis dan cream cheese frosting sebagai toppingnya.',
+    description:
+        'Roti gulung yang berisikan gula palem dengan bubuk kayu manis dan cream cheese frosting sebagai toppingnya.',
   ),
   Menu(
     id: 12,
@@ -80,7 +82,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/chocbabka.png',
     isFavorite: true,
     category: 'Bread',
-    description: 'Roti dengan brioche yang legit dengan lapisan dan isian coklat yang menggoda.',
+    description:
+        'Roti dengan brioche yang legit dengan lapisan dan isian coklat yang menggoda.',
   ),
   Menu(
     id: 13,
@@ -89,7 +92,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/cgarlic.png',
     isFavorite: true,
     category: 'Bread',
-    description: 'Potongan roti gurih yang dipanggang dengan mentega dan bawang putih yang harum, ditaburi dengan keju leleh yang lezat. Kombinasi yang sempurna antara cita rasa creamy dan rasa bawang putih yang tajam.',
+    description:
+        'Potongan roti gurih yang dipanggang dengan mentega dan bawang putih yang harum, ditaburi dengan keju leleh yang lezat. Kombinasi yang sempurna antara cita rasa creamy dan rasa bawang putih yang tajam.',
   ),
   Menu(
     id: 14,
@@ -98,7 +102,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/tangzhong.png',
     isFavorite: false,
     category: 'Bread',
-    description: 'Roti lembut dengan tekstur istimewa, berkat adonan tangzhong yang membuatnya lembut dan lezat serta rasa susu yang ringan dan manis.',
+    description:
+        'Roti lembut dengan tekstur istimewa, berkat adonan tangzhong yang membuatnya lembut dan lezat serta rasa susu yang ringan dan manis.',
   ),
   Menu(
     id: 15,
@@ -107,7 +112,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/milkbun.png',
     isFavorite: false,
     category: 'Bread',
-    description: 'Roti lembut  dan lezat yang dikenal karena rasa susu yang khas dan teksturnya yang empuk.',
+    description:
+        'Roti lembut  dan lezat yang dikenal karena rasa susu yang khas dan teksturnya yang empuk.',
   ),
   Menu(
     id: 16,
@@ -116,7 +122,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/melonpan.png',
     isFavorite: false,
     category: 'Bread',
-    description: 'Roti manis Jepang yang memiliki tekstur luar yang renyah karena dilapisi dengan adonan biskuit dan gula yang memberikan sentuhan manis.',
+    description:
+        'Roti manis Jepang yang memiliki tekstur luar yang renyah karena dilapisi dengan adonan biskuit dan gula yang memberikan sentuhan manis.',
   ),
   Menu(
     id: 17,
@@ -125,7 +132,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/coffeebun.png',
     isFavorite: true,
     category: 'Bread',
-    description: 'Roti manis dengan tekstur yang renyah dan lapisan krim kopi di bagian atasnya.',
+    description:
+        'Roti manis dengan tekstur yang renyah dan lapisan krim kopi di bagian atasnya.',
   ),
   Menu(
     id: 20,
@@ -134,7 +142,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/croissant.png',
     isFavorite: true,
     category: 'Pastry',
-    description: 'Pastry berbentuk bulan sabit dengan tekstur renyah di luar dan lembut di dalamnya serta rasa mentega yang khas.',
+    description:
+        'Pastry berbentuk bulan sabit dengan tekstur renyah di luar dan lembut di dalamnya serta rasa mentega yang khas.',
   ),
   Menu(
     id: 21,
@@ -143,7 +152,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/painauchoc.png',
     isFavorite: false,
     category: 'Pastry',
-    description: 'Roti manis Prancis yang terdiri dari adonan berlapis mentega dan cokelat yang meleleh di dalamnya.',
+    description:
+        'Roti manis Prancis yang terdiri dari adonan berlapis mentega dan cokelat yang meleleh di dalamnya.',
   ),
   Menu(
     id: 22,
@@ -152,7 +162,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/eggtart.png',
     isFavorite: true,
     category: 'Pastry',
-    description: 'Pastry asal Portugal yang terdiri dari lapisan kulit pastry yang renyah dan karamelisasi di atasnya, diisi dengan custard lembut beraroma vanila.',
+    description:
+        'Pastry asal Portugal yang terdiri dari lapisan kulit pastry yang renyah dan karamelisasi di atasnya, diisi dengan custard lembut beraroma vanila.',
   ),
   Menu(
     id: 23,
@@ -161,7 +172,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/cheesetart.png',
     isFavorite: false,
     category: 'Pastry',
-    description: 'Pastry kecil yang terdiri dari adonan tart yang renyah dan diisi dengan isian keju.',
+    description:
+        'Pastry kecil yang terdiri dari adonan tart yang renyah dan diisi dengan isian keju.',
   ),
   Menu(
     id: 24,
@@ -170,7 +182,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/creampuff.png',
     isFavorite: false,
     category: 'Pastry',
-    description: 'Pastry yang berbentuk bulat yang terdiri dari kulit pastry yang ringan dan berongga, diisi dengan custard yang lembut, manis, dan beraroma vanila.',
+    description:
+        'Pastry yang berbentuk bulat yang terdiri dari kulit pastry yang ringan dan berongga, diisi dengan custard yang lembut, manis, dan beraroma vanila.',
   ),
   Menu(
     id: 25,
@@ -179,7 +192,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/choux.png',
     isFavorite: true,
     category: 'Pastry',
-    description: 'Pastry yang dilapisi dengan lapisan craquelin, yang terbuat dari campuran gula, tepung, dan mentega, lalu diisi diplomat cream yang lembut dan manis.',
+    description:
+        'Pastry yang dilapisi dengan lapisan craquelin, yang terbuat dari campuran gula, tepung, dan mentega, lalu diisi diplomat cream yang lembut dan manis.',
   ),
   Menu(
     id: 30,
@@ -188,7 +202,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/coldbrew.png',
     isFavorite: true,
     category: 'Drinks',
-    description: 'Kopi yang diseduh dengan air dingin, tapi tetap lebih dingin sikap gebetan kamu 🙌',
+    description:
+        'Kopi yang diseduh dengan air dingin, tapi tetap lebih dingin sikap gebetan kamu 🙌',
   ),
   Menu(
     id: 31,
@@ -197,7 +212,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/amrcno.png',
     isFavorite: true,
     category: 'Drinks',
-    description: 'Kopi gaya abad 1940 yang terasa pahit, namun tetap lebih pahit ditolak sama gebetan 🥤',
+    description:
+        'Kopi gaya abad 1940 yang terasa pahit, namun tetap lebih pahit ditolak sama gebetan 🥤',
   ),
   Menu(
     id: 32,
@@ -206,7 +222,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/vanilla.png',
     isFavorite: false,
     category: 'Drinks',
-    description: 'Kopi espresso yang dipasangkan dengan susu, ga kayak kamu yang ga punya pasangan 🧍‍♂️🧍‍♀️',
+    description:
+        'Kopi espresso yang dipasangkan dengan susu, ga kayak kamu yang ga punya pasangan 🧍‍♂️🧍‍♀️',
   ),
   Menu(
     id: 33,
@@ -215,7 +232,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/affogato.png',
     isFavorite: true,
     category: 'Drinks',
-    description: 'Kopi dari Italia yang artinya tenggelam. Bedanya kamu tenggelam sama janji manis dia 🐊',
+    description:
+        'Kopi dari Italia yang artinya tenggelam. Bedanya kamu tenggelam sama janji manis dia 🐊',
   ),
   Menu(
     id: 34,
@@ -224,7 +242,8 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/matcha.png',
     isFavorite: true,
     category: 'Drinks',
-    description: 'Minuman berupa teh hijau yang harum dipadu dengan susu yang manis, semanis gombalan dia🧉',
+    description:
+        'Minuman berupa teh hijau yang harum dipadu dengan susu yang manis, semanis gombalan dia🧉',
   ),
   Menu(
     id: 35,
@@ -233,6 +252,7 @@ final List<Menu> listMenu = [
     imageUrl: 'assets/img/earlgrey.png',
     isFavorite: false,
     category: 'Drinks',
-    description: 'Teh yang ditambahkan minyak jeruk bergamot yang harum, seharum masa awal-awal pacaran 🍊',
+    description:
+        'Teh yang ditambahkan minyak jeruk bergamot yang harum, seharum masa awal-awal pacaran 🍊',
   ),
 ];
