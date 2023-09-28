@@ -1,4 +1,6 @@
-class Menu {
+import 'package:flutter/material.dart';
+
+class Menu extends ChangeNotifier{
   final int id;
   final String name;
   final String price;
@@ -256,3 +258,21 @@ final List<Menu> listMenu = [
         'Teh yang ditambahkan minyak jeruk bergamot yang harum, seharum masa awal-awal pacaran 🍊',
   ),
 ];
+
+// customer cart
+List<Menu> _cart = [];
+
+// getter methods
+List<Menu> get cart => _cart;
+
+// add to cart
+void addToCart(Menu menuItem, int quantity) {
+  for (int i = 0; i < quantity; i++) {
+    _cart.add(menuItem);
+  }
+}
+
+// remove from cart
+void removeFromCart(Menu menuItem) {
+  _cart.remove(menuItem);
+}

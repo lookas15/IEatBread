@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/data/menu.dart';
-import 'package:flutter_application/widget/MenuDetails.dart';
+import 'package:flutter_application/widget/menu_details.dart';
+import 'package:flutter_application/widget/menu_details2.dart';
 
 class MenuCard extends StatelessWidget {
   final String category;
@@ -38,13 +39,13 @@ class MenuCard extends StatelessWidget {
       child: InkWell(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return MenuDetails(
-                  assetPath: menu.imageUrl,
-                  price: menu.price,
-                  name: menu.name,
-                  details: menu.description,
-                  category: menu.category,
-                  );
+              return MenuDetails2(
+                assetPath: menu.imageUrl,
+                price: menu.price,
+                name: menu.name,
+                details: menu.description,
+                category: menu.category,
+              );
             }));
           },
           child: Container(

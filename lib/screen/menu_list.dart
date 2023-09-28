@@ -1,6 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:flutter_application/widget/MenuCard.dart';
-import 'package:flutter_application/widget/NavbarWidget.dart';
+import 'package:flutter_application/widget/menu_card.dart';
+import 'package:flutter_application/widget/navbar_widget.dart';
 
 class MenuList extends StatefulWidget {
   const MenuList({Key? key}) : super(key: key);
@@ -9,7 +11,8 @@ class MenuList extends StatefulWidget {
   State<MenuList> createState() => _MenuListState();
 }
 
-class _MenuListState extends State<MenuList> with SingleTickerProviderStateMixin {
+class _MenuListState extends State<MenuList>
+    with SingleTickerProviderStateMixin {
   TabController? _tabController;
 
   final List<String> categories = ['Deals', 'Bread', 'Pastry', 'Drinks'];

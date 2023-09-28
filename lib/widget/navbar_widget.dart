@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/screen/MenuList.dart';
-import 'package:flutter_application/screen/OrderCart.dart';
+import 'package:flutter_application/screen/menu_list.dart';
+import 'package:flutter_application/screen/order_cart.dart';
 
 class NavbarWidget extends StatefulWidget {
   final int selectedIndex;
