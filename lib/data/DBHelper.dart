@@ -22,7 +22,6 @@ class DBHelper {
     return db;
   }
 
-// creating database table
   _onCreate(Database db, int version) async {
     await db.execute('''
         CREATE TABLE cart(
@@ -37,26 +36,41 @@ class DBHelper {
     ''');
   }
 
-// inserting data into the table
-  Future<Cart> insert(Cart cart) async {
-    var dbClient = await database;
-    await dbClient!.insert('cart', cart.toMap());
-    return cart;
+  Future<Cart> insertOrUpdate(Cart cart) async {
+  var dbClient = await database;
+  final productId = cart.productId;
+
+  final existingCartItem = await dbClient!.query(
+    'cart',
+    where: 'productId = ?',
+    whereArgs: [productId],
+  );
+
+  if (existingCartItem.isNotEmpty) {
+    final currentQuantity = existingCartItem[0]['quantity'] as int;
+    await dbClient.update(
+      'cart',
+      {
+        'quantity': currentQuantity + 1, 
+      },
+      where: 'productId = ?',
+      whereArgs: [productId],
+    );
+  } else {
+    await dbClient.insert('cart', cart.toMap());
   }
 
-// getting all the items in the list from the database
+  return cart;
+}
+
+
   Future<List<Cart>> getCartList() async {
-    // var dbClient = await database;
-    // final List<Map<String, Object?>> queryResult =
-    //     await dbClient!.query('cart');
-    // return queryResult.map((result) => Cart.fromMap(result)).toList();
     var dbClient = await database;
     if (dbClient != null) {
       final List<Map<String, Object?>> queryResult =
           await dbClient.query('cart');
       return queryResult.map((result) => Cart.fromMap(result)).toList();
     } else {
-      // Handle the case when dbClient is null, for example, by returning an empty list.
       return [];
     }
   }
@@ -67,7 +81,6 @@ class DBHelper {
         where: "productId = ?", whereArgs: [cart.productId]);
   }
 
-// deleting an item from the cart screen
   Future<int> deleteCartItem(int id) async {
     var dbClient = await database;
     return await dbClient!.delete('cart', where: 'id = ?', whereArgs: [id]);
