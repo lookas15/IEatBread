@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:product_listtt/Widgets/NavbarWidget.dart';
 import 'package:product_listtt/Widgets/PlusMinusButtons.dart';
-import 'package:product_listtt/Widgets/ReusableWidget.dart';
 import 'package:product_listtt/Widgets/SubTotalWidget.dart';
 import 'package:product_listtt/data/CartProvider.dart';
 import 'package:product_listtt/data/DBHelper.dart';

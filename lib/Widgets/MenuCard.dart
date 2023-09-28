@@ -3,7 +3,6 @@ import 'package:product_listtt/data/CartProvider.dart';
 import 'package:product_listtt/data/DBHelper.dart';
 import 'package:product_listtt/models/menu_model.dart' as menu_model;
 import 'package:product_listtt/models/cart_model.dart';
-import 'package:product_listtt/screens/OrderCart.dart';
 import 'package:provider/provider.dart';
 
 class MenuCard extends StatefulWidget {
