@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:product_listtt/Widgets/NavbarWidget.dart';
 import 'package:product_listtt/Widgets/PlusMinusButtons.dart';
-import 'package:product_listtt/Widgets/ReusableWidget%20.dart';
+import 'package:product_listtt/Widgets/ReusableWidget.dart';
+import 'package:product_listtt/Widgets/SubTotalWidget.dart';
 import 'package:product_listtt/data/CartProvider.dart';
 import 'package:product_listtt/data/DBHelper.dart';
 import 'package:product_listtt/models/cart_model.dart';
@@ -51,7 +52,6 @@ class _OrderCartState extends State<OrderCart>
             color: Colors.white,
           ),
           onPressed: () {
-            // Kembali ke layar sebelumnya
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (context) => MenuList()),
             );
@@ -218,31 +218,26 @@ class _OrderCartState extends State<OrderCart>
                                             provider.cart[index].id!);
                                         provider.removeItem(
                                             provider.cart[index].id!);
-                                        provider.removeCounter();
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          color: Colors
-                                              .red, // Atur warna latar belakang merah
-                                          borderRadius: BorderRadius.circular(
-                                              5.0), // Atur border radius sesuai keinginan
+                                          color: Colors.red,
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
                                         ),
-                                        padding: EdgeInsets.all(
-                                            10.0), // Atur padding sesuai keinginan
+                                        padding: EdgeInsets.all(10.0),
                                         child: Row(
-                                          mainAxisAlignment: MainAxisAlignment
-                                              .center, // Tengahkan teks dan ikon
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
                                             Icon(
                                               Icons.delete,
-                                              color: Colors
-                                                  .white, // Atur warna ikon menjadi putih
+                                              color: Colors.white,
                                             ),
                                             Text(
                                               'Delete Menu',
                                               style: TextStyle(
-                                                color: Colors
-                                                    .white, // Atur warna teks menjadi putih
+                                                color: Colors.white,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
@@ -271,19 +266,7 @@ class _OrderCartState extends State<OrderCart>
                     (element.productPrice! * element.quantity!.value) +
                         (totalPrice.value ?? 0);
               }
-              return Column(
-                children: [
-                  ValueListenableBuilder<int?>(
-                    valueListenable: totalPrice,
-                    builder: (context, val, child) {
-                      return ReusableWidget(
-                        title: 'Sub-Total',
-                        value: r'IDR ' + (val?.toStringAsFixed(2) ?? '0'),
-                      );
-                    },
-                  ),
-                ],
-              );
+              return SubTotalWidget(totalPrice: totalPrice);
             },
           )
         ],
