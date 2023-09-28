@@ -76,7 +76,7 @@ class MenuDetails extends StatelessWidget {
             child: Hero(
               tag: assetPath,
               child: Container(
-                height: 300,
+                height: 250,
                 width: 200,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
@@ -134,7 +134,7 @@ class MenuDetails extends StatelessWidget {
           ),
           const SizedBox(height: 20,),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               children: [
                 Row(
@@ -149,12 +149,12 @@ class MenuDetails extends StatelessWidget {
                         Container(
                           decoration: BoxDecoration(
                             color: Color.fromARGB(255, 245, 89, 81),
-                            borderRadius: BorderRadius.circular(50),
+                            shape: BoxShape.circle,
                           ),
                           child: IconButton(
                             onPressed: () {}, 
                             icon: Icon(Icons.remove, color: Colors.white,),
-                            iconSize: 25,
+                            iconSize: 20,
                           ),
                         ),
                         const SizedBox(width: 20,),
@@ -168,12 +168,12 @@ class MenuDetails extends StatelessWidget {
                         Container(
                           decoration: BoxDecoration(
                             color: Color.fromARGB(255, 245, 89, 81),
-                            borderRadius: BorderRadius.circular(50),
+                            shape: BoxShape.circle,
                           ),
                           child: IconButton(
                             onPressed: () {}, 
                             icon: Icon(Icons.add, color: Colors.white,),
-                            iconSize: 25,
+                            iconSize: 20,
                           ),
                         ),
                       ],
@@ -181,26 +181,23 @@ class MenuDetails extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 20,),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 0,),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 245, 89, 81),
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)
-                        )
-                      ),
-                      onPressed: () {}, 
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Text(
-                          'Add to Cart',
-                          style: TextStyle(
-                            fontSize: 20
-                          ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 245, 89, 81),
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)
+                      )
+                    ),
+                    onPressed: () {}, 
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        'Add to Cart',
+                        style: TextStyle(
+                          fontSize: 20
                         ),
                       ),
                     ),
