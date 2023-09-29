@@ -1,53 +1,90 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_application/models/cart_model.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart';
+import 'dart:io' as io;
 
-class Cart {
-  late final int? id;
-  final String? productId;
-  final String? productName;
-  final int? initialPrice;
-  final int? productPrice;
-  final ValueNotifier<int>? quantity;
-  final String? category;
-  final String? image;
+class DBHelper {
+  static Database? _database;
 
-  Cart(
-      {required this.id,
-      required this.productId,
-      required this.productName,
-      required this.initialPrice,
-      required this.productPrice,
-      required this.quantity,
-      required this.category,
-      required this.image,
-      });
-
-  Cart.fromMap(Map<dynamic, dynamic> data)
-      : id = data['id'],
-        productId = data['productId'],
-        productName = data['productName'],
-        initialPrice = data['initialPrice'],
-        productPrice = data['productPrice'],
-        quantity = ValueNotifier(data['quantity']),
-        category = data['category'],
-        image = data['image'];
-
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'productId': productId,
-      'productName': productName,
-      'initialPrice': initialPrice,
-      'productPrice': productPrice,
-      'quantity': quantity?.value,
-      'category': category,
-      'image': image,
-    };
+  Future<Database?> get database async {
+    if (_database != null) {
+      return _database!;
+    }
+    _database = await initDatabase();
+    return null;
   }
 
-  Map<String, dynamic> quantityMap() {
-    return {
-      'productId': productId,
-      'quantity': quantity!.value,
-    };
+  initDatabase() async {
+    io.Directory directory = await getApplicationDocumentsDirectory();
+    String path = join(directory.path, 'cart.db');
+    var db = await openDatabase(path, version: 1, onCreate: _onCreate);
+    return db;
   }
+
+  _onCreate(Database db, int version) async {
+    await db.execute('''
+        CREATE TABLE cart(
+          id INTEGER PRIMARY KEY, 
+          productId VARCHAR UNIQUE, 
+          productName TEXT, 
+          initialPrice INTEGER, 
+          productPrice INTEGER, 
+          quantity INTEGER, 
+          category TEXT, 
+          image TEXT)
+    ''');
+  }
+
+  Future<Cart> insertOrUpdate(Cart cart) async {
+  var dbClient = await database;
+  final productId = cart.productId;
+
+  final existingCartItem = await dbClient!.query(
+    'cart',
+    where: 'productId = ?',
+    whereArgs: [productId],
+  );
+
+  if (existingCartItem.isNotEmpty) {
+    final currentQuantity = existingCartItem[0]['quantity'] as int;
+    await dbClient.update(
+      'cart',
+      {
+        'quantity': currentQuantity + 1, 
+      },
+      where: 'productId = ?',
+      whereArgs: [productId],
+    );
+  } else {
+    await dbClient.insert('cart', cart.toMap());
+  }
+
+  return cart;
+}
+
+
+  Future<List<Cart>> getCartList() async {
+    var dbClient = await database;
+    if (dbClient != null) {
+      final List<Map<String, Object?>> queryResult =
+          await dbClient.query('cart');
+      return queryResult.map((result) => Cart.fromMap(result)).toList();
+    } else {
+      return [];
+    }
+  }
+
+  Future<int> updateQuantity(Cart cart) async {
+    var dbClient = await database;
+    return await dbClient!.update('cart', cart.quantityMap(),
+        where: "productId = ?", whereArgs: [cart.productId]);
+  }
+
+  Future<int> deleteCartItem(int id) async {
+    var dbClient = await database;
+    return await dbClient!.delete('cart', where: 'id = ?', whereArgs: [id]);
+  }
+
+  void initDB() {}
 }

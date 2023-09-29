@@ -5,6 +5,7 @@ import 'package:flutter_application/data/DBHelper.dart';
 import 'package:flutter_application/data/cart_provider.dart';
 import 'package:flutter_application/data/menu.dart';
 import 'package:flutter_application/models/cart_model.dart';
+import 'package:flutter_application/models/menu_model.dart' as menu_model;
 import 'package:flutter_application/widget/menu_details.dart';
 import 'package:provider/provider.dart';
 
