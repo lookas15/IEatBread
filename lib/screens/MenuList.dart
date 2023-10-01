@@ -49,16 +49,7 @@ class _MenuListState extends State<MenuList> with SingleTickerProviderStateMixin
               MaterialPageRoute(builder: (context) => MenuList()),
             );
           },
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.search,
-              color: Colors.white,
-            ),
-            onPressed: () {},
-          ),
-        ],
+        )
       ),
       body: CustomScrollView(
         slivers: [
