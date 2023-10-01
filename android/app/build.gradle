@@ -23,11 +23,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-<<<<<<< HEAD
     namespace "com.example.product_listtt"
-=======
-    namespace "com.example.flutter_application"
->>>>>>> 742d1a3 (first commit)
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
