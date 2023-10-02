@@ -36,8 +36,8 @@ class CartProvider with ChangeNotifier {
     _totalPrice = prefs.getDouble('total_price') ?? 0;
   }
 
-  void addCounter() {
-    _counter++;
+  void addCounter(int sum) {
+    _counter += sum;
     _setPrefsItems();
     notifyListeners();
   }
