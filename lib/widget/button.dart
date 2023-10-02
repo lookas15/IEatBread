@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 class MyButton extends StatelessWidget {
   final String text;
   final void Function()? onTap;
-  const MyButton({super.key, required this.text, this.onTap});
+  final void Function()? showSnackbar;
+  const MyButton({super.key, required this.text, this.onTap, this.showSnackbar});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+        onTap?.call();
+        showSnackbar?.call();
+      },
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(

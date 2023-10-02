@@ -1,22 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/data/DBHelper.dart';
+import 'package:flutter_application/data/cart_provider.dart';
 import 'package:flutter_application/data/color.dart';
+import 'package:flutter_application/models/cart_model.dart';
+import 'package:flutter_application/models/menu_model.dart' as menu_model;
 import 'package:flutter_application/widget/button.dart';
+import 'package:provider/provider.dart';
 
 class MenuDetails extends StatefulWidget {
-  final String assetPath;
-  final String price;
-  final String name;
-  final String details;
+  final int id;
+  final String productId;
+  final String productName;
+  final int initialPrice;
+  final int productPrice;
+  // final ValueNotifier<int> quantity;
   final String category;
+  final String imageUrl;
+  final String details;
 
-  const MenuDetails(
-      {super.key,
-      required this.assetPath,
-      required this.price,
-      required this.name,
-      required this.details,
-      required this.category,
-      });
+  const MenuDetails({
+    super.key,
+    required this.id,
+    required this.productId,
+    required this.productName,
+    required this.initialPrice,
+    required this.productPrice,
+    // required this.quantity,
+    required this.category,
+    required this.imageUrl,
+    required this.details,
+  });
 
   @override
   State<MenuDetails> createState() => _MenuDetailsState();
@@ -24,13 +37,18 @@ class MenuDetails extends StatefulWidget {
 
 class _MenuDetailsState extends State<MenuDetails> {
   // quantity
-  int quantityCount = 0;
+  int quantityCount = 1;
+
+  DBHelper dbHelper = DBHelper();
+  List<menu_model.Menu> menu = menu_model.listMenu;
 
   // decrement quantity
   void decrementQuantity() {
     setState(() {
-      if (quantityCount > 0) {
+      if (quantityCount > 1) {
         quantityCount--;
+      } else {
+        quantityCount = 1;
       }
     });
   }
@@ -43,12 +61,34 @@ class _MenuDetailsState extends State<MenuDetails> {
   }
 
   // add to cart
-  void addToCart() {
-
-  }
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<CartProvider>(context);
+
+    void addToCart() {
+      dbHelper
+          .insertOrUpdate(
+        Cart(
+          id: widget.id,
+          productId: widget.id.toString(),
+          productName: widget.productName,
+          initialPrice: widget.initialPrice * quantityCount,
+          productPrice: widget.productPrice,
+          quantity: ValueNotifier(quantityCount),
+          category: widget.category,
+          image: widget.imageUrl,
+        ),
+      )
+          .then((value) {
+        cart.addTotalPrice(widget.initialPrice.toDouble());
+        cart.addCounter(quantityCount);
+        print('Product Added to cart');
+      }).onError((error, stackTrace) {
+        print(error.toString());
+      });
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primaryColor,
@@ -82,9 +122,9 @@ class _MenuDetailsState extends State<MenuDetails> {
                   ),
                   // image
                   Hero(
-                    tag: widget.assetPath,
+                    tag: widget.imageUrl,
                     child: Image.asset(
-                      widget.assetPath,
+                      widget.imageUrl,
                       height: 220,
                     ),
                   ),
@@ -94,7 +134,7 @@ class _MenuDetailsState extends State<MenuDetails> {
                   ),
                   // food name
                   Text(
-                    widget.name,
+                    widget.productName,
                     style: TextStyle(
                         color: primaryColor,
                         fontFamily: 'Poppins',
@@ -104,7 +144,7 @@ class _MenuDetailsState extends State<MenuDetails> {
 
                   // food price
                   Text(
-                    'Rp ${widget.price}',
+                    'Rp ${widget.productPrice}',
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 22.0,
@@ -139,7 +179,9 @@ class _MenuDetailsState extends State<MenuDetails> {
             ),
           ),
 
-          const SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
 
           // price + quantity + add to cart button
           Container(
@@ -207,9 +249,31 @@ class _MenuDetailsState extends State<MenuDetails> {
                   ],
                 ),
 
-                const SizedBox(height: 20,),
+                const SizedBox(
+                  height: 20,
+                ),
                 // add to cart
-                MyButton(text: "Add To Cart", onTap: addToCart),
+                MyButton(
+                  text: "Add To Cart",
+                  onTap: () {
+                    addToCart();
+                    if (quantityCount > 0) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                          content: const Text(
+                            'Menu successfully added to cart.',
+                            style: TextStyle(
+                              color: Colors.black,
+                            ),
+                          ),
+                          behavior: SnackBarBehavior.floating,
+                          duration: Duration(seconds: 1),
+                        ),
+                      );
+                    }
+                  },
+                ),
               ],
             ),
           )

@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/data/DBHelper.dart';
 import 'package:flutter_application/data/cart_provider.dart';
-import 'package:flutter_application/data/menu.dart';
 import 'package:flutter_application/models/cart_model.dart';
 import 'package:flutter_application/models/menu_model.dart' as menu_model;
 import 'package:flutter_application/widget/menu_details.dart';
@@ -39,7 +38,7 @@ class _MenuCardState extends State<MenuCard> {
       )
       .then((value) {
         cart.addTotalPrice(menu[index].price.toDouble());
-        cart.addCounter();
+        cart.addCounter(1);
         print('Product Added to cart');
       })
       .onError((error, stackTrace) {
@@ -65,11 +64,14 @@ class _MenuCardState extends State<MenuCard> {
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(builder: (context) {
                             return MenuDetails(
-                              assetPath: listItem[index].imageUrl,
-                              price: listItem[index].price,
-                              name: listItem[index].name,
-                              details: listItem[index].description,
-                              category: listItem[index].category,
+                              id: index,
+                              productId: menu[index].id.toString(),
+                              productName: menu[index].name,
+                              initialPrice: menu[index].price,
+                              productPrice: menu[index].price,
+                              category: menu[index].category,
+                              imageUrl: menu[index].imageUrl,
+                              details: menu[index].description,
                             );
                           }));
                         },
