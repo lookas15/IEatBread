@@ -101,9 +101,10 @@ class _MenuCardState extends State<MenuCard> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
                           child: Text(
-                            'IDR ${filteredMenu[index].price.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]}.')}',
+                            formattedName,
+                            textAlign: TextAlign.center,
                             style: const TextStyle(
-                              color: Color.fromARGB(255, 245, 89, 81),
+                              color: Colors.black,
                               fontSize: 14.0,
                               fontWeight: FontWeight.bold,
                             ),
@@ -112,10 +113,9 @@ class _MenuCardState extends State<MenuCard> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
                           child: Text(
-                            formattedName,
-                            textAlign: TextAlign.center,
+                            'IDR ${filteredMenu[index].price.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]}.')}',
                             style: const TextStyle(
-                              color: Colors.black,
+                              color: Color.fromARGB(255, 245, 89, 81),
                               fontSize: 14.0,
                               fontWeight: FontWeight.bold,
                             ),
