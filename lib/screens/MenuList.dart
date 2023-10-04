@@ -9,7 +9,8 @@ class MenuList extends StatefulWidget {
   State<MenuList> createState() => _MenuListState();
 }
 
-class _MenuListState extends State<MenuList> with SingleTickerProviderStateMixin {
+class _MenuListState extends State<MenuList>
+    with SingleTickerProviderStateMixin {
   TabController? _tabController;
 
   final List<String> categories = ['Deals', 'Bread', 'Pastry', 'Drinks'];
@@ -39,17 +40,17 @@ class _MenuListState extends State<MenuList> with SingleTickerProviderStateMixin
         backgroundColor: Color.fromARGB(255, 245, 89, 81),
         elevation: 0.0,
         centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.breakfast_dining_rounded,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => MenuList()),
-            );
-          },
-        )
+        // leading: IconButton(
+        //   icon: const Icon(
+        //     Icons.breakfast_dining_rounded,
+        //     color: Colors.white,
+        //   ),
+        //   onPressed: () {
+        //     Navigator.of(context).pushReplacement(
+        //       MaterialPageRoute(builder: (context) => MenuList()),
+        //     );
+        //   },
+        // )
       ),
       body: CustomScrollView(
         slivers: [
