@@ -15,26 +15,31 @@ class _MenuCardState extends State<MenuCard> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    // Menentukan apakah lebar layar saat ini adalah 320px
+    bool isNarrowScreen = screenWidth <= 320;
+
     List<menu_model.Menu> filteredMenu =
         menu.where((item) => item.category == widget.category).toList();
 
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 240, 240, 240),
-      body: ListView.builder(
-        itemCount: 1,
-        itemBuilder: (context, categoryIndex) {
-          return GridView.builder(
+      body: ListView(
+        children: [
+          GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, // Dua kolom
-              childAspectRatio: 0.7, // Mengontrol rasio tinggi lebar item
+              crossAxisCount: isNarrowScreen ? 1 : 2, // Mengubah jumlah kolom
+              childAspectRatio: isNarrowScreen
+                  ? 1.2
+                  : 0.7, // Mengontrol rasio tinggi lebar item
             ),
             shrinkWrap: true,
-            physics:
-                NeverScrollableScrollPhysics(), // Agar tidak bisa digulir secara independen
+            physics: NeverScrollableScrollPhysics(),
             itemCount: filteredMenu.length,
             itemBuilder: (context, index) {
               final name = filteredMenu[index].name;
-              final maxCharacters = 18;
+              final maxCharacters = 17;
 
               final formattedName = name.length > maxCharacters
                   ? name.substring(0, maxCharacters) + '...'
@@ -85,7 +90,7 @@ class _MenuCardState extends State<MenuCard> {
                             },
                             child: Container(
                               height: 90,
-                              width: double.infinity, // Memenuhi lebar parent
+                              width: double.infinity,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 image: DecorationImage(
@@ -178,8 +183,8 @@ class _MenuCardState extends State<MenuCard> {
                 ),
               );
             },
-          );
-        },
+          ),
+        ],
       ),
     );
   }
