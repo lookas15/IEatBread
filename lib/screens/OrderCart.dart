@@ -85,12 +85,11 @@ class _OrderCartState extends State<OrderCart>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Image(
-                                height: 120,
-                                width: 180,
+                                height: 100,
+                                width: 150,
                                 image: AssetImage(provider.cart[index].image!),
                               ),
                               SizedBox(
-                                // width: 200,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
@@ -210,38 +209,34 @@ class _OrderCartState extends State<OrderCart>
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Expanded(
-                                    child: InkWell(
-                                      onTap: () {
+                                  Container(
+                                    width: 260, // Atur lebar sesuai kebutuhan
+                                    child: ElevatedButton(
+                                      onPressed: () {
                                         dbHelper!.deleteCartItem(
                                             provider.cart[index].id!);
                                         provider.removeItem(
                                             provider.cart[index].id!);
                                       },
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.red,
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                        ),
-                                        padding: EdgeInsets.all(10.0),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Icon(
-                                              Icons.delete,
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.red,
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.delete,
+                                            color: Colors.white,
+                                          ),
+                                          Text(
+                                            'Delete Menu',
+                                            style: TextStyle(
                                               color: Colors.white,
+                                              fontWeight: FontWeight.bold,
                                             ),
-                                            Text(
-                                              'Delete Menu',
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
@@ -267,7 +262,44 @@ class _OrderCartState extends State<OrderCart>
               }
               return SubTotalWidget(totalPrice: totalPrice);
             },
-          )
+          ),
+          Container(
+            width: 500,
+            child: ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Thank You!'),
+                      content: Text('Your order has been placed.'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            // Anda dapat menambahkan logika apa yang ingin Anda lakukan setelah menekan tombol "OK" di sini
+                            // Misalnya, kembali ke halaman lain
+                            Navigator.of(context).pop(); // Menutup popup
+                          },
+                          child: Text('OK'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green, // Warna latar belakang tombol
+              ),
+              child: Text(
+                'Order Now!',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: NavbarWidget(

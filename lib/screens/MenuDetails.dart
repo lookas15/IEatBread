@@ -144,7 +144,7 @@ class _MenuDetailsState extends State<MenuDetails> {
 
                   // food price
                   Text(
-                    'Rp ${widget.productPrice}',
+                    'IDR ${widget.productPrice.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]}.')}',
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 22.0,
