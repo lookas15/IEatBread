@@ -15,7 +15,7 @@ class PlusMinusButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 250,
-      margin: EdgeInsets.fromLTRB(0, 10.0, 0, 10.0),
+      margin: EdgeInsets.fromLTRB(0, 10.0, 0, 5.0),
       decoration: BoxDecoration(
         color: Colors.grey.shade300,
         borderRadius: BorderRadius.circular(10.0),
