@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:product_listtt/data/CartProvider.dart';
 import 'package:product_listtt/data/DBHelper.dart';
-import 'package:product_listtt/models/menu_model.dart' as menu_model;
+import 'package:product_listtt/data/CartProvider.dart';
 import 'package:product_listtt/models/cart_model.dart';
+import 'package:product_listtt/models/menu_model.dart' as menu_model;
+import 'package:product_listtt/screens/MenuDetails.dart';
 import 'package:provider/provider.dart';
 
 class MenuCard extends StatefulWidget {
@@ -21,7 +22,8 @@ class _MenuCardState extends State<MenuCard> {
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
     void saveData(int index) {
-      dbHelper.insertOrUpdate(
+      dbHelper
+          .insertOrUpdate(
         Cart(
           id: index,
           productId: menu[index].id.toString(),
@@ -33,12 +35,11 @@ class _MenuCardState extends State<MenuCard> {
           image: menu[index].imageUrl,
         ),
       )
-      .then((value) {
+          .then((value) {
         cart.addTotalPrice(menu[index].price.toDouble());
-        cart.addCounter();
+        cart.addCounter(1);
         print('Product Added to cart');
-      })
-      .onError((error, stackTrace) {
+      }).onError((error, stackTrace) {
         print(error.toString());
       });
     }
@@ -59,7 +60,19 @@ class _MenuCardState extends State<MenuCard> {
                     padding: const EdgeInsets.fromLTRB(5, 5, 5, 10),
                     child: InkWell(
                         onTap: () {
-                          // Desc UI
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) {
+                            return MenuDetails(
+                              id: index,
+                              productId: menu[index].id.toString(),
+                              productName: menu[index].name,
+                              initialPrice: menu[index].price,
+                              productPrice: menu[index].price,
+                              category: menu[index].category,
+                              imageUrl: menu[index].imageUrl,
+                              details: menu[index].description,
+                            );
+                          }));
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -133,17 +146,14 @@ class _MenuCardState extends State<MenuCard> {
                                     saveData(index);
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
-                                        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                                        backgroundColor:
+                                            Color.fromARGB(255, 255, 255, 255),
                                         content: const Text(
                                           'Menu successfully added to cart.',
-                                          style: TextStyle(
-                                            color: Colors.black
-                                          ),
+                                          style: TextStyle(color: Colors.black),
                                         ),
                                         behavior: SnackBarBehavior.floating,
-                                        duration: Duration(
-                                            seconds: 1
-                                        ),
+                                        duration: Duration(seconds: 1),
                                       ),
                                     );
                                   },
