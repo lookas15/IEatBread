@@ -105,7 +105,7 @@ class _MenuCardState extends State<MenuCard> {
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               color: Colors.black,
-                              fontSize: 14.0,
+                              fontSize: 12.0,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -129,7 +129,7 @@ class _MenuCardState extends State<MenuCard> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(6.0, 8.0, 6.0, 0),
+                          padding: const EdgeInsets.fromLTRB(4.0, 8.0, 4.0, 0),
                           child: ElevatedButton(
                             onPressed: () {
                               Navigator.of(context)
@@ -154,19 +154,19 @@ class _MenuCardState extends State<MenuCard> {
                             ),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(
                                   Icons.fastfood,
                                   color: Color.fromARGB(255, 255, 255, 255),
-                                  size: 21,
+                                  size: 18,
                                 ),
                                 SizedBox(width: 5),
                                 Text(
                                   'Details & Order',
                                   style: TextStyle(
                                       color: Color.fromARGB(255, 255, 255, 255),
-                                      fontSize: 14),
+                                      fontSize: 13),
                                 ),
                               ],
                             ),
