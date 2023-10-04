@@ -36,8 +36,8 @@ class CartProvider with ChangeNotifier {
     _totalPrice = prefs.getDouble('total_price') ?? 0;
   }
 
-  void addCounter() {
-    _counter++;
+  void addCounter(int sum) {
+    _counter += sum;
     _setPrefsItems();
     notifyListeners();
   }
@@ -71,17 +71,17 @@ class CartProvider with ChangeNotifier {
   }
 
   void removeItem(int id) {
-  final index = cart.indexWhere((element) => element.id == id);
-  if (index != -1) {
-    final removedItem = cart[index];
-    removeTotalPrice(removedItem.productPrice!.toDouble());
-    _setPrefsItems();
-    _counter -= removedItem.quantity!.value;
-    cart.removeAt(index);
-    dbHelper.deleteCartItem(removedItem.id!);
-    notifyListeners();
+    final index = cart.indexWhere((element) => element.id == id);
+    if (index != -1) {
+      final removedItem = cart[index];
+      removeTotalPrice(removedItem.productPrice!.toDouble());
+      _setPrefsItems();
+      _counter -= removedItem.quantity!.value;
+      cart.removeAt(index);
+      dbHelper.deleteCartItem(removedItem.id!);
+      notifyListeners();
+    }
   }
-}
 
   void addTotalPrice(double productPrice) {
     _totalPrice = _totalPrice + productPrice;
