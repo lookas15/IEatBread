@@ -16,7 +16,7 @@ class MenuDetails extends StatefulWidget {
   final String category;
   final String imageUrl;
   final String details;
-  final ValueNotifier<int> quantityNotifier; // Tambahkan properti ini
+  final ValueNotifier<int> quantityNotifier;
 
   const MenuDetails({
     Key? key,
@@ -28,7 +28,7 @@ class MenuDetails extends StatefulWidget {
     required this.category,
     required this.imageUrl,
     required this.details,
-    required this.quantityNotifier, // Tambahkan inisialisasi
+    required this.quantityNotifier,
   }) : super(key: key);
 
   @override
@@ -37,22 +37,28 @@ class MenuDetails extends StatefulWidget {
 
 class _MenuDetailsState extends State<MenuDetails> {
   DBHelper dbHelper = DBHelper();
-  List<menu_model.Menu> menu = menu_model.listMenu;
+
+  // Menambah variabel quantityCount
+  int quantityCount = 1;
 
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
 
-    // Deklarasi fungsi decrementQuantity untuk mengurangi jumlah produk
+    // Deklarasi fungsi decrementQuantity untuk mengurangi quantityCount
     void decrementQuantity() {
-      if (widget.quantityNotifier.value > 1) {
-        widget.quantityNotifier.value--;
+      if (quantityCount > 1) {
+        setState(() {
+          quantityCount--;
+        });
       }
     }
 
-    // Deklarasi fungsi incrementQuantity untuk menambah jumlah produk
+    // Deklarasi fungsi incrementQuantity untuk menambah quantityCount
     void incrementQuantity() {
-      widget.quantityNotifier.value++;
+      setState(() {
+        quantityCount++;
+      });
     }
 
     // Fungsi untuk menambah produk ke keranjang
@@ -63,16 +69,16 @@ class _MenuDetailsState extends State<MenuDetails> {
           id: widget.id,
           productId: widget.id.toString(),
           productName: widget.productName,
-          initialPrice: widget.initialPrice * widget.quantityNotifier.value,
+          initialPrice: widget.initialPrice * quantityCount,
           productPrice: widget.productPrice,
-          quantity: widget.quantityNotifier,
+          quantity: ValueNotifier<int>(quantityCount),
           category: widget.category,
           image: widget.imageUrl,
         ),
       )
           .then((value) {
         cart.addTotalPrice(widget.initialPrice.toDouble());
-        cart.addCounter(widget.quantityNotifier.value);
+        cart.addCounter(quantityCount);
         print('Product Added to cart');
       }).onError((error, stackTrace) {
         print(error.toString());
@@ -179,74 +185,63 @@ class _MenuDetailsState extends State<MenuDetails> {
             child: Column(
               children: [
                 // quantity
-                ValueListenableBuilder<int>(
-                  valueListenable: widget.quantityNotifier,
-                  builder: (context, quantity, child) {
-                    // Untuk memastikan nilai quantity tidak kurang dari 1
-                    if (quantity < 1) {
-                      widget.quantityNotifier.value = 1;
-                      quantity = 1;
-                    }
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // item quantity text
+                    const Text(
+                      "Item Quantity",
+                      style: TextStyle(
+                          fontSize: 18.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ),
 
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // plus and minus button
+                    Row(
                       children: [
-                        // item quantity text
-                        const Text(
-                          "Item Quantity",
-                          style: TextStyle(
-                              fontSize: 18.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
+                        // minus button
+                        Container(
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(109, 140, 94, 91),
+                              shape: BoxShape.circle,
+                            ),
+                            child: IconButton(
+                                onPressed: decrementQuantity,
+                                icon: const Icon(
+                                  Icons.remove,
+                                  color: Colors.white,
+                                ))),
+
+                        // quantity
+                        SizedBox(
+                          width: 40,
+                          child: Center(
+                            child: Text(
+                              quantityCount.toString(),
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
+                          ),
                         ),
 
-                        // plus and minus button
-                        Row(
-                          children: [
-                            // minus button
-                            Container(
-                                decoration: const BoxDecoration(
-                                  color: Color.fromARGB(109, 140, 94, 91),
-                                  shape: BoxShape.circle,
-                                ),
-                                child: IconButton(
-                                    onPressed: decrementQuantity,
-                                    icon: const Icon(
-                                      Icons.remove,
-                                      color: Colors.white,
-                                    ))),
-
-                            // quantity
-                            SizedBox(
-                              width: 40,
-                              child: Center(
-                                child: Text(
-                                  quantity.toString(),
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18),
-                                ),
-                              ),
+                        // plus button
+                        Container(
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(109, 140, 94, 91),
+                              shape: BoxShape.circle,
                             ),
-
-                            // plus button
-                            Container(
-                                decoration: const BoxDecoration(
-                                  color: Color.fromARGB(109, 140, 94, 91),
-                                  shape: BoxShape.circle,
-                                ),
-                                child: IconButton(
-                                    onPressed: incrementQuantity,
-                                    icon: const Icon(
-                                      Icons.add,
-                                      color: Colors.white,
-                                    ))),
-                          ],
-                        )
+                            child: IconButton(
+                                onPressed: incrementQuantity,
+                                icon: const Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                ))),
                       ],
-                    );
-                  },
+                    )
+                  ],
                 ),
 
                 const SizedBox(
@@ -257,7 +252,7 @@ class _MenuDetailsState extends State<MenuDetails> {
                   text: "Add To Cart",
                   onTap: () {
                     addToCart();
-                    if (widget.quantityNotifier.value > 0) {
+                    if (quantityCount > 0) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           backgroundColor: Color.fromARGB(255, 255, 255, 255),
