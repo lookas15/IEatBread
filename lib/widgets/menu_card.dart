@@ -48,7 +48,7 @@ class ItemCard extends StatelessWidget {
   });
 
   final menu_model.Menu item;
-  final int maxCharacters = 20;
+  final int maxCharacters = 17;
 
   @override
   Widget build(BuildContext context) {
