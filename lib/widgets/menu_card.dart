@@ -32,7 +32,7 @@ class _MenuCardState extends State<MenuCard> {
               crossAxisCount: isNarrowScreen ? 1 : 2, // Mengubah jumlah kolom
               childAspectRatio: isNarrowScreen
                   ? 1.1
-                  : 0.75, // Mengontrol rasio tinggi lebar item
+                  : 0.72, // Mengontrol rasio tinggi lebar item
             ),
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
