@@ -18,7 +18,7 @@ class _MenuCardState extends State<MenuCard> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     // Menentukan apakah lebar layar saat ini adalah 320px
-    bool isNarrowScreen = screenWidth <= 320;
+    bool isNarrowScreen = screenWidth <= 360;
 
     List<menu_model.Menu> filteredMenu =
         menu.where((item) => item.category == widget.category).toList();
@@ -31,8 +31,8 @@ class _MenuCardState extends State<MenuCard> {
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: isNarrowScreen ? 1 : 2, // Mengubah jumlah kolom
               childAspectRatio: isNarrowScreen
-                  ? 1.2
-                  : 0.7, // Mengontrol rasio tinggi lebar item
+                  ? 1.1
+                  : 0.75, // Mengontrol rasio tinggi lebar item
             ),
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
