@@ -182,6 +182,12 @@ class _MenuDetailsState extends State<MenuDetails> {
                 ValueListenableBuilder<int>(
                   valueListenable: widget.quantityNotifier,
                   builder: (context, quantity, child) {
+                    // Untuk memastikan nilai quantity tidak kurang dari 1
+                    if (quantity < 1) {
+                      widget.quantityNotifier.value = 1;
+                      quantity = 1;
+                    }
+
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -215,8 +221,7 @@ class _MenuDetailsState extends State<MenuDetails> {
                               width: 40,
                               child: Center(
                                 child: Text(
-                                  quantity
-                                      .toString(), // Menggunakan nilai quantity dari ValueNotifier
+                                  quantity.toString(),
                                   style: const TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
