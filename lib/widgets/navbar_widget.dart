@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:product_listtt/data/cart_provider.dart';
 import 'package:product_listtt/screens/order_cart.dart';
 import 'package:product_listtt/screens/menu_list.dart';
+import 'package:product_listtt/screens/order_history.dart';
 import 'package:provider/provider.dart';
 import 'package:badges/badges.dart' as badges;
 
@@ -41,10 +42,10 @@ class _NavbarWidgetState extends State<NavbarWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             buildNavbarIcon(Icons.home_outlined, 0),
-            buildNavbarIcon(Icons.breakfast_dining_outlined, 1),
-            buildNavbarIcon(Icons.discount_outlined, 2),
-            buildShoppingBasketIcon(
-                context, 3), 
+            buildNavbarIcon(Icons.menu_book_outlined, 1),
+            buildNavbarIcon(Icons.percent, 2),
+            buildShoppingBasketIcon(context, 3),
+            buildNavbarIcon(Icons.receipt_long, 4),
           ],
         ),
       ),
@@ -53,7 +54,8 @@ class _NavbarWidgetState extends State<NavbarWidget> {
 
   Widget buildNavbarIcon(IconData iconData, int index) {
     final isSelected = widget.selectedIndex == index;
-    final color = isSelected ? Color.fromARGB(255, 245, 89, 81) : Colors.black;
+    final color =
+        isSelected ? const Color.fromARGB(255, 245, 89, 81) : Colors.black;
 
     return IconButton(
       icon: Icon(
@@ -68,15 +70,20 @@ class _NavbarWidgetState extends State<NavbarWidget> {
             break;
           case 1:
             Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => MenuList()),
+              MaterialPageRoute(builder: (context) => const MenuList()),
             );
             break;
           case 2:
-
             break;
           case 3:
             Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => OrderCart()),
+              MaterialPageRoute(builder: (context) => const OrderCart()),
+            );
+            break;
+
+          case 4:
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => const OrderHistory()),
             );
             break;
         }
@@ -86,7 +93,8 @@ class _NavbarWidgetState extends State<NavbarWidget> {
 
   Widget buildShoppingBasketIcon(BuildContext context, int index) {
     final isSelected = widget.selectedIndex == index;
-    final colors = isSelected ? Color.fromARGB(255, 245, 89, 81) : Colors.black;
+    final colors =
+        isSelected ? const Color.fromARGB(255, 245, 89, 81) : Colors.black;
 
     return badges.Badge(
       badgeContent: Consumer<CartProvider>(
@@ -100,16 +108,12 @@ class _NavbarWidgetState extends State<NavbarWidget> {
           );
         },
       ),
-      position: badges.BadgePosition.topEnd(
-          top: -5, end: -5), 
+      position: badges.BadgePosition.topEnd(top: -5, end: -5),
       child: IconButton(
-        icon: Icon(
-          Icons.shopping_cart_outlined,
-          color: colors
-        ),
+        icon: Icon(Icons.shopping_cart_outlined, color: colors),
         onPressed: () {
           Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => OrderCart()),
+            MaterialPageRoute(builder: (context) => const OrderCart()),
           );
         },
       ),

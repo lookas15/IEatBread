@@ -21,6 +21,27 @@ class CartProvider with ChangeNotifier {
     return cart;
   }
 
+  final List<Order> _orders = []; // Add this line
+
+  List<Order> get orders {
+    // Add this method
+    return [..._orders];
+  }
+
+  void addOrder(List<Cart> cartProducts, double total) {
+    // Add this method
+    _orders.insert(
+      0,
+      Order(
+        id: DateTime.now().toString(),
+        amount: total,
+        dateTime: DateTime.now(),
+        products: cartProducts,
+      ),
+    );
+    notifyListeners();
+  }
+
   void _setPrefsItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt('cart_items', _counter);
@@ -93,5 +114,22 @@ class CartProvider with ChangeNotifier {
     _totalPrice = _totalPrice - productPrice;
     _setPrefsItems();
     notifyListeners();
+  }
+
+  void clear() {}
+}
+
+class OrderItem extends StatelessWidget {
+  final Order order;
+
+  const OrderItem(this.order, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(order.id),
+      subtitle: Text('\$${order.amount.toStringAsFixed(2)}'),
+      trailing: Text('${order.dateTime}'),
+    );
   }
 }
