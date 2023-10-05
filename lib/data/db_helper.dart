@@ -37,32 +37,33 @@ class DBHelper {
   }
 
   Future<Cart> insertOrUpdate(Cart cart) async {
-  var dbClient = await database;
-  final productId = cart.productId;
+    var dbClient = await database;
+    final productId = cart.productId;
 
-  final existingCartItem = await dbClient!.query(
-    'cart',
-    where: 'productId = ?',
-    whereArgs: [productId],
-  );
-
-  if (existingCartItem.isNotEmpty) {
-    final currentQuantity = existingCartItem[0]['quantity'] as int;
-    await dbClient.update(
+    final existingCartItem = await dbClient!.query(
       'cart',
-      {
-        'quantity': currentQuantity + 1, 
-      },
       where: 'productId = ?',
       whereArgs: [productId],
     );
-  } else {
-    await dbClient.insert('cart', cart.toMap());
+
+    if (existingCartItem.isNotEmpty) {
+      final currentQuantity = existingCartItem[0]['quantity'] as int;
+      await dbClient.update(
+        'cart',
+        {
+          'quantity': currentQuantity +
+              cart.quantity!
+                  .value, // Menambahkan jumlah baru ke jumlah yang ada
+        },
+        where: 'productId = ?',
+        whereArgs: [productId],
+      );
+    } else {
+      await dbClient.insert('cart', cart.toMap());
+    }
+
+    return cart;
   }
-
-  return cart;
-}
-
 
   Future<List<Cart>> getCartList() async {
     var dbClient = await database;
