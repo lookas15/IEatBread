@@ -67,7 +67,9 @@ class _NavbarWidgetState extends State<NavbarWidget> {
         widget.onTabChanged(index);
         switch (index) {
           case 0:
-            Navigator.of(context).popUntil((route) => route.isFirst);
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => Placeholder()),
+            );
             break;
           case 1:
             Navigator.of(context).pushReplacement(

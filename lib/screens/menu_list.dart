@@ -39,18 +39,20 @@ class _MenuListState extends State<MenuList>
 
   @override
   Widget build(BuildContext context) {
+    const titleText = Text(
+      'iEatBread',
+      style: TextStyle(
+        fontSize: 20.0,
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 240, 240, 240),
+      backgroundColor: const Color.fromARGB(255, 240, 240, 240),
       appBar: AppBar(
-        title: Text(
-          'iEatBread',
-          style: TextStyle(
-            fontSize: 20.0,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: Color.fromARGB(255, 245, 89, 81),
+        title: titleText,
+        backgroundColor: const Color.fromARGB(255, 245, 89, 81),
         elevation: 0.0,
         centerTitle: true,
       ),
@@ -58,20 +60,20 @@ class _MenuListState extends State<MenuList>
         slivers: [
           SliverAppBar(
             pinned: true,
-            backgroundColor: Color.fromARGB(255, 240, 240, 240),
+            backgroundColor: const Color.fromARGB(255, 240, 240, 240),
             title: Center(
               child: TabBar(
                 controller: _tabController,
                 indicatorColor: Colors.transparent,
                 labelColor: const Color.fromARGB(255, 245, 89, 81),
                 isScrollable: true,
-                unselectedLabelColor: Color.fromARGB(255, 137, 137, 137),
-                padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                unselectedLabelColor: const Color.fromARGB(255, 137, 137, 137),
+                padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
                 tabs: categories.map((category) {
                   return Tab(
                     child: Text(
                       category,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16.0,
                       ),
                     ),
@@ -80,6 +82,7 @@ class _MenuListState extends State<MenuList>
               ),
             ),
           ),
+          // Items for each categories
           SliverFillRemaining(
             child: TabBarView(
               controller: _tabController,
