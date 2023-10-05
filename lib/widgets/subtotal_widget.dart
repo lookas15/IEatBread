@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:product_listtt/Widgets/ReusableWidget.dart';
+import 'package:product_listtt/widgets/reusable_widget.dart';
 
 class SubTotalWidget extends StatelessWidget {
   const SubTotalWidget({

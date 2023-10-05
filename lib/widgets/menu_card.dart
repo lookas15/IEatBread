@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:product_listtt/models/menu_model.dart' as menu_model;
-import 'package:product_listtt/screens/MenuDetails.dart';
+import 'package:product_listtt/screens/menu_details.dart';
 
 class MenuCard extends StatefulWidget {
   final String category;

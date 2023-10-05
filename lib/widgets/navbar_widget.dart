@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:product_listtt/data/CartProvider.dart';
-import 'package:product_listtt/screens/OrderCart.dart';
-import 'package:product_listtt/screens/MenuList.dart';
+import 'package:product_listtt/data/cart_provider.dart';
+import 'package:product_listtt/screens/order_cart.dart';
+import 'package:product_listtt/screens/menu_list.dart';
 import 'package:provider/provider.dart';
 import 'package:badges/badges.dart' as badges;
 

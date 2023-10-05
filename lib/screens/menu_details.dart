@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:product_listtt/data/DBHelper.dart';
-import 'package:product_listtt/data/CartProvider.dart';
+import 'package:product_listtt/data/db_helper.dart';
+import 'package:product_listtt/data/cart_provider.dart';
 import 'package:product_listtt/data/color.dart';
 import 'package:product_listtt/models/cart_model.dart';
 import 'package:product_listtt/models/menu_model.dart' as menu_model;
