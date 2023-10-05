@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'screens/menu_list.dart';
+import 'screens/deals.dart';
+import 'screens/order_cart.dart';
+import 'screens/order_history.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -21,16 +25,16 @@ class _MainPageState extends State<MainPage> {
         page = Placeholder();
         break;
       case 1:
-        page = Placeholder();
+        page = MenuList();
         break;
       case 2:
-        page = Placeholder();
+        page = Deals();
         break;
       case 3:
-        page = Placeholder();
+        page = OrderCart();
         break;
       case 4:
-        page = Placeholder();
+        page = OrderHistory();
         break;
       default:
         throw UnimplementedError('No widget for $selectedIndex');
@@ -62,7 +66,7 @@ class _MainPageState extends State<MainPage> {
                         selectedIndex = value;
                       });
                     },
-                    items: [
+                    items: const [
                       BottomNavigationBarItem(
                           icon: Icon(Icons.home_outlined), label: 'Home'),
                       BottomNavigationBarItem(
@@ -82,12 +86,20 @@ class _MainPageState extends State<MainPage> {
           // Larger sidebar for navigation on bigger screen
           return Row(
             children: [
+              // SafeArea prevents the navbar from being obscured by status bar or hardware notch
               SafeArea(
+                // NavigationRail is basically a side navbar
                 child: NavigationRail(
                   // If width >= 600px, then show the text for all navigation items.
-                  extended: constraints.maxWidth >= 600,
+                  extended: constraints.maxWidth >= 1200,
                   indicatorColor: colorScheme.surfaceVariant,
-                  destinations: [
+                  selectedIndex: selectedIndex,
+                  onDestinationSelected: (value) {
+                    setState(() {
+                      selectedIndex = value;
+                    });
+                  },
+                  destinations: const [
                     NavigationRailDestination(
                         icon: Icon(Icons.home_outlined), label: Text('Home')),
                     NavigationRailDestination(
@@ -101,12 +113,6 @@ class _MainPageState extends State<MainPage> {
                     NavigationRailDestination(
                         icon: Icon(Icons.receipt_long), label: Text('Orders'))
                   ],
-                  selectedIndex: selectedIndex,
-                  onDestinationSelected: (value) {
-                    setState(() {
-                      selectedIndex = value;
-                    });
-                  },
                 ),
               ),
               Expanded(child: pageArea),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:product_listtt/widgets/navbar_widget.dart';
-import 'package:product_listtt/widgets/menu_card.dart';
+import '../widgets/menu_card.dart';
 
 class MenuList extends StatefulWidget {
   const MenuList({Key? key}) : super(key: key);
@@ -39,72 +38,46 @@ class _MenuListState extends State<MenuList>
 
   @override
   Widget build(BuildContext context) {
-    const titleText = Text(
-      'iEatBread',
-      style: TextStyle(
-        fontSize: 20.0,
-        color: Colors.white,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 240, 240, 240),
-      appBar: AppBar(
-        title: titleText,
-        backgroundColor: const Color.fromARGB(255, 245, 89, 81),
-        elevation: 0.0,
-        centerTitle: true,
-      ),
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            pinned: true,
-            backgroundColor: const Color.fromARGB(255, 240, 240, 240),
-            title: Center(
-              child: TabBar(
-                controller: _tabController,
-                indicatorColor: Colors.transparent,
-                labelColor: const Color.fromARGB(255, 245, 89, 81),
-                isScrollable: true,
-                unselectedLabelColor: const Color.fromARGB(255, 137, 137, 137),
-                padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-                tabs: categories.map((category) {
-                  return Tab(
-                    child: Text(
-                      category,
-                      style: const TextStyle(
-                        fontSize: 16.0,
-                      ),
-                    ),
-                  );
-                }).toList(),
-              ),
-            ),
-          ),
-          // Items for each categories
-          SliverFillRemaining(
-            child: TabBarView(
+    return CustomScrollView(
+      slivers: [
+        SliverAppBar(
+          pinned: true,
+          backgroundColor: const Color.fromARGB(255, 240, 240, 240),
+          title: Center(
+            child: TabBar(
               controller: _tabController,
-              children: categories.map((category) {
-                return MenuCard(
-                  category: category,
-                  quantityNotifier: ValueNotifier<int>(
-                      0), // Tambahkan ValueNotifier dengan nilai awal 0
+              indicatorColor: Colors.transparent,
+              labelColor: const Color.fromARGB(255, 245, 89, 81),
+              isScrollable: true,
+              unselectedLabelColor: const Color.fromARGB(255, 137, 137, 137),
+              padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+              tabs: categories.map((category) {
+                return Tab(
+                  child: Text(
+                    category,
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
                 );
               }).toList(),
             ),
           ),
-        ],
-      ),
-      bottomNavigationBar: NavbarWidget(
-        selectedIndex: selectedBottomNavIndex,
-        onTabChanged: (index) {
-          setState(() {
-            selectedBottomNavIndex = index;
-          });
-        },
-      ),
+        ),
+        // Items for each categories
+        SliverFillRemaining(
+          child: TabBarView(
+            controller: _tabController,
+            children: categories.map((category) {
+              return MenuCard(
+                category: category,
+                quantityNotifier: ValueNotifier<int>(
+                    0), // Tambahkan ValueNotifier dengan nilai awal 0
+              );
+            }).toList(),
+          ),
+        ),
+      ],
     );
   }
 }

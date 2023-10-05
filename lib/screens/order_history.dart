@@ -26,48 +26,10 @@ class _OrderHistoryState extends State<OrderHistory>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 240, 240, 240),
-      appBar: AppBar(
-        title: const Text(
-          'iEatBread',
-          style: TextStyle(
-            fontSize: 20.0,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: const Color.fromARGB(255, 245, 89, 81),
-        elevation: 0.0,
-        centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const MenuList()),
-            );
-          },
-        ),
-      ),
-
-      // Here you can add your order history screen content
-      body: Consumer<CartProvider>(
-        builder: (ctx, orderData, child) => ListView.builder(
-          itemCount: orderData.orders.length,
-          itemBuilder: (ctx, i) => OrderItem(orderData.orders[i]),
-        ),
-      ),
-
-      bottomNavigationBar: NavbarWidget(
-        selectedIndex: selectedBottomNavIndex,
-        onTabChanged: (index) {
-          setState(() {
-            selectedBottomNavIndex = index;
-          });
-        },
+    return Consumer<CartProvider>(
+      builder: (ctx, orderData, child) => ListView.builder(
+        itemCount: orderData.orders.length,
+        itemBuilder: (ctx, i) => OrderItem(orderData.orders[i]),
       ),
     );
   }

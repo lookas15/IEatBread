@@ -19,185 +19,128 @@ class _MenuCardState extends State<MenuCard> {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     double screenWidth = MediaQuery.of(context).size.width;
 
     // Menentukan apakah lebar layar saat ini adalah 320px
-    bool isNarrowScreen = screenWidth <= 360;
+    bool isNarrowScreen = screenWidth <= 30;
 
     List<menu_model.Menu> filteredMenu =
         menu.where((item) => item.category == widget.category).toList();
 
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 240, 240, 240),
-      body: ListView(
-        children: [
-          GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: isNarrowScreen ? 1 : 2, // Mengubah jumlah kolom
-              childAspectRatio: isNarrowScreen
-                  ? 1.1
-                  : 0.75, // Mengontrol rasio tinggi lebar item
-            ),
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemCount: filteredMenu.length,
-            itemBuilder: (context, index) {
-              final name = filteredMenu[index].name;
-              final maxCharacters = 17;
+        backgroundColor: colorScheme.background,
+        body: GridView.count(
+          padding: const EdgeInsets.all(10),
+          crossAxisCount: isNarrowScreen ? 1 : 2,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10,
+          childAspectRatio: 0.8,
+          children: [for (var item in filteredMenu) ItemCard(item: item)],
+        ));
+  }
+}
 
-              final formattedName = name.length > maxCharacters
-                  ? name.substring(0, maxCharacters) + '...'
-                  : name;
+class ItemCard extends StatelessWidget {
+  const ItemCard({
+    super.key,
+    required this.item,
+  });
 
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                child: InkWell(
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    elevation: 3.0,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(5),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              filteredMenu[index].isFavorite
-                                  ? Icon(
-                                      Icons.favorite,
-                                      color: Color.fromARGB(255, 245, 89, 81),
-                                    )
-                                  : SizedBox(height: 25.0)
-                            ],
-                          ),
-                        ),
-                        Hero(
-                          tag: filteredMenu[index].imageUrl,
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (context) {
-                                return MenuDetails(
-                                  id: index,
-                                  productId: filteredMenu[index].id.toString(),
-                                  productName: filteredMenu[index].name,
-                                  initialPrice: filteredMenu[index].price,
-                                  productPrice: filteredMenu[index].price,
-                                  category: filteredMenu[index].category,
-                                  imageUrl: filteredMenu[index].imageUrl,
-                                  details: filteredMenu[index].description,
-                                  quantityNotifier: widget
-                                      .quantityNotifier, // Kirim quantityNotifier ke MenuDetails
-                                );
-                              }));
-                            },
-                            child: Container(
-                              height: 90,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(
-                                  image:
-                                      AssetImage(filteredMenu[index].imageUrl),
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 8.0),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Text(
-                            formattedName,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Text(
-                            'IDR ${filteredMenu[index].price.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]}.')}',
-                            style: const TextStyle(
-                              color: Color.fromARGB(255, 245, 89, 81),
-                              fontSize: 14.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            color: isNarrowScreen
-                                ? Colors
-                                    .transparent // Hilangkan garis pada layar kecil
-                                : Color.fromARGB(255, 231, 231, 231),
-                            height: isNarrowScreen
-                                ? 0.0
-                                : 0.8, // Sesuaikan tinggi garis
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(4.0, 8.0, 4.0, 0),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (context) {
-                                return MenuDetails(
-                                  id: index,
-                                  productId: filteredMenu[index].id.toString(),
-                                  productName: filteredMenu[index].name,
-                                  initialPrice: filteredMenu[index].price,
-                                  productPrice: filteredMenu[index].price,
-                                  category: filteredMenu[index].category,
-                                  imageUrl: filteredMenu[index].imageUrl,
-                                  details: filteredMenu[index].description,
-                                  quantityNotifier: widget
-                                      .quantityNotifier, // Kirim quantityNotifier ke MenuDetails
-                                );
-                              }));
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xffF55951),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.fastfood,
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                  size: 18,
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Details & Order',
-                                  style: TextStyle(
-                                      color: Color.fromARGB(255, 255, 255, 255),
-                                      fontSize: 13),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+  final menu_model.Menu item;
+  final int maxCharacters = 20;
+
+  @override
+  Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+    final formattedName = item.name.length > maxCharacters
+        ? '${item.name.substring(0, maxCharacters)}...'
+        : item.name;
+
+    return InkWell(
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return MenuDetails(item: item);
+          }));
+        },
+        child: Card(
+            color: colorScheme.primaryContainer,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            elevation: 3,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(10),
+                  // Item Name & Favorite Toggle Button
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(child: Text(formattedName)),
+                      IconButton(
+                        icon: Icon(Icons.favorite_border),
+                        color: colorScheme.primary,
+                        onPressed: () {
+                          print("Favorited");
+                        },
+                      ),
+                    ],
                   ),
                 ),
-              );
-            },
-          ),
-        ],
+                // Item Image
+                ItemImage(item: item),
+                SizedBox(height: 10),
+                ItemPrice(item: item)
+              ],
+            )));
+  }
+}
+
+class ItemPrice extends StatelessWidget {
+  const ItemPrice({
+    super.key,
+    required this.item,
+  });
+
+  final menu_model.Menu item;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: Center(
+        child: Text(
+            'IDR ${item.price.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]}.')}',
+            style: const TextStyle(
+              color: Colors.redAccent,
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+            )),
+      ),
+    );
+  }
+}
+
+class ItemImage extends StatelessWidget {
+  const ItemImage({
+    super.key,
+    required this.item,
+  });
+
+  final menu_model.Menu item;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 90,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(item.imageUrl),
+          fit: BoxFit.contain,
+        ),
       ),
     );
   }

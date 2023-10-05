@@ -5,30 +5,12 @@ import 'package:product_listtt/data/color.dart';
 import 'package:product_listtt/models/cart_model.dart';
 import 'package:product_listtt/widgets/button.dart';
 import 'package:provider/provider.dart';
+import 'package:product_listtt/models/menu_model.dart';
 
 class MenuDetails extends StatefulWidget {
-  final int id;
-  final String productId;
-  final String productName;
-  final int initialPrice;
-  final int productPrice;
-  final String category;
-  final String imageUrl;
-  final String details;
-  final ValueNotifier<int> quantityNotifier;
+  final Menu item;
 
-  const MenuDetails({
-    Key? key,
-    required this.id,
-    required this.productId,
-    required this.productName,
-    required this.initialPrice,
-    required this.productPrice,
-    required this.category,
-    required this.imageUrl,
-    required this.details,
-    required this.quantityNotifier,
-  }) : super(key: key);
+  const MenuDetails({Key? key, required this.item}) : super(key: key);
 
   @override
   State<MenuDetails> createState() => _MenuDetailsState();
@@ -65,18 +47,18 @@ class _MenuDetailsState extends State<MenuDetails> {
       dbHelper
           .insertOrUpdate(
         Cart(
-          id: widget.id,
-          productId: widget.id.toString(),
-          productName: widget.productName,
-          initialPrice: widget.initialPrice * quantityCount,
-          productPrice: widget.productPrice,
+          id: widget.item.id,
+          productId: widget.item.id.toString(),
+          productName: widget.item.name,
+          initialPrice: widget.item.price * quantityCount,
+          productPrice: widget.item.price,
           quantity: ValueNotifier<int>(quantityCount),
-          category: widget.category,
-          image: widget.imageUrl,
+          category: widget.item.category,
+          image: widget.item.imageUrl,
         ),
       )
           .then((value) {
-        cart.addTotalPrice(widget.initialPrice.toDouble());
+        cart.addTotalPrice(widget.item.price.toDouble());
         cart.addCounter(quantityCount);
         print('Product Added to cart');
       }).onError((error, stackTrace) {
@@ -102,7 +84,7 @@ class _MenuDetailsState extends State<MenuDetails> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10.0),
                     child: Text(
-                      widget.category,
+                      widget.item.category,
                       style: const TextStyle(
                           fontFamily: 'Poppins',
                           fontSize: 42.0,
@@ -116,9 +98,9 @@ class _MenuDetailsState extends State<MenuDetails> {
                   ),
                   // image
                   Hero(
-                    tag: widget.imageUrl,
+                    tag: widget.item.imageUrl,
                     child: Image.asset(
-                      widget.imageUrl,
+                      widget.item.imageUrl,
                       height: 220,
                     ),
                   ),
@@ -128,7 +110,7 @@ class _MenuDetailsState extends State<MenuDetails> {
                   ),
                   // food name
                   Text(
-                    widget.productName,
+                    widget.item.name,
                     style: TextStyle(
                         color: primaryColor,
                         fontFamily: 'Poppins',
@@ -138,7 +120,7 @@ class _MenuDetailsState extends State<MenuDetails> {
 
                   // food price
                   Text(
-                    'IDR ${widget.productPrice.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]}.')}',
+                    'IDR ${widget.item.price.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]}.')}',
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 22.0,
@@ -160,7 +142,7 @@ class _MenuDetailsState extends State<MenuDetails> {
                   ),
 
                   Text(
-                    widget.details,
+                    widget.item.description,
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontFamily: 'Poppins',
