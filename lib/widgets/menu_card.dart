@@ -4,7 +4,11 @@ import 'package:product_listtt/screens/menu_details.dart';
 
 class MenuCard extends StatefulWidget {
   final String category;
-  const MenuCard({Key? key, required this.category}) : super(key: key);
+  final ValueNotifier<int> quantityNotifier; // Tambahkan properti ini
+
+  const MenuCard(
+      {Key? key, required this.category, required this.quantityNotifier})
+      : super(key: key);
 
   @override
   State<MenuCard> createState() => _MenuCardState();
@@ -18,7 +22,7 @@ class _MenuCardState extends State<MenuCard> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     // Menentukan apakah lebar layar saat ini adalah 320px
-    bool isNarrowScreen = screenWidth <= 375;
+    bool isNarrowScreen = screenWidth <= 360;
 
     List<menu_model.Menu> filteredMenu =
         menu.where((item) => item.category == widget.category).toList();
@@ -32,21 +36,21 @@ class _MenuCardState extends State<MenuCard> {
               crossAxisCount: isNarrowScreen ? 1 : 2, // Mengubah jumlah kolom
               childAspectRatio: isNarrowScreen
                   ? 1.1
-                  : 0.72, // Mengontrol rasio tinggi lebar item
+                  : 0.75, // Mengontrol rasio tinggi lebar item
             ),
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemCount: filteredMenu.length,
             itemBuilder: (context, index) {
               final name = filteredMenu[index].name;
-              final maxCharacters = isNarrowScreen ? 34 : 17;
+              final maxCharacters = 17;
 
               final formattedName = name.length > maxCharacters
                   ? name.substring(0, maxCharacters) + '...'
                   : name;
 
               return Padding(
-                padding: const EdgeInsets.all(5),
+                padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
                 child: InkWell(
                   child: Card(
                     shape: RoundedRectangleBorder(
@@ -85,6 +89,8 @@ class _MenuCardState extends State<MenuCard> {
                                   category: filteredMenu[index].category,
                                   imageUrl: filteredMenu[index].imageUrl,
                                   details: filteredMenu[index].description,
+                                  quantityNotifier: widget
+                                      .quantityNotifier, // Kirim quantityNotifier ke MenuDetails
                                 );
                               }));
                             },
@@ -129,8 +135,13 @@ class _MenuCardState extends State<MenuCard> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
-                            color: Color.fromARGB(255, 231, 231, 231),
-                            height: 0.8,
+                            color: isNarrowScreen
+                                ? Colors
+                                    .transparent // Hilangkan garis pada layar kecil
+                                : Color.fromARGB(255, 231, 231, 231),
+                            height: isNarrowScreen
+                                ? 0.0
+                                : 0.8, // Sesuaikan tinggi garis
                           ),
                         ),
                         Padding(
@@ -148,6 +159,8 @@ class _MenuCardState extends State<MenuCard> {
                                   category: filteredMenu[index].category,
                                   imageUrl: filteredMenu[index].imageUrl,
                                   details: filteredMenu[index].description,
+                                  quantityNotifier: widget
+                                      .quantityNotifier, // Kirim quantityNotifier ke MenuDetails
                                 );
                               }));
                             },

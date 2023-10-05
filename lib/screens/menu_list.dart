@@ -11,17 +11,30 @@ class MenuList extends StatefulWidget {
 
 class _MenuListState extends State<MenuList>
     with SingleTickerProviderStateMixin {
-  TabController? _tabController;
+  late TabController _tabController; // Perubahan di sini
 
   final List<String> categories = ['Bread', 'Pastry', 'Drinks'];
-  int selectedTabIndex = 0; // Tab awal yang dipilih
-  int selectedBottomNavIndex = 1; // Indeks ikon bawah yang dipilih
+  int selectedTabIndex = 0;
+  int selectedBottomNavIndex = 1;
 
   @override
   void initState() {
     super.initState();
-    _tabController =
-        TabController(vsync: this, length: categories.length, initialIndex: 0);
+    _tabController = TabController(vsync: this, length: categories.length);
+    _tabController.addListener(_handleTabSelection); // Tambahkan listener
+  }
+
+  // Tambahkan metode untuk menghandle perubahan tab
+  void _handleTabSelection() {
+    setState(() {
+      selectedTabIndex = _tabController.index;
+    });
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose(); // Dispose TabController saat widget dihapus
+    super.dispose();
   }
 
   @override
@@ -29,17 +42,18 @@ class _MenuListState extends State<MenuList>
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 240, 240, 240),
       appBar: AppBar(
-          title: Text(
-            'iEatBread',
-            style: TextStyle(
-              fontSize: 20.0,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
+        title: Text(
+          'iEatBread',
+          style: TextStyle(
+            fontSize: 20.0,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
           ),
-          backgroundColor: Color.fromARGB(255, 245, 89, 81),
-          elevation: 0.0,
-          centerTitle: true),
+        ),
+        backgroundColor: Color.fromARGB(255, 245, 89, 81),
+        elevation: 0.0,
+        centerTitle: true,
+      ),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -63,11 +77,6 @@ class _MenuListState extends State<MenuList>
                     ),
                   );
                 }).toList(),
-                onTap: (index) {
-                  setState(() {
-                    selectedTabIndex = index;
-                  });
-                },
               ),
             ),
           ),
@@ -75,7 +84,11 @@ class _MenuListState extends State<MenuList>
             child: TabBarView(
               controller: _tabController,
               children: categories.map((category) {
-                return MenuCard(category: category);
+                return MenuCard(
+                  category: category,
+                  quantityNotifier: ValueNotifier<int>(
+                      0), // Tambahkan ValueNotifier dengan nilai awal 0
+                );
               }).toList(),
             ),
           ),

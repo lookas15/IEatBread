@@ -74,7 +74,11 @@ class _DealsState extends State<Deals> with SingleTickerProviderStateMixin {
             child: TabBarView(
               controller: _tabController,
               children: categories.map((category) {
-                return MenuCard(category: category);
+                return MenuCard(
+                  category: category,
+                  quantityNotifier: ValueNotifier<int>(
+                      0), // Tambahkan ValueNotifier dengan nilai awal 0
+                );
               }).toList(),
             ),
           ),
