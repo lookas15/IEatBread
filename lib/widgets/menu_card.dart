@@ -18,7 +18,7 @@ class _MenuCardState extends State<MenuCard> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     // Menentukan apakah lebar layar saat ini adalah 320px
-    bool isNarrowScreen = screenWidth <= 360;
+    bool isNarrowScreen = screenWidth <= 375;
 
     List<menu_model.Menu> filteredMenu =
         menu.where((item) => item.category == widget.category).toList();
@@ -39,7 +39,7 @@ class _MenuCardState extends State<MenuCard> {
             itemCount: filteredMenu.length,
             itemBuilder: (context, index) {
               final name = filteredMenu[index].name;
-              final maxCharacters = 17;
+              final maxCharacters = isNarrowScreen ? 34 : 17;
 
               final formattedName = name.length > maxCharacters
                   ? name.substring(0, maxCharacters) + '...'
