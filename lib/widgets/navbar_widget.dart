@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:product_listtt/data/cart_provider.dart';
+import 'package:product_listtt/screens/deals.dart';
 import 'package:product_listtt/screens/order_cart.dart';
 import 'package:product_listtt/screens/menu_list.dart';
 import 'package:product_listtt/screens/order_history.dart';
@@ -74,6 +75,9 @@ class _NavbarWidgetState extends State<NavbarWidget> {
             );
             break;
           case 2:
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => const Deals()),
+            );
             break;
           case 3:
             Navigator.of(context).pushReplacement(
