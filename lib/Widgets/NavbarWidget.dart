@@ -41,10 +41,9 @@ class _NavbarWidgetState extends State<NavbarWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             buildNavbarIcon(Icons.home_outlined, 0),
-            buildNavbarIcon(Icons.breakfast_dining_outlined, 1),
-            buildNavbarIcon(Icons.discount_outlined, 2),
-            buildShoppingBasketIcon(
-                context, 3), 
+            buildNavbarIcon(Icons.menu_book_outlined, 1),
+            buildNavbarIcon(Icons.percent_outlined, 2),
+            buildShoppingBasketIcon(context, 3),
           ],
         ),
       ),
@@ -72,7 +71,6 @@ class _NavbarWidgetState extends State<NavbarWidget> {
             );
             break;
           case 2:
-
             break;
           case 3:
             Navigator.of(context).pushReplacement(
@@ -100,16 +98,12 @@ class _NavbarWidgetState extends State<NavbarWidget> {
           );
         },
       ),
-      position: badges.BadgePosition.topEnd(
-          top: -5, end: -5), 
+      position: badges.BadgePosition.topEnd(top: -5, end: -5),
       child: IconButton(
-        icon: Icon(
-          Icons.shopping_cart_outlined,
-          color: colors
-        ),
+        icon: Icon(Icons.shopping_cart_outlined, color: colors),
         onPressed: () {
           Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => OrderCart()),
+            MaterialPageRoute(builder: (context) => OrderCart()),
           );
         },
       ),
