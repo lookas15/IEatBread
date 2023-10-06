@@ -262,8 +262,6 @@ class _OrderCartState extends State<OrderCart>
 
                 cartProvider.cart.clear();
 
-                cartProvider.notifyListeners();
-
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
