@@ -95,10 +95,6 @@ class _MenuDetailsState extends State<MenuDetails> {
             child: ItemDetails(item: item),
           ),
 
-          const SizedBox(
-            height: 20,
-          ),
-
           // price + quantity + add to cart button
           Container(
             padding: const EdgeInsets.all(25.0),
