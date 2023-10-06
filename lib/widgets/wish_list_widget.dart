@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:product_listtt/models/menu_model.dart';
-import 'package:product_listtt/screens/menu_details.dart';
-import 'package:product_listtt/widgets/menu_card.dart';
+import '../models/menu_model.dart';
+import '../screens/menu_details.dart';
+import 'menu_card.dart';
 import '../data/wishlist_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +14,16 @@ class WishListWidget extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-        title: Text('Wish List'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        title: Text(
+          'Wish List',
+          style: Theme.of(context).textTheme.headlineMedium!,
+        ),
         elevation: 2,
       ),
       body: WishListBody(),
