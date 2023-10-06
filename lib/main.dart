@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'data/wishlist_provider.dart';
 import 'package:provider/provider.dart';
 import 'main_page.dart';
 import 'data/cart_provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(providers: [
+      ChangeNotifierProvider(create: (context) => CartProvider()),
+      ChangeNotifierProvider(create: (context) => WishListProvider())
+    ], child: MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -19,7 +25,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
                 useMaterial3: true,
                 fontFamily: 'Poppins',
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
+                colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
                 textTheme: const TextTheme(
                     headlineMedium:
                         TextStyle(fontSize: 18, fontWeight: FontWeight.w500),

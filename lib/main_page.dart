@@ -3,6 +3,7 @@ import 'screens/menu_list.dart';
 import 'screens/deals.dart';
 import 'screens/order_cart.dart';
 import 'screens/order_history.dart';
+import 'screens/home_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -22,7 +23,7 @@ class _MainPageState extends State<MainPage> {
     Widget page;
     switch (selectedIndex) {
       case 0:
-        page = Placeholder();
+        page = Home();
         break;
       case 1:
         page = MenuList();

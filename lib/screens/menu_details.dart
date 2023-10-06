@@ -3,12 +3,11 @@ import 'package:provider/provider.dart';
 import '../models/menu_model.dart';
 import '../data/db_helper.dart';
 import '../data/cart_provider.dart';
-import '../data/color.dart';
 import '../models/cart_model.dart';
 import '../widgets/button.dart';
 
 class MenuDetails extends StatefulWidget {
-  final Menu item;
+  final MenuModel item;
 
   const MenuDetails({Key? key, required this.item}) : super(key: key);
 
@@ -63,6 +62,7 @@ class _MenuDetailsState extends State<MenuDetails> {
           .then((value) {
         cart.addTotalPrice(item.price.toDouble());
         cart.addCounter(quantityCount);
+        Navigator.of(context).pop();
         print('Product Added to cart');
       }).onError((error, stackTrace) {
         print(error.toString());
@@ -78,6 +78,13 @@ class _MenuDetailsState extends State<MenuDetails> {
           style: textStyle.headlineMedium!.copyWith(
             color: colorScheme.surface,
           ),
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          color: colorScheme.background,
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
         centerTitle: true,
       ),
@@ -172,7 +179,7 @@ class _MenuDetailsState extends State<MenuDetails> {
                             ),
                           ),
                           behavior: SnackBarBehavior.floating,
-                          duration: const Duration(seconds: 1),
+                          duration: const Duration(milliseconds: 500),
                         ),
                       );
                     }
@@ -193,7 +200,7 @@ class ItemDetails extends StatelessWidget {
     required this.item,
   });
 
-  final Menu item;
+  final MenuModel item;
 
   @override
   Widget build(BuildContext context) {

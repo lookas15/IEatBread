@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../models/menu_model.dart' as menu_model;
+import 'package:provider/provider.dart';
+import '../data/wishlist_provider.dart';
+import '../models/menu_model.dart';
 import '../screens/menu_details.dart';
 
 class MenuCard extends StatefulWidget {
@@ -15,7 +17,7 @@ class MenuCard extends StatefulWidget {
 }
 
 class _MenuCardState extends State<MenuCard> {
-  List<menu_model.Menu> menu = menu_model.listMenu;
+  List<MenuModel> menu = listMenu;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class _MenuCardState extends State<MenuCard> {
     // Menentukan apakah lebar layar saat ini adalah 300px
     bool isNarrowScreen = screenWidth <= 300;
 
-    List<menu_model.Menu> filteredMenu =
+    List<MenuModel> filteredMenu =
         menu.where((item) => item.category == widget.category).toList();
 
     return Scaffold(
@@ -47,13 +49,22 @@ class ItemCard extends StatelessWidget {
     required this.item,
   });
 
-  final menu_model.Menu item;
+  final MenuModel item;
   final int maxCharacters = 17;
 
   @override
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
     var textTheme = Theme.of(context).textTheme;
+
+    final wishListProvider = context.watch<WishListProvider>();
+
+    IconData wishIcon;
+    if (wishListProvider.contains(item)) {
+      wishIcon = Icons.favorite;
+    } else {
+      wishIcon = Icons.favorite_border;
+    }
 
     final formattedName = item.name.length > maxCharacters
         ? '${item.name.substring(0, maxCharacters)}...'
@@ -80,18 +91,12 @@ class ItemCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Expanded(
-                          child: Text(
-                        formattedName,
-                        style: textTheme.headlineSmall!.copyWith(
-                          color: colorScheme.onPrimaryContainer,
-                        ),
-                      )),
+                      ItemName(name: formattedName),
                       IconButton(
-                        icon: Icon(Icons.favorite_border),
+                        icon: Icon(wishIcon),
                         color: colorScheme.onPrimaryContainer,
                         onPressed: () {
-                          print("Favorited");
+                          wishListProvider.toggleWishList(item);
                         },
                       ),
                     ],
@@ -106,13 +111,30 @@ class ItemCard extends StatelessWidget {
   }
 }
 
+class ItemName extends StatelessWidget {
+  const ItemName({super.key, required this.name});
+
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+        child: Text(
+      name,
+      style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
+          ),
+    ));
+  }
+}
+
 class ItemPrice extends StatelessWidget {
   const ItemPrice({
     super.key,
     required this.item,
   });
 
-  final menu_model.Menu item;
+  final MenuModel item;
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +161,7 @@ class ItemImage extends StatelessWidget {
     required this.item,
   });
 
-  final menu_model.Menu item;
+  final MenuModel item;
 
   @override
   Widget build(BuildContext context) {
