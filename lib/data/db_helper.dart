@@ -35,7 +35,12 @@ class DBHelper {
           image TEXT)
     ''');
   }
-
+  
+  void clearCart() async {
+    var dbClient = await database;
+    await dbClient!.delete('cart');
+  }
+  
   Future<Cart> insertOrUpdate(Cart cart) async {
     var dbClient = await database;
     final productId = cart.productId;
@@ -89,3 +94,4 @@ class DBHelper {
 
   void initDB() {}
 }
+

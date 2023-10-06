@@ -28,19 +28,30 @@ class CartProvider with ChangeNotifier {
     return [..._orders];
   }
 
-  void addOrder(List<Cart> cartProducts, double total) {
-    // Add this method
-    _orders.insert(
-      0,
-      Order(
-        id: DateTime.now().toString(),
-        amount: total,
-        dateTime: DateTime.now(),
-        products: cartProducts,
-      ),
-    );
-    notifyListeners();
-  }
+void addOrder(List<Cart> cartProducts) {
+  double total = 0.0;
+  cartProducts.forEach((cartItem) {
+    total += cartItem.productPrice! * cartItem.quantity!.value;
+  });
+
+  _orders.insert(
+    0,
+    Order(
+      id: DateTime.now().toString(),
+      amount: total,
+      dateTime: DateTime.now(),
+      products: cartProducts,
+    ),
+  );
+
+  // Clear the cart and reset values
+  dbHelper.clearCart(); // Clear the cart in the database
+  cart.clear(); // Clear the cart
+  _counter = 0; // Reset the counter
+  _totalPrice = 0.0; // Reset the total price
+  _setPrefsItems();
+  notifyListeners();
+}
 
   void _setPrefsItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -128,7 +139,7 @@ class OrderItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(order.id),
-      subtitle: Text('\$${order.amount.toStringAsFixed(2)}'),
+      subtitle: Text('\Rp. ${order.amount.toStringAsFixed(2)}'),
       trailing: Text('${order.dateTime}'),
     );
   }

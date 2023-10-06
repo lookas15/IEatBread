@@ -1,4 +1,4 @@
-class Menu {
+class MenuModel {
   final int id;
   final String name;
   final int price;
@@ -7,7 +7,7 @@ class Menu {
   final String category;
   final String description;
 
-  Menu(
+  MenuModel(
       {required this.id,
       required this.name,
       required this.price,
@@ -29,8 +29,8 @@ class Menu {
   }
 }
 
-final List<Menu> listMenu = [
-  Menu(
+final List<MenuModel> listMenu = [
+  MenuModel(
     id: 01,
     name: 'Croissant + Cold Brew',
     price: 30000,
@@ -40,7 +40,7 @@ final List<Menu> listMenu = [
     description:
         'Gurihnya mentega yang dipadu dengan segarnya kopi, pilihan terbaik untuk menu di pagi hari.',
   ),
-  Menu(
+  MenuModel(
     id: 02,
     name: 'Pain au Chocolate+ Croissant',
     price: 30000,
@@ -49,7 +49,7 @@ final List<Menu> listMenu = [
     category: 'Deals',
     description: 'Combo spesial untuk kamu penikmat makanan asin-manis.',
   ),
-  Menu(
+  MenuModel(
     id: 03,
     name: 'Choux au Craquelin + Cream Puff',
     price: 15000,
@@ -58,7 +58,7 @@ final List<Menu> listMenu = [
     category: 'Deals',
     description: 'Combo pastry yang cocok dipadu dengan minuman apapun',
   ),
-  Menu(
+  MenuModel(
     id: 04,
     name: 'Coffee Bun + Melonpan',
     price: 18000,
@@ -68,7 +68,7 @@ final List<Menu> listMenu = [
     description:
         'Combo coffee bun dan melonpan sangat cocok bagi pecinta manis',
   ),
-  Menu(
+  MenuModel(
     id: 10,
     name: 'Pizza Bomb',
     price: 10000,
@@ -78,7 +78,7 @@ final List<Menu> listMenu = [
     description:
         'Roti berbentuk bulat yang renyah di bagian luar dan memiliki kejutan di bagian dalam berupa paduan saus tomat, keju dan pepperoni.',
   ),
-  Menu(
+  MenuModel(
     id: 11,
     name: 'Cinnamon Roll',
     price: 10000,
@@ -88,7 +88,7 @@ final List<Menu> listMenu = [
     description:
         'Roti gulung yang berisikan gula palem dengan bubuk kayu manis dan cream cheese frosting sebagai toppingnya.',
   ),
-  Menu(
+  MenuModel(
     id: 12,
     name: 'Chocolate Babka',
     price: 12000,
@@ -98,7 +98,7 @@ final List<Menu> listMenu = [
     description:
         'Roti dengan brioche yang legit dengan lapisan dan isian coklat yang menggoda.',
   ),
-  Menu(
+  MenuModel(
     id: 13,
     name: 'Cheesy Garlic Bead',
     price: 12000,
@@ -108,7 +108,7 @@ final List<Menu> listMenu = [
     description:
         'Potongan roti gurih yang dipanggang dengan mentega dan bawang putih yang harum, ditaburi dengan keju leleh yang lezat. Kombinasi yang sempurna antara cita rasa creamy dan rasa bawang putih yang tajam.',
   ),
-  Menu(
+  MenuModel(
     id: 14,
     name: 'TangZhong Milk Bread',
     price: 15000,
@@ -118,7 +118,7 @@ final List<Menu> listMenu = [
     description:
         'Roti lembut dengan tekstur istimewa, berkat adonan tangzhong yang membuatnya lembut dan lezat serta rasa susu yang ringan dan manis.',
   ),
-  Menu(
+  MenuModel(
     id: 15,
     name: 'Milk Bun',
     price: 10000,
@@ -128,7 +128,7 @@ final List<Menu> listMenu = [
     description:
         'Roti lembut  dan lezat yang dikenal karena rasa susu yang khas dan teksturnya yang empuk.',
   ),
-  Menu(
+  MenuModel(
     id: 16,
     name: 'Melonpan',
     price: 12000,
@@ -138,7 +138,7 @@ final List<Menu> listMenu = [
     description:
         'Roti manis Jepang yang memiliki tekstur luar yang renyah karena dilapisi dengan adonan biskuit dan gula yang memberikan sentuhan manis.',
   ),
-  Menu(
+  MenuModel(
     id: 17,
     name: 'Coffee Bun',
     price: 12000,
@@ -148,7 +148,7 @@ final List<Menu> listMenu = [
     description:
         'Roti manis dengan tekstur yang renyah dan lapisan krim kopi di bagian atasnya.',
   ),
-  Menu(
+  MenuModel(
     id: 20,
     name: 'Croissant',
     price: 18000,
@@ -158,7 +158,7 @@ final List<Menu> listMenu = [
     description:
         'Pastry berbentuk bulan sabit dengan tekstur renyah di luar dan lembut di dalamnya serta rasa mentega yang khas.',
   ),
-  Menu(
+  MenuModel(
     id: 21,
     name: 'Pain Au Chocolat',
     price: 18000,
@@ -168,7 +168,7 @@ final List<Menu> listMenu = [
     description:
         'Roti manis Prancis yang terdiri dari adonan berlapis mentega dan cokelat yang meleleh di dalamnya.',
   ),
-  Menu(
+  MenuModel(
     id: 22,
     name: 'Portuguese Egg Tart',
     price: 12000,
@@ -178,7 +178,7 @@ final List<Menu> listMenu = [
     description:
         'Pastry asal Portugal yang terdiri dari lapisan kulit pastry yang renyah dan karamelisasi di atasnya, diisi dengan custard lembut beraroma vanila.',
   ),
-  Menu(
+  MenuModel(
     id: 23,
     name: 'Cheese Tart',
     price: 12000,
@@ -188,7 +188,7 @@ final List<Menu> listMenu = [
     description:
         'Pastry kecil yang terdiri dari adonan tart yang renyah dan diisi dengan isian keju.',
   ),
-  Menu(
+  MenuModel(
     id: 24,
     name: 'Cream Puff',
     price: 8000,
@@ -198,7 +198,7 @@ final List<Menu> listMenu = [
     description:
         'Pastry yang berbentuk bulat yang terdiri dari kulit pastry yang ringan dan berongga, diisi dengan custard yang lembut, manis, dan beraroma vanila.',
   ),
-  Menu(
+  MenuModel(
     id: 25,
     name: 'Choux au Craquelin',
     price: 10000,
@@ -208,7 +208,7 @@ final List<Menu> listMenu = [
     description:
         'Pastry yang dilapisi dengan lapisan craquelin, yang terbuat dari campuran gula, tepung, dan mentega, lalu diisi diplomat cream yang lembut dan manis.',
   ),
-  Menu(
+  MenuModel(
     id: 30,
     name: 'Cold Brew',
     price: 18000,
@@ -218,7 +218,7 @@ final List<Menu> listMenu = [
     description:
         'Kopi yang diseduh dengan air dingin, tapi tetap lebih dingin sikap gebetan kamu 🙌',
   ),
-  Menu(
+  MenuModel(
     id: 31,
     name: 'Americano',
     price: 16000,
@@ -228,7 +228,7 @@ final List<Menu> listMenu = [
     description:
         'Kopi gaya abad 1940 yang terasa pahit, namun tetap lebih pahit ditolak sama gebetan 🥤',
   ),
-  Menu(
+  MenuModel(
     id: 32,
     name: 'Vanilla Latte',
     price: 18000,
@@ -238,7 +238,7 @@ final List<Menu> listMenu = [
     description:
         'Kopi espresso yang dipasangkan dengan susu, ga kayak kamu yang ga punya pasangan 🧍‍♂️🧍‍♀️',
   ),
-  Menu(
+  MenuModel(
     id: 33,
     name: 'Affogato',
     price: 20000,
@@ -248,7 +248,7 @@ final List<Menu> listMenu = [
     description:
         'Kopi dari Italia yang artinya tenggelam. Bedanya kamu tenggelam sama janji manis dia 🐊',
   ),
-  Menu(
+  MenuModel(
     id: 34,
     name: 'Matcha Latte',
     price: 20000,
@@ -258,7 +258,7 @@ final List<Menu> listMenu = [
     description:
         'Minuman berupa teh hijau yang harum dipadu dengan susu yang manis, semanis gombalan dia🧉',
   ),
-  Menu(
+  MenuModel(
     id: 35,
     name: 'Earl Grey Tea',
     price: 16000,

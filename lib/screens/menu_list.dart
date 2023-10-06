@@ -14,7 +14,6 @@ class _MenuListState extends State<MenuList>
 
   final List<String> categories = ['Bread', 'Pastry', 'Drinks'];
   int selectedTabIndex = 0;
-  int selectedBottomNavIndex = 1;
 
   @override
   void initState() {
@@ -38,25 +37,28 @@ class _MenuListState extends State<MenuList>
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return CustomScrollView(
       slivers: [
         SliverAppBar(
+          elevation: 3,
           pinned: true,
-          backgroundColor: const Color.fromARGB(255, 240, 240, 240),
+          backgroundColor: colorScheme.surfaceVariant,
           title: Center(
             child: TabBar(
               controller: _tabController,
               indicatorColor: Colors.transparent,
-              labelColor: const Color.fromARGB(255, 245, 89, 81),
+              labelColor: colorScheme.primary,
               isScrollable: true,
-              unselectedLabelColor: const Color.fromARGB(255, 137, 137, 137),
+              unselectedLabelColor: colorScheme.surface,
               padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
               tabs: categories.map((category) {
                 return Tab(
                   child: Text(
                     category,
                     style: const TextStyle(
-                      fontSize: 16.0,
+                      fontSize: 16,
                     ),
                   ),
                 );

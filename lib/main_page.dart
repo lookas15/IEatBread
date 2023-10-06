@@ -3,6 +3,7 @@ import 'screens/menu_list.dart';
 import 'screens/deals.dart';
 import 'screens/order_cart.dart';
 import 'screens/order_history.dart';
+import 'screens/home_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -22,7 +23,7 @@ class _MainPageState extends State<MainPage> {
     Widget page;
     switch (selectedIndex) {
       case 0:
-        page = Placeholder();
+        page = Home();
         break;
       case 1:
         page = MenuList();
@@ -54,32 +55,31 @@ class _MainPageState extends State<MainPage> {
         if (constraints.maxWidth < 450) {
           // If device width < 450, display BottomNavigationBar
           return Column(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Expanded(child: pageArea),
-              SafeArea(
-                child: BottomNavigationBar(
-                    unselectedItemColor: colorScheme.outlineVariant,
-                    selectedItemColor: colorScheme.primary,
-                    currentIndex: selectedIndex,
-                    onTap: (value) {
-                      setState(() {
-                        selectedIndex = value;
-                      });
-                    },
-                    items: const [
-                      BottomNavigationBarItem(
-                          icon: Icon(Icons.home_outlined), label: 'Home'),
-                      BottomNavigationBarItem(
-                          icon: Icon(Icons.menu_book_outlined), label: 'Menu'),
-                      BottomNavigationBarItem(
-                          icon: Icon(Icons.percent), label: 'Deals'),
-                      BottomNavigationBarItem(
-                          icon: Icon(Icons.shopping_cart_outlined),
-                          label: 'Cart'),
-                      BottomNavigationBarItem(
-                          icon: Icon(Icons.receipt_long), label: 'Orders'),
-                    ]),
-              )
+              BottomNavigationBar(
+                  unselectedItemColor: colorScheme.outlineVariant,
+                  selectedItemColor: colorScheme.primary,
+                  currentIndex: selectedIndex,
+                  onTap: (value) {
+                    setState(() {
+                      selectedIndex = value;
+                    });
+                  },
+                  items: const [
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.home_outlined), label: 'Home'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.menu_book_outlined), label: 'Menu'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.percent), label: 'Deals'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.shopping_cart_outlined),
+                        label: 'Cart'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.receipt_long), label: 'Orders'),
+                  ]),
             ],
           );
         } else {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:product_listtt/widgets/plus_minus_button.dart';
-import 'package:product_listtt/widgets/subtotal_widget.dart';
-import 'package:product_listtt/data/cart_provider.dart';
-import 'package:product_listtt/data/db_helper.dart';
-import 'package:product_listtt/models/cart_model.dart';
 import 'package:provider/provider.dart';
+import '../widgets/plus_minus_button.dart';
+import '../widgets/subtotal_widget.dart';
+import '../data/cart_provider.dart';
+import '../data/db_helper.dart';
+import '../models/cart_model.dart';
 
 class OrderCart extends StatefulWidget {
   const OrderCart({super.key});
@@ -237,28 +237,54 @@ class _OrderCartState extends State<OrderCart>
           width: 500,
           child: ElevatedButton(
             onPressed: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: Text('Thank You!'),
-                    content: Text('Your order has been placed.'),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          // Anda dapat menambahkan logika apa yang ingin Anda lakukan setelah menekan tombol "OK" di sini
-                          // Misalnya, kembali ke halaman lain
-                          Navigator.of(context).pop(); // Menutup popup
-                        },
-                        child: Text('OK'),
-                      ),
-                    ],
-                  );
-                },
-              );
+              var cartProvider = Provider.of<CartProvider>(context, listen: false);
+
+              if (cartProvider.cart.isEmpty) {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('No Items Selected'),
+                      content: Text('Please select items to order.'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop(); // Close the popup
+                          },
+                          child: Text('OK'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              } else {
+                cartProvider.addOrder(cartProvider.cart);
+
+                cartProvider.cart.clear();
+
+                cartProvider.notifyListeners();
+
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Thank You!'),
+                      content: Text('Your order has been placed.'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop(); // Close the popup
+                          },
+                          child: Text('OK'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              }
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.green, // Warna latar belakang tombol
+              backgroundColor: Colors.green,
             ),
             child: Text(
               'Order Now!',
