@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:product_listtt/widgets/navbar_widget.dart';
-import 'package:product_listtt/data/cart_provider.dart';
-import 'package:product_listtt/data/db_helper.dart';
-import 'package:product_listtt/screens/menu_list.dart';
 import 'package:provider/provider.dart';
+import '../data/cart_provider.dart';
+import '../data/db_helper.dart';
+import 'menu_list.dart';
 
 class OrderHistory extends StatefulWidget {
   const OrderHistory({Key? key}) : super(key: key);

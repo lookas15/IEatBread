@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:product_listtt/widgets/plus_minus_button.dart';
-import 'package:product_listtt/widgets/subtotal_widget.dart';
-import 'package:product_listtt/data/cart_provider.dart';
-import 'package:product_listtt/data/db_helper.dart';
-import 'package:product_listtt/models/cart_model.dart';
 import 'package:provider/provider.dart';
+import '../widgets/plus_minus_button.dart';
+import '../widgets/subtotal_widget.dart';
+import '../data/cart_provider.dart';
+import '../data/db_helper.dart';
+import '../models/cart_model.dart';
 
 class OrderCart extends StatefulWidget {
   const OrderCart({super.key});

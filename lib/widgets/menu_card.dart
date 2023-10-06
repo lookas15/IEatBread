@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:product_listtt/models/menu_model.dart' as menu_model;
-import 'package:product_listtt/screens/menu_details.dart';
+import '../models/menu_model.dart' as menu_model;
+import '../screens/menu_details.dart';
 
 class MenuCard extends StatefulWidget {
   final String category;
@@ -22,8 +22,8 @@ class _MenuCardState extends State<MenuCard> {
     var colorScheme = Theme.of(context).colorScheme;
     double screenWidth = MediaQuery.of(context).size.width;
 
-    // Menentukan apakah lebar layar saat ini adalah 320px
-    bool isNarrowScreen = screenWidth <= 30;
+    // Menentukan apakah lebar layar saat ini adalah 300px
+    bool isNarrowScreen = screenWidth <= 300;
 
     List<menu_model.Menu> filteredMenu =
         menu.where((item) => item.category == widget.category).toList();
@@ -53,6 +53,8 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
+    var textTheme = Theme.of(context).textTheme;
+
     final formattedName = item.name.length > maxCharacters
         ? '${item.name.substring(0, maxCharacters)}...'
         : item.name;
@@ -78,10 +80,16 @@ class ItemCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Expanded(child: Text(formattedName)),
+                      Expanded(
+                          child: Text(
+                        formattedName,
+                        style: textTheme.headlineSmall!.copyWith(
+                          color: colorScheme.onPrimaryContainer,
+                        ),
+                      )),
                       IconButton(
                         icon: Icon(Icons.favorite_border),
-                        color: colorScheme.primary,
+                        color: colorScheme.onPrimaryContainer,
                         onPressed: () {
                           print("Favorited");
                         },
@@ -108,16 +116,18 @@ class ItemPrice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+    var textTheme = Theme.of(context).textTheme;
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10),
       child: Center(
         child: Text(
-            'IDR ${item.price.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]}.')}',
-            style: const TextStyle(
-              color: Colors.redAccent,
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-            )),
+          'IDR ${item.price.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]}.')}',
+          style: textTheme.displaySmall!.copyWith(
+            color: colorScheme.surfaceTint,
+          ),
+        ),
       ),
     );
   }
