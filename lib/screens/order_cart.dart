@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ieatbread/models/order_model.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../widgets/plus_minus_button.dart';
 import '../widgets/subtotal_widget.dart';
