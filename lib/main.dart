@@ -1,7 +1,8 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:product_listtt/splash_screen.dart';
 import 'data/wishlist_provider.dart';
 import 'package:provider/provider.dart';
-import 'main_page.dart';
 import 'data/cart_provider.dart';
 import 'data/color_provider.dart';
 
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ))),
-        home: const MainPage(),
+        home: SplashScreen(),
       );
     });
   }
