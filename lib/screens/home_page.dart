@@ -20,8 +20,7 @@ class Home extends StatelessWidget {
           Text('Hello, $userName', style: textStyle),
           Text('Welcome to', style: textStyle),
           Text('IEatBread', style: textStyle),
-          SizedBox(height: 30),
-          // Row is used to force the container to fit the whole screen
+          const SizedBox(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -29,18 +28,18 @@ class Home extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return WishListWidget();
+                    return const WishListWidget();
                   }));
                 },
-                icon: Icon(Icons.favorite_rounded),
-                label: Text('My Wishlist'),
+                icon: const Icon(Icons.favorite_rounded),
+                label: const Text('My Wishlist'),
               ),
               IconButton(
                   color: Theme.of(context).colorScheme.onPrimary,
                   onPressed: () {
                     print('Go to settings');
                   },
-                  icon: Icon(Icons.settings_outlined)),
+                  icon: const Icon(Icons.settings_outlined)),
             ],
           )
         ],

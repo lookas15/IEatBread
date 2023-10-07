@@ -23,19 +23,19 @@ class _MainPageState extends State<MainPage> {
     Widget page;
     switch (selectedIndex) {
       case 0:
-        page = Home();
+        page = const Home();
         break;
       case 1:
-        page = MenuList();
+        page = const MenuList();
         break;
       case 2:
-        page = Deals();
+        page = const Deals();
         break;
       case 3:
-        page = OrderCart();
+        page = const OrderCart();
         break;
       case 4:
-        page = OrderHistory();
+        page = const OrderHistory();
         break;
       default:
         throw UnimplementedError('No widget for $selectedIndex');

@@ -21,37 +21,35 @@ class CartProvider with ChangeNotifier {
     return cart;
   }
 
-  final List<Order> _orders = []; // Add this line
+  final List<Order> _orders = [];
 
   List<Order> get orders {
-    // Add this method
     return [..._orders];
   }
 
-void addOrder(List<Cart> cartProducts) {
-  double total = 0.0;
-  cartProducts.forEach((cartItem) {
-    total += cartItem.productPrice! * cartItem.quantity!.value;
-  });
+  void addOrder(List<Cart> cartProducts) {
+    double total = 0.0;
+    cartProducts.forEach((cartItem) {
+      total += cartItem.productPrice! * cartItem.quantity!.value;
+    });
 
-  _orders.insert(
-    0,
-    Order(
-      id: DateTime.now().toString(),
-      amount: total,
-      dateTime: DateTime.now(),
-      products: cartProducts,
-    ),
-  );
+    _orders.insert(
+      0,
+      Order(
+        id: DateTime.now().toString(),
+        amount: total,
+        dateTime: DateTime.now(),
+        products: cartProducts,
+      ),
+    );
 
-  // Clear the cart and reset values
-  dbHelper.clearCart(); // Clear the cart in the database
-  cart.clear(); // Clear the cart
-  _counter = 0; // Reset the counter
-  _totalPrice = 0.0; // Reset the total price
-  _setPrefsItems();
-  notifyListeners();
-}
+    dbHelper.clearCart();
+    cart.clear();
+    _counter = 0;
+    _totalPrice = 0.0;
+    _setPrefsItems();
+    notifyListeners();
+  }
 
   void _setPrefsItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -128,19 +126,4 @@ void addOrder(List<Cart> cartProducts) {
   }
 
   void clear() {}
-}
-
-class OrderItem extends StatelessWidget {
-  final Order order;
-
-  const OrderItem(this.order, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(order.id),
-      subtitle: Text('\Rp. ${order.amount.toStringAsFixed(2)}'),
-      trailing: Text('${order.dateTime}'),
-    );
-  }
 }

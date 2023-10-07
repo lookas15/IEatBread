@@ -6,7 +6,7 @@ import '../screens/menu_details.dart';
 
 class MenuCard extends StatefulWidget {
   final String category;
-  final ValueNotifier<int> quantityNotifier; // Tambahkan properti ini
+  final ValueNotifier<int> quantityNotifier;
 
   const MenuCard(
       {Key? key, required this.category, required this.quantityNotifier})
@@ -24,7 +24,6 @@ class _MenuCardState extends State<MenuCard> {
     var colorScheme = Theme.of(context).colorScheme;
     double screenWidth = MediaQuery.of(context).size.width;
 
-    // Menentukan apakah lebar layar saat ini adalah 300px
     bool isNarrowScreen = screenWidth <= 300;
 
     List<MenuModel> filteredMenu =
@@ -55,7 +54,6 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
-    var textTheme = Theme.of(context).textTheme;
 
     final wishListProvider = context.watch<WishListProvider>();
 
@@ -85,7 +83,7 @@ class ItemCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   // Item Name & Favorite Toggle Button
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,7 +102,7 @@ class ItemCard extends StatelessWidget {
                 ),
                 // Item Image
                 ItemImage(item: item),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 ItemPrice(item: item)
               ],
             )));
@@ -142,7 +140,7 @@ class ItemPrice extends StatelessWidget {
     var textTheme = Theme.of(context).textTheme;
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Center(
         child: Text(
           'IDR ${item.price.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]}.')}',

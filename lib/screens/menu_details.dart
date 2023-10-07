@@ -18,7 +18,6 @@ class MenuDetails extends StatefulWidget {
 class _MenuDetailsState extends State<MenuDetails> {
   DBHelper dbHelper = DBHelper();
 
-  // Menambah variabel quantityCount
   int quantityCount = 1;
 
   @override
@@ -28,7 +27,6 @@ class _MenuDetailsState extends State<MenuDetails> {
     var textStyle = Theme.of(context).textTheme;
     var item = widget.item;
 
-    // Deklarasi fungsi decrementQuantity untuk mengurangi quantityCount
     void decrementQuantity() {
       if (quantityCount > 1) {
         setState(() {
@@ -37,15 +35,13 @@ class _MenuDetailsState extends State<MenuDetails> {
       }
     }
 
-    // Deklarasi fungsi incrementQuantity untuk menambah quantityCount
     void incrementQuantity() {
       setState(() {
         quantityCount++;
       });
     }
 
-    // Fungsi untuk menambah produk ke keranjang=
-      void addToCart()  {
+    void addToCart() {
       dbHelper
           .insertOrUpdate(
         Cart(
@@ -106,12 +102,12 @@ class _MenuDetailsState extends State<MenuDetails> {
                       ElevatedButton(
                         onPressed: () {
                           Navigator.of(context).pop(); // Dismiss the dialog
-                          Navigator.of(context).pop(); // Dismiss the MenuDetails screen
+                          Navigator.of(context)
+                              .pop(); // Dismiss the MenuDetails screen
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: colorScheme.primary,
-                          foregroundColor: Colors.white
-                        ),
+                            backgroundColor: colorScheme.primary,
+                            foregroundColor: Colors.white),
                         child: const Text("OK"),
                       ),
                     ],
@@ -135,7 +131,7 @@ class _MenuDetailsState extends State<MenuDetails> {
           ),
         ),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           color: colorScheme.background,
           onPressed: () {
             Navigator.of(context).pop();
@@ -157,63 +153,62 @@ class _MenuDetailsState extends State<MenuDetails> {
             child: Column(
               children: [
                 // quantity
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // item quantity text
-                    Text("Item Quantity",
-                        style: textStyle.labelMedium!.copyWith(
-                          color: colorScheme.background,
-                        )),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10.0, 0, 5.0, 10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // item quantity text
+                      Text("Item Quantity",
+                          style: textStyle.labelMedium!.copyWith(
+                            color: colorScheme.background,
+                          )),
 
-                    // plus and minus button
-                    Row(
-                      children: [
-                        // minus button
-                        Container(
-                            decoration: BoxDecoration(
-                              color: colorScheme.onPrimary,
-                              shape: BoxShape.circle,
-                            ),
-                            child: IconButton(
-                              color: colorScheme.secondary,
-                              icon: const Icon(Icons.remove),
-                              onPressed: decrementQuantity,
-                            )),
+                      // plus and minus button
+                      Row(
+                        children: [
+                          Container(
+                              decoration: BoxDecoration(
+                                color: colorScheme.onPrimary,
+                                shape: BoxShape.circle,
+                              ),
+                              child: IconButton(
+                                color: colorScheme.secondary,
+                                icon: const Icon(Icons.remove),
+                                onPressed: decrementQuantity,
+                              )),
 
-                        // quantity
-                        SizedBox(
-                          width: 40,
-                          child: Center(
-                            child: Text(
-                              quantityCount.toString(),
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
+                          // quantity
+                          SizedBox(
+                            width: 40,
+                            child: Center(
+                              child: Text(
+                                quantityCount.toString(),
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                              ),
                             ),
                           ),
-                        ),
 
-                        // plus button
-                        Container(
-                            decoration: BoxDecoration(
-                              color: colorScheme.onPrimary,
-                              shape: BoxShape.circle,
-                            ),
-                            child: IconButton(
-                              color: colorScheme.secondary,
-                              icon: const Icon(Icons.add),
-                              onPressed: incrementQuantity,
-                            )),
-                      ],
-                    )
-                  ],
+                          // plus button
+                          Container(
+                              decoration: BoxDecoration(
+                                color: colorScheme.onPrimary,
+                                shape: BoxShape.circle,
+                              ),
+                              child: IconButton(
+                                color: colorScheme.secondary,
+                                icon: const Icon(Icons.add),
+                                onPressed: incrementQuantity,
+                              )),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
 
-                const SizedBox(
-                  height: 20,
-                ),
                 // add to cart
                 MyButton(
                   text: "Add To Cart",

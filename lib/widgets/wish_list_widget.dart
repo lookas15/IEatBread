@@ -15,7 +15,7 @@ class WishListWidget extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -26,7 +26,7 @@ class WishListWidget extends StatelessWidget {
         ),
         elevation: 2,
       ),
-      body: WishListBody(),
+      body: const WishListBody(),
     );
   }
 }
@@ -40,7 +40,7 @@ class WishListBody extends StatelessWidget {
     final wishListProvider = context.watch<WishListProvider>();
 
     if (wishListProvider.wishListItems.isEmpty) {
-      return Center(
+      return const Center(
         child: Text('Wish List is empty.'),
       );
     } else {
@@ -90,12 +90,12 @@ class WishListItem extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         elevation: 3,
         child: Container(
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               WishListImage(item: item),
-              SizedBox(width: 16.0),
+              const SizedBox(width: 16.0),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -105,7 +105,7 @@ class WishListItem extends StatelessWidget {
                       onPressed: () {
                         wishListProvider.removeItem(item);
                       },
-                      icon: Icon(Icons.favorite)),
+                      icon: const Icon(Icons.favorite)),
                 ],
               ),
             ],
