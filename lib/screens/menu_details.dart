@@ -88,11 +88,11 @@ class _MenuDetailsState extends State<MenuDetails> {
                     size: 60.0,
                   ),
                   const SizedBox(height: 16.0),
-                  const Text(
-                    "Menu Successfully added to cart",
-                    style: TextStyle(
-                      fontSize: 17.0,
-                      fontWeight: FontWeight.bold,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: Text(
+                      "Menu successfully added to Order Cart.",
+                      style: textStyle.labelMedium,
                     ),
                   ),
                   const SizedBox(height: 16.0),
@@ -184,10 +184,8 @@ class _MenuDetailsState extends State<MenuDetails> {
                             child: Center(
                               child: Text(
                                 quantityCount.toString(),
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18),
+                                style: textStyle.labelMedium!
+                                    .copyWith(color: Colors.white),
                               ),
                             ),
                           ),
@@ -299,7 +297,6 @@ class ItemDetails extends StatelessWidget {
             item.description,
             textAlign: TextAlign.left,
             style: TextStyle(
-              fontFamily: 'Poppins',
               fontSize: 16.0,
               color: Colors.grey[600],
             ),

@@ -55,22 +55,18 @@ class _OrderHistoryState extends State<OrderHistory>
           title: Center(
             child: Text(
               'Order History',
-              style: textStyle.headlineMedium!.copyWith(
-                  color: colorScheme.onInverseSurface,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold),
+              style: textStyle.displayMedium!.copyWith(
+                color: colorScheme.onInverseSurface,
+              ),
             ),
           ),
         ),
         body: Consumer<CartProvider>(
           builder: (ctx, orderData, child) => orderData.orders.isEmpty
-              ? const Center(
+              ? Center(
                   child: Text(
                   "You have not ordered anything yet",
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: textStyle.labelMedium,
                 ))
               : ListView.builder(
                   itemCount: orderData.orders.length,

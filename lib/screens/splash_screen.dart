@@ -24,6 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
+    var textStyle = Theme.of(context).textTheme;
 
     return Scaffold(
       backgroundColor: colorScheme.primary,
@@ -49,10 +50,9 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             Text(
               'IEatBread',
-              style: TextStyle(
-                  color: colorScheme.onInverseSurface,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold),
+              style: textStyle.displayLarge!.copyWith(
+                color: colorScheme.onInverseSurface,
+              ),
             ),
           ],
         ),

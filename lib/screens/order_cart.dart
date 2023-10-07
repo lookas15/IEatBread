@@ -37,10 +37,9 @@ class _OrderCartState extends State<OrderCart>
           title: Center(
             child: Text(
               'Order Cart',
-              style: textStyle.headlineMedium!.copyWith(
-                  color: colorScheme.onInverseSurface,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold),
+              style: textStyle.displayMedium!.copyWith(
+                color: colorScheme.onInverseSurface,
+              ),
             ),
           ),
         ),
@@ -50,11 +49,10 @@ class _OrderCartState extends State<OrderCart>
               child: Consumer<CartProvider>(
                 builder: (BuildContext context, provider, widget) {
                   if (provider.cart.isEmpty) {
-                    return const Center(
+                    return Center(
                       child: Text(
                         'Your cart is empty',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18.0),
+                        style: textStyle.labelMedium,
                       ),
                     );
                   } else {
@@ -90,10 +88,9 @@ class _OrderCartState extends State<OrderCart>
                                         maxLines: 1,
                                         text: TextSpan(
                                           text: 'Menu: ',
-                                          style: TextStyle(
+                                          style:
+                                              textStyle.headlineSmall!.copyWith(
                                             color: Colors.blueGrey.shade800,
-                                            fontSize: 16.0,
-                                            fontFamily: 'Poppins',
                                           ),
                                           children: [
                                             TextSpan(
@@ -110,10 +107,9 @@ class _OrderCartState extends State<OrderCart>
                                         maxLines: 1,
                                         text: TextSpan(
                                           text: 'Unit: ',
-                                          style: TextStyle(
+                                          style:
+                                              textStyle.headlineSmall!.copyWith(
                                             color: Colors.blueGrey.shade800,
-                                            fontSize: 16.0,
-                                            fontFamily: 'Poppins',
                                           ),
                                           children: [
                                             TextSpan(
@@ -130,10 +126,9 @@ class _OrderCartState extends State<OrderCart>
                                         maxLines: 1,
                                         text: TextSpan(
                                           text: 'Price/each: ' r"IDR ",
-                                          style: TextStyle(
+                                          style:
+                                              textStyle.headlineSmall!.copyWith(
                                             color: Colors.blueGrey.shade800,
-                                            fontSize: 16.0,
-                                            fontFamily: 'Poppins',
                                           ),
                                           children: [
                                             TextSpan(
@@ -290,12 +285,10 @@ class _OrderCartState extends State<OrderCart>
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                   ),
-                  child: const Text(
+                  child: Text(
                     'Order Now!',
-                    style: TextStyle(
+                    style: textStyle.headlineMedium!.copyWith(
                       color: Colors.white,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
