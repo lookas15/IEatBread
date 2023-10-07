@@ -44,8 +44,8 @@ class _MenuDetailsState extends State<MenuDetails> {
       });
     }
 
-    // Fungsi untuk menambah produk ke keranjang
-    void addToCart() {
+    // Fungsi untuk menambah produk ke keranjang=
+      void addToCart()  {
       dbHelper
           .insertOrUpdate(
         Cart(
@@ -62,11 +62,66 @@ class _MenuDetailsState extends State<MenuDetails> {
           .then((value) {
         cart.addTotalPrice(item.price.toDouble());
         cart.addCounter(quantityCount);
-        Navigator.of(context).pop();
         print('Product Added to cart');
       }).onError((error, stackTrace) {
         print(error.toString());
       });
+
+      // Show the dialog
+      showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12.0),
+            ),
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(
+                    Icons.check_circle,
+                    color: Colors.green,
+                    size: 60.0,
+                  ),
+                  const SizedBox(height: 16.0),
+                  const Text(
+                    "Menu Successfully added to cart",
+                    style: TextStyle(
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 16.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pop(); // Dismiss the dialog
+                          Navigator.of(context).pop(); // Dismiss the MenuDetails screen
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: colorScheme.primary,
+                          foregroundColor: Colors.white
+                        ),
+                        child: const Text("OK"),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      );
     }
 
     return Scaffold(
@@ -164,21 +219,6 @@ class _MenuDetailsState extends State<MenuDetails> {
                   text: "Add To Cart",
                   onTap: () {
                     addToCart();
-                    if (quantityCount > 0) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          backgroundColor: colorScheme.onPrimary,
-                          content: const Text(
-                            'Menu successfully added to cart.',
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
-                          ),
-                          behavior: SnackBarBehavior.floating,
-                          duration: const Duration(milliseconds: 500),
-                        ),
-                      );
-                    }
                   },
                 ),
               ],
