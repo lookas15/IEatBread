@@ -12,21 +12,5 @@ class Order {
     required this.products,
     required this.dateTime, 
   });
-
-  factory Order.fromMap(Map<String, dynamic> map) {
-    return Order(
-      id: map['id'],
-      amount: map['amount'],
-      dateTime: map['dateTime'],
-      products: [], 
-    );
   }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'amount': amount,
-      'dateTime': dateTime,
-    };
-  }
-}
+  
