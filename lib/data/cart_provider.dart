@@ -29,33 +29,33 @@ class CartProvider with ChangeNotifier {
     return [..._orders];
   }
 
-void addOrder(List<Cart> cartProducts) {
-  double total = 0.0;
-  cartProducts.forEach((cartItem) {
-    total += cartItem.productPrice! * cartItem.quantity!.value;
-  });
+  void addOrder(List<Cart> cartProducts) {
+    double total = 0.0;
+    cartProducts.forEach((cartItem) {
+      total += cartItem.productPrice! * cartItem.quantity!.value;
+    });
 
-  String formattedDateTime = DateFormat('HH:mm').format(DateTime.now());
+    String formattedDateTime = DateFormat('HH:mm').format(DateTime.now());
 
-  String id = DateFormat('yyyy-MM-dd').format(DateTime.now());
+    String id = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
-  _orders.insert(
-    0,
-    Order(
-      id: id,
-      amount: total,
-      dateTime: formattedDateTime, 
-      products: cartProducts,
-    ),
-  );
+    _orders.insert(
+      0,
+      Order(
+        id: id,
+        amount: total,
+        dateTime: formattedDateTime, 
+        products: cartProducts,
+      ),
+    );
 
-  dbHelper.clearCart(); 
-  cart.clear(); 
-  _counter = 0; 
-  _totalPrice = 0.0; 
-  _setPrefsItems();
-  notifyListeners();
-}
+    dbHelper.clearCart(); 
+    cart.clear(); 
+    _counter = 0; 
+    _totalPrice = 0.0; 
+    _setPrefsItems();
+    notifyListeners();
+  }
 
   void _setPrefsItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
