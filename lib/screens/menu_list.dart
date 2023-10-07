@@ -10,7 +10,7 @@ class MenuList extends StatefulWidget {
 
 class _MenuListState extends State<MenuList>
     with SingleTickerProviderStateMixin {
-  late TabController _tabController; // Perubahan di sini
+  late TabController _tabController;
 
   final List<String> categories = ['Bread', 'Pastry', 'Drinks'];
   int selectedTabIndex = 0;
@@ -19,10 +19,9 @@ class _MenuListState extends State<MenuList>
   void initState() {
     super.initState();
     _tabController = TabController(vsync: this, length: categories.length);
-    _tabController.addListener(_handleTabSelection); // Tambahkan listener
+    _tabController.addListener(_handleTabSelection);
   }
 
-  // Tambahkan metode untuk menghandle perubahan tab
   void _handleTabSelection() {
     setState(() {
       selectedTabIndex = _tabController.index;
@@ -31,7 +30,7 @@ class _MenuListState extends State<MenuList>
 
   @override
   void dispose() {
-    _tabController.dispose(); // Dispose TabController saat widget dihapus
+    _tabController.dispose();
     super.dispose();
   }
 
@@ -48,7 +47,7 @@ class _MenuListState extends State<MenuList>
           title: Center(
             child: TabBar(
               controller: _tabController,
-              indicatorColor: Colors.transparent,
+              indicatorColor: colorScheme.primary,
               labelColor: colorScheme.primary,
               isScrollable: true,
               unselectedLabelColor: colorScheme.surface,
@@ -73,8 +72,7 @@ class _MenuListState extends State<MenuList>
             children: categories.map((category) {
               return MenuCard(
                 category: category,
-                quantityNotifier: ValueNotifier<int>(
-                    0), // Tambahkan ValueNotifier dengan nilai awal 0
+                quantityNotifier: ValueNotifier<int>(0),
               );
             }).toList(),
           ),
