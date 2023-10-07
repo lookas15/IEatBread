@@ -29,7 +29,7 @@ class CartProvider with ChangeNotifier {
     return [..._orders];
   }
 
-  void addOrder(List<Cart> cartProducts) {
+  addOrder(List<Cart> cartProducts) async {
     double total = 0.0;
     cartProducts.forEach((cartItem) {
       total += cartItem.productPrice! * cartItem.quantity!.value;
@@ -44,15 +44,15 @@ class CartProvider with ChangeNotifier {
       Order(
         id: id,
         amount: total,
-        dateTime: formattedDateTime, 
+        dateTime: formattedDateTime,
         products: cartProducts,
       ),
     );
 
-    dbHelper.clearCart(); 
-    cart.clear(); 
-    _counter = 0; 
-    _totalPrice = 0.0; 
+    dbHelper.clearCart();
+    cart.clear();
+    _counter = 0;
+    _totalPrice = 0.0;
     _setPrefsItems();
     notifyListeners();
   }

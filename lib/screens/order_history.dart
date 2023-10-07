@@ -24,7 +24,7 @@ class OrderItem extends StatelessWidget {
       child: ListTile(
         title: Text(order.id),
         subtitle: Text(
-          'IDR. ${order.amount.toStringAsFixed(2).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]}.')}',
+          'IDR ${order.amount.toStringAsFixed(2).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]}.')}',
         ),
         trailing: Text(order.dateTime),
       ),
@@ -39,7 +39,7 @@ class _OrderHistoryState extends State<OrderHistory>
   @override
   void initState() {
     super.initState();
-    context.read<CartProvider>().getData();
+    context.read<CartProvider>();
   }
 
   int selectedBottomNavIndex = 4;

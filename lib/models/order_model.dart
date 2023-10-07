@@ -1,4 +1,4 @@
-import '../models/cart_model.dart';
+import 'package:ieatbread/models/cart_model.dart';
 
 class Order {
   final String id;
@@ -13,4 +13,3 @@ class Order {
     required this.dateTime, 
   });
   }
-  
