@@ -25,6 +25,7 @@ class _MenuCardState extends State<MenuCard> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     bool isNarrowScreen = screenWidth <= 300;
+    bool isBigScreen = screenWidth >= 600;
 
     List<MenuModel> filteredMenu =
         menu.where((item) => item.category == widget.category).toList();
@@ -33,10 +34,14 @@ class _MenuCardState extends State<MenuCard> {
         backgroundColor: colorScheme.background,
         body: GridView.count(
           padding: const EdgeInsets.all(10),
-          crossAxisCount: isNarrowScreen ? 1 : 2,
+          crossAxisCount: isNarrowScreen
+              ? 1
+              : isBigScreen
+                  ? 3
+                  : 2,
           mainAxisSpacing: 10,
           crossAxisSpacing: 10,
-          childAspectRatio: 0.8,
+          childAspectRatio: isBigScreen ? 0.9 : 0.8,
           children: [for (var item in filteredMenu) ItemCard(item: item)],
         ));
   }

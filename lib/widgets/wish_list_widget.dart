@@ -21,7 +21,7 @@ class WishListWidget extends StatelessWidget {
           },
         ),
         title: Text(
-          'Wish List',
+          'Wishlist',
           style: Theme.of(context).textTheme.headlineMedium!,
         ),
         elevation: 2,
@@ -41,7 +41,7 @@ class WishListBody extends StatelessWidget {
 
     if (wishListProvider.wishListItems.isEmpty) {
       return const Center(
-        child: Text('Wish List is empty.'),
+        child: Text('Wishlist is empty.'),
       );
     } else {
       return Column(

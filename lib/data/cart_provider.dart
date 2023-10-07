@@ -1,9 +1,9 @@
-import 'package:ieatbread/data/db_helper.dart';
-import 'package:ieatbread/models/cart_model.dart';
-import 'package:ieatbread/models/order_model.dart';
-import 'package:intl/intl.dart';
+import '../data/db_helper.dart';
+import '../models/order_model.dart';
+import '../models/cart_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class CartProvider with ChangeNotifier {
   DBHelper dbHelper = DBHelper();
@@ -49,10 +49,10 @@ class CartProvider with ChangeNotifier {
       ),
     );
 
-    dbHelper.clearCart();
-    cart.clear();
-    _counter = 0;
-    _totalPrice = 0.0;
+    dbHelper.clearCart(); 
+    cart.clear(); 
+    _counter = 0; 
+    _totalPrice = 0.0; 
     _setPrefsItems();
     notifyListeners();
   }
