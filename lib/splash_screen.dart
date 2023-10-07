@@ -12,40 +12,48 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _navigatetoMain();
+    _navigateToMain();
   }
 
-  _navigatetoMain() async {
-    await Future.delayed(
-        Duration(milliseconds: 1500), () {}); // Duration for Splash Screen
+  _navigateToMain() async {
+    await Future.delayed(Duration(milliseconds: 2000), () {});
     Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (context) => const MainPage())); //Navigate to Main Page
+        context, MaterialPageRoute(builder: (context) => const MainPage()));
   }
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
+      backgroundColor: colorScheme.primary,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              //CONTAINER FOR LOGO
-              height: 100,
-              width: 100,
-              color: Colors.transparent,
-              child: Text(
-                'Your Logo Here',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal),
-              ), // PUT YOUR LOGO HERE!
+            ColorFiltered(
+              colorFilter: ColorFilter.mode(
+                colorScheme.onInverseSurface,
+                BlendMode.modulate,
+              ),
+              child: Container(
+                height: 90,
+                width: 200,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/icon/ieatbread_base.png'),
+                    fit: BoxFit.contain,
+                  ),
+                ),
+              ),
             ),
-            Container(
-                //CONTAINER FOR TEXT BELOW LOGO
-                child: Text('IEatBread',
-                    style:
-                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
+            Text(
+              'IEatBread',
+              style: TextStyle(
+                  color: colorScheme.onInverseSurface,
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold),
+            ),
           ],
         ),
       ),
