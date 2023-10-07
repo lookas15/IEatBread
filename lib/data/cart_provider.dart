@@ -2,6 +2,7 @@ import '../data/db_helper.dart';
 import '../models/cart_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class CartProvider with ChangeNotifier {
   DBHelper dbHelper = DBHelper();
@@ -27,29 +28,33 @@ class CartProvider with ChangeNotifier {
     return [..._orders];
   }
 
-  void addOrder(List<Cart> cartProducts) {
-    double total = 0.0;
-    cartProducts.forEach((cartItem) {
-      total += cartItem.productPrice! * cartItem.quantity!.value;
-    });
+void addOrder(List<Cart> cartProducts) {
+  double total = 0.0;
+  cartProducts.forEach((cartItem) {
+    total += cartItem.productPrice! * cartItem.quantity!.value;
+  });
 
-    _orders.insert(
-      0,
-      Order(
-        id: DateTime.now().toString(),
-        amount: total,
-        dateTime: DateTime.now(),
-        products: cartProducts,
-      ),
-    );
+  String formattedDateTime = DateFormat('HH:mm').format(DateTime.now());
 
-    dbHelper.clearCart();
-    cart.clear();
-    _counter = 0;
-    _totalPrice = 0.0;
-    _setPrefsItems();
-    notifyListeners();
-  }
+  String id = DateFormat('yyyy-MM-dd').format(DateTime.now());
+
+  _orders.insert(
+    0,
+    Order(
+      id: id,
+      amount: total,
+      dateTime: formattedDateTime, 
+      products: cartProducts,
+    ),
+  );
+
+  dbHelper.clearCart(); 
+  cart.clear(); 
+  _counter = 0; 
+  _totalPrice = 0.0; 
+  _setPrefsItems();
+  notifyListeners();
+}
 
   void _setPrefsItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
