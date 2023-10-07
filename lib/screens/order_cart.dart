@@ -265,49 +265,27 @@ class _OrderCartState extends State<OrderCart>
                   onPressed: () {
                     var cartProvider =
                         Provider.of<CartProvider>(context, listen: false);
+                    cartProvider.addOrder(cartProvider.cart);
 
-                    if (cartProvider.cart.isEmpty) {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: const Text('No Items Selected'),
-                            content:
-                                const Text('Please select items to order.'),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: const Text('OK'),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    } else {
-                      cartProvider.addOrder(cartProvider.cart);
+                    cartProvider.cart.clear();
 
-                      cartProvider.cart.clear();
-
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: const Text('Thank You!'),
-                            content: const Text('Your order has been placed.'),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: const Text('OK'),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    }
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text('Thank You!'),
+                          content: const Text('Your order has been placed.'),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('OK'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
