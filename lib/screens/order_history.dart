@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/cart_model.dart';
+import '../models/order_model.dart';
 import 'package:provider/provider.dart';
 import '../data/cart_provider.dart';
 import '../data/db_helper.dart';
@@ -26,7 +26,7 @@ class OrderItem extends StatelessWidget {
         subtitle: Text(
           'IDR. ${order.amount.toStringAsFixed(2).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]}.')}',
         ),
-        trailing: Text('${order.dateTime}'),
+        trailing: Text(order.dateTime),
       ),
     );
   }
