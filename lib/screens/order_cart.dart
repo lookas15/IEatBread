@@ -259,72 +259,30 @@ class _OrderCartState extends State<OrderCart>
               SizedBox(
                 width: 500,
                 child: ElevatedButton(
-                  onPressed: () async {
+                  onPressed: () {
                     var cartProvider =
                         Provider.of<CartProvider>(context, listen: false);
+                    cartProvider.addOrder(cartProvider.cart);
 
-                    try {
-                      // Membuat objek pesanan (order) berdasarkan isi keranjang belanja
-                      List<Cart> cartProducts = cartProvider.cart;
-                      double totalAmount = cartProvider.totalPrice;
-                      String formattedDateTime =
-                          DateFormat('HH:mm').format(DateTime.now());
-                      String orderId =
-                          DateFormat('yyyy-MM-dd').format(DateTime.now());
+                    cartProvider.cart.clear();
 
-                      Order order = Order(
-                        id: orderId,
-                        amount: totalAmount,
-                        dateTime: formattedDateTime,
-                        products: cartProducts,
-                      );
-
-                      // Simpan pesanan ke dalam database
-                      // await dbHelper!.insertOrUpdateOrder(order);
-                      cartProvider.addOrder(cartProvider.cart);
-
-                      // Hapus item dari keranjang belanja
-                      cartProvider.cart.clear();
-
-                      // Tampilkan pesan berhasil
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: const Text('Thank You!'),
-                            content: const Text('Your order has been placed.'),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: const Text('OK'),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    } catch (error) {
-                      // Tampilkan pesan kesalahan jika terjadi masalah
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: const Text('Error'),
-                            content: Text(
-                                'An error occurred while placing your order: $error'),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: const Text('OK'),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    }
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text('Thank You!'),
+                          content: const Text('Your order has been placed.'),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('OK'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
@@ -336,7 +294,7 @@ class _OrderCartState extends State<OrderCart>
                     ),
                   ),
                 ),
-              )
+              ),
           ],
         ));
   }
