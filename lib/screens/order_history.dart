@@ -18,13 +18,20 @@ class OrderItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(order.id),
-      subtitle: Text('Rp. ${order.amount.toStringAsFixed(2)}'), // Display total price
-      trailing: Text('${order.dateTime}'),
+    return Card(
+      elevation: 5.0,
+      margin: const EdgeInsets.all(10.0),
+      child: ListTile(
+        title: Text(order.id),
+        subtitle: Text(
+          'IDR. ${order.amount.toStringAsFixed(2).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]}.')}',
+        ),
+        trailing: Text('${order.dateTime}'),
+      ),
     );
   }
 }
+
 class _OrderHistoryState extends State<OrderHistory>
     with SingleTickerProviderStateMixin {
   DBHelper? dbHelper = DBHelper();
@@ -39,14 +46,36 @@ class _OrderHistoryState extends State<OrderHistory>
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CartProvider>(
-      builder: (ctx, orderData, child) => orderData.orders.isEmpty
-          ? Center(child: Text("You have not ordered anything yet"))
-          : ListView.builder(
-              itemCount: orderData.orders.length,
-              itemBuilder: (ctx, i) => OrderItem(orderData.orders[i]),
-      ),
-    );
+    var colorScheme = Theme.of(context).colorScheme;
+    var textStyle = Theme.of(context).textTheme;
+
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: colorScheme.surfaceTint,
+          title: Center(
+            child: Text(
+              'Order History',
+              style: textStyle.headlineMedium!.copyWith(
+                  color: colorScheme.onInverseSurface,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        body: Consumer<CartProvider>(
+          builder: (ctx, orderData, child) => orderData.orders.isEmpty
+              ? const Center(
+                  child: Text(
+                  "You have not ordered anything yet",
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ))
+              : ListView.builder(
+                  itemCount: orderData.orders.length,
+                  itemBuilder: (ctx, i) => OrderItem(orderData.orders[i]),
+                ),
+        ));
   }
 }
-
