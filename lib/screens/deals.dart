@@ -35,9 +35,10 @@ class _DealsState extends State<Deals> with SingleTickerProviderStateMixin {
           title: Center(
             child: Text(
               'Discounted Items',
-              style: textStyle.displayMedium!.copyWith(
-                color: colorScheme.onInverseSurface,
-              ),
+              style: textStyle.headlineMedium!.copyWith(
+                  color: colorScheme.onInverseSurface,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold),
             ),
           ),
         ),

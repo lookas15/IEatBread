@@ -1,8 +1,8 @@
+import 'package:ieatbread/models/cart_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import 'dart:io' as io;
-import '../models/cart_model.dart'; 
 
 class DBHelper {
   static Database? _database;
@@ -35,12 +35,12 @@ class DBHelper {
           image TEXT)
     ''');
   }
-  
+
   void clearCart() async {
     var dbClient = await database;
     await dbClient!.delete('cart');
   }
-  
+
   Future<Cart> insertOrUpdate(Cart cart) async {
     var dbClient = await database;
     final productId = cart.productId;
@@ -56,9 +56,7 @@ class DBHelper {
       await dbClient.update(
         'cart',
         {
-          'quantity': currentQuantity +
-              cart.quantity!
-                  .value, // Menambahkan jumlah baru ke jumlah yang ada
+          'quantity': currentQuantity + cart.quantity!.value,
         },
         where: 'productId = ?',
         whereArgs: [productId],
@@ -91,8 +89,4 @@ class DBHelper {
     var dbClient = await database;
     return await dbClient!.delete('cart', where: 'id = ?', whereArgs: [id]);
   }
-
-  void initDB() {}
 }
-
-

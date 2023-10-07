@@ -24,9 +24,9 @@ class OrderItem extends StatelessWidget {
       child: ListTile(
         title: Text(order.id),
         subtitle: Text(
-          'IDR ${order.amount.toStringAsFixed(2).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]}.')}',
+          'IDR. ${order.amount.toStringAsFixed(2).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]}.')}',
         ),
-        trailing: Text(order.dateTime),
+        trailing: Text('${order.dateTime}'),
       ),
     );
   }
@@ -39,7 +39,7 @@ class _OrderHistoryState extends State<OrderHistory>
   @override
   void initState() {
     super.initState();
-    context.read<CartProvider>();
+    context.read<CartProvider>().getData();
   }
 
   int selectedBottomNavIndex = 4;
@@ -55,18 +55,22 @@ class _OrderHistoryState extends State<OrderHistory>
           title: Center(
             child: Text(
               'Order History',
-              style: textStyle.displayMedium!.copyWith(
-                color: colorScheme.onInverseSurface,
-              ),
+              style: textStyle.headlineMedium!.copyWith(
+                  color: colorScheme.onInverseSurface,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold),
             ),
           ),
         ),
         body: Consumer<CartProvider>(
           builder: (ctx, orderData, child) => orderData.orders.isEmpty
-              ? Center(
+              ? const Center(
                   child: Text(
                   "You have not ordered anything yet",
-                  style: textStyle.labelMedium,
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ))
               : ListView.builder(
                   itemCount: orderData.orders.length,

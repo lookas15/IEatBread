@@ -1,9 +1,9 @@
-import '../data/db_helper.dart';
-import '../models/order_model.dart';
-import '../models/cart_model.dart';
+import 'package:ieatbread/data/db_helper.dart';
+import 'package:ieatbread/models/cart_model.dart';
+import 'package:ieatbread/models/order_model.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class CartProvider with ChangeNotifier {
   DBHelper dbHelper = DBHelper();
@@ -29,7 +29,7 @@ class CartProvider with ChangeNotifier {
     return [..._orders];
   }
 
-  addOrder(List<Cart> cartProducts) async {
+  void addOrder(List<Cart> cartProducts) {
     double total = 0.0;
     cartProducts.forEach((cartItem) {
       total += cartItem.productPrice! * cartItem.quantity!.value;
@@ -44,7 +44,7 @@ class CartProvider with ChangeNotifier {
       Order(
         id: id,
         amount: total,
-        dateTime: formattedDateTime,
+        dateTime: formattedDateTime, 
         products: cartProducts,
       ),
     );
