@@ -55,7 +55,6 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
-    var textTheme = Theme.of(context).textTheme;
 
     final wishListProvider = context.watch<WishListProvider>();
 
