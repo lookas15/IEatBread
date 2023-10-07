@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:product_listtt/main_page.dart';
+import 'package:ieatbread/main_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
