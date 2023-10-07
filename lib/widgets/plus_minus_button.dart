@@ -13,9 +13,11 @@ class PlusMinusButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       width: 250,
-      margin: EdgeInsets.fromLTRB(0, 10.0, 0, 5.0),
+      margin: const EdgeInsets.fromLTRB(0, 10.0, 0, 5.0),
       decoration: BoxDecoration(
         color: Colors.grey.shade300,
         borderRadius: BorderRadius.circular(10.0),
@@ -24,7 +26,7 @@ class PlusMinusButtons extends StatelessWidget {
             color: Colors.black.withOpacity(0.2),
             spreadRadius: 3,
             blurRadius: 5,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
@@ -35,7 +37,7 @@ class PlusMinusButtons extends StatelessWidget {
             onPressed: deleteQuantity,
             icon: Container(
               decoration: BoxDecoration(
-                color: Colors.red,
+                color: colorScheme.surfaceTint,
                 shape: BoxShape.circle,
               ),
               child: const Icon(Icons.remove, color: Colors.white),
@@ -65,7 +67,7 @@ class PlusMinusButtons extends StatelessWidget {
             onPressed: addQuantity,
             icon: Container(
               decoration: BoxDecoration(
-                color: Colors.red,
+                color: colorScheme.surfaceTint,
                 shape: BoxShape.circle,
               ),
               child: const Icon(Icons.add, color: Colors.white),

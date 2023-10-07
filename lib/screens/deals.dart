@@ -36,8 +36,9 @@ class _DealsState extends State<Deals> with SingleTickerProviderStateMixin {
             child: Text(
               'Discounted Items',
               style: textStyle.headlineMedium!.copyWith(
-                color: colorScheme.onInverseSurface,
-              ),
+                  color: colorScheme.onInverseSurface,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold),
             ),
           ),
         ),
@@ -47,8 +48,7 @@ class _DealsState extends State<Deals> with SingleTickerProviderStateMixin {
             children: categories.map((category) {
               return MenuCard(
                 category: category,
-                quantityNotifier: ValueNotifier<int>(
-                    0), // Tambahkan ValueNotifier dengan nilai awal 0
+                quantityNotifier: ValueNotifier<int>(0),
               );
             }).toList(),
           ),

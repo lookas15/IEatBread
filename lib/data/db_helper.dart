@@ -36,6 +36,11 @@ class DBHelper {
     ''');
   }
 
+  void clearCart() async {
+    var dbClient = await database;
+    await dbClient!.delete('cart');
+  }
+
   Future<Cart> insertOrUpdate(Cart cart) async {
     var dbClient = await database;
     final productId = cart.productId;
@@ -51,9 +56,7 @@ class DBHelper {
       await dbClient.update(
         'cart',
         {
-          'quantity': currentQuantity +
-              cart.quantity!
-                  .value, // Menambahkan jumlah baru ke jumlah yang ada
+          'quantity': currentQuantity + cart.quantity!.value,
         },
         where: 'productId = ?',
         whereArgs: [productId],
@@ -86,6 +89,4 @@ class DBHelper {
     var dbClient = await database;
     return await dbClient!.delete('cart', where: 'id = ?', whereArgs: [id]);
   }
-
-  void initDB() {}
 }

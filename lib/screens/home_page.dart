@@ -39,7 +39,7 @@ class Home extends StatelessWidget {
               IconButton(
                   color: Theme.of(context).colorScheme.onPrimary,
                   onPressed: () => _dialogBuilder(context),
-                  icon: Icon(Icons.settings_outlined)),
+                  icon: Icon(Icons.brush_outlined)),
             ],
           )
         ],

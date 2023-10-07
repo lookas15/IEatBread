@@ -21,15 +21,18 @@ class CartProvider with ChangeNotifier {
     return cart;
   }
 
-  final List<Order> _orders = []; // Add this line
+  final List<Order> _orders = [];
 
   List<Order> get orders {
-    // Add this method
     return [..._orders];
   }
 
-  void addOrder(List<Cart> cartProducts, double total) {
-    // Add this method
+  void addOrder(List<Cart> cartProducts) {
+    double total = 0.0;
+    cartProducts.forEach((cartItem) {
+      total += cartItem.productPrice! * cartItem.quantity!.value;
+    });
+
     _orders.insert(
       0,
       Order(
@@ -39,6 +42,12 @@ class CartProvider with ChangeNotifier {
         products: cartProducts,
       ),
     );
+
+    dbHelper.clearCart();
+    cart.clear();
+    _counter = 0;
+    _totalPrice = 0.0;
+    _setPrefsItems();
     notifyListeners();
   }
 
@@ -117,19 +126,4 @@ class CartProvider with ChangeNotifier {
   }
 
   void clear() {}
-}
-
-class OrderItem extends StatelessWidget {
-  final Order order;
-
-  const OrderItem(this.order, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(order.id),
-      subtitle: Text('\$${order.amount.toStringAsFixed(2)}'),
-      trailing: Text('${order.dateTime}'),
-    );
-  }
 }
