@@ -1,10 +1,9 @@
 # IEatBread
-        IEatBread merupakan sebuah aplikasi mobile yang dikembangkan oleh Kelompok Flutter.io. Aplikasi ini memungkinkan pengguna untuk melakukan pemesanan roti dan kue dengan mudah dan nyaman. Aplikasi ini menawarkan beragam pilihan mulai dari roti hingga kue yang lezat dan berkualitas, yang dapat dipesan dengan beberapa ketukan jari. Pengguna dapat menjelajahi berbagai macam pilihan roti ataupun kue serta promo menarik yang sedang berlangsung, memilih item yang diinginkan, menambahkannya ke keranjang belanja, dan melakukan transaksi pesanan dengan cepat.  
+IEatBread merupakan sebuah aplikasi mobile yang dikembangkan oleh Kelompok Flutter.io. Aplikasi ini memungkinkan pengguna untuk melakukan pemesanan roti dan kue dengan mudah dan nyaman. Aplikasi ini menawarkan beragam pilihan mulai dari roti hingga kue yang lezat dan berkualitas, yang dapat dipesan dengan beberapa ketukan jari. Pengguna dapat menjelajahi berbagai macam pilihan roti ataupun kue serta promo menarik yang sedang berlangsung, memilih item yang diinginkan, menambahkannya ke keranjang belanja, dan melakukan transaksi pesanan dengan cepat.  
 
-        IEatBread memberikan pengalaman pemesanan roti dan kue yang praktis serta efisien, menjadikannya solusi sempurna untuk bread & cake lovers yang ingin menikmati hidangan berkualitas tanpa repot.
+IEatBread memberikan pengalaman pemesanan roti dan kue yang praktis serta efisien, menjadikannya solusi sempurna untuk bread & cake lovers yang ingin menikmati hidangan berkualitas tanpa repot.
 
-
-## Flutter.io:
+## Anggota Pengembang (Flutter.io):
 - Stevan Lukas Siahaan		        535220053 (lookas15)
 - Richard Vincentius		        535220077 (XTu17As)
 - Michael Chan			        535220079 (ThePlatypus-Person)
@@ -14,8 +13,8 @@
 
 
 ## Video Demo Aplikasi
+Tonton video berikut untuk melihat demo IEatBread dan bagaimana aplikasi ini dapat memudahkan Anda dalam memesan roti dan kue favorit Anda.
 [![IEatBread Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
-Tonton video di atas untuk melihat demo IEatBread dan bagaimana aplikasi ini dapat memudahkan Anda dalam memesan roti dan kue favorit Anda.
 ### Deskripsi Video
 Selamat datang di IEatBread
 
@@ -29,7 +28,7 @@ Apa yang membuat IEatBread istimewa?
 
 Tonton video ini untuk melihat bagaimana IEatBread dapat membuat pengalaman pemesanan roti dan kue menjadi lebih praktis dan efisien daripada sebelumnya. Mulailah menikmati hidangan berkualitas tanpa repot!
 
-Jangan lupa untuk coba mengunduh IEatBread pada link di bawah ini.
+Jangan lupa untuk coba mengunduh IEatBread pada link di berikut ini.
 https://github.com/lookas15/IEatBread.git
 
 ## Manual Book IEatBread
