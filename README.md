@@ -8,6 +8,7 @@ IEatBread memberikan pengalaman pemesanan roti dan kue yang praktis serta efisie
 
 ## Anggota Pengembang (Flutter.io):
 Mahasiswa FTI Universitas Tarumanagara
+(NAMA   NIM     Github Account):
 - Stevan Lukas Siahaan		        535220053 (lookas15)
 - Richard Vincentius		        535220077 (XTu17As)
 - Michael Chan			        535220079 (ThePlatypus-Person)
@@ -17,8 +18,8 @@ Mahasiswa FTI Universitas Tarumanagara
 <br />
 
 ## Video Demo Aplikasi
-Tonton video berikut untuk melihat demo aplikasi IEatBread dan bagaimana aplikasi ini dapat memudahkan pengguna dalam memesan roti, kue, serta minuman favorit mereka.
-[![IEatBread Demo]](https://youtu.be/K_wIPT6IJaQ)
+Tonton video berikut untuk melihat demo aplikasi IEatBread dan bagaimana aplikasi ini dapat memudahkan pengguna dalam memesan roti, kue, serta minuman favorit mereka.<br>
+[Demo IEatBread](https://youtu.be/K_wIPT6IJaQ)
 ### Deskripsi Video
 Selamat datang di IEatBread!
 IEatBread adalah aplikasi mobile yang menawarkan solusi sempurna untuk pecinta roti, kue, dan minuman ringan yang ingin menikmati hidangan berkualitas.
@@ -37,4 +38,4 @@ https://github.com/lookas15/IEatBread.git
 
 
 ## Manual Book IEatBread
-Manual book untuk penggunaan aplikasi IEatBread secara lengkap dapat dilihat di sini: [Manual Book IEatBread](Manual_Book_Ieatbread.pdf)
+Manual book untuk penggunaan aplikasi IEatBread secara lengkap dapat dilihat pada: **Manual Book IEatBread.pdf**
