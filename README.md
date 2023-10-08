@@ -30,7 +30,6 @@ Apa yang membuat IEatBread istimewa?
 - **Promo Menarik:** Jangan lewatkan promo menarik kami yang selalu berubah, dan hematkan uang saat memesan hidangan kesukaan Anda.
 
 Mulailah menikmati hidangan berkualitas tanpa repot!
-
 Jangan lupa untuk mencoba mengunduh IEatBread pada link di berikut ini.
 https://github.com/lookas15/IEatBread.git
 <br />
