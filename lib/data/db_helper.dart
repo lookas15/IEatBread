@@ -64,6 +64,11 @@ class DBHelper {
     await dbClient!.delete('cart');
   }
 
+  Future<void> clearOrders() async {
+    var dbClient = await databaseOrder;
+    await dbClient!.delete('orders');
+  }
+
   Future<Cart> insertOrUpdate(Cart cart) async {
     var dbClient = await database;
     final productId = cart.productId;

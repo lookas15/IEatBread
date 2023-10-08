@@ -60,6 +60,42 @@ class _OrderHistoryState extends State<OrderHistory> with SingleTickerProviderSt
               ),
             ),
           ),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.delete,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: const Text('Clear Order History'),
+                      content: const Text('Are you sure you want to clear all orders?'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text('Cancel'),
+                        ),
+                        TextButton(
+                          onPressed: () async {
+                            final cartProvider = Provider.of<CartProvider>(context, listen: false);
+                            await dbHelper!.clearOrders();
+                            cartProvider.loadOrders();
+                            Navigator.pop(context);
+                          },
+                          child: const Text('Clear'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+            ),
+          ],
         ),
         body: Consumer<CartProvider>(
           builder: (ctx, orderData, child) => orderData.orders.isEmpty

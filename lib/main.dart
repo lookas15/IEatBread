@@ -6,7 +6,13 @@ import 'package:provider/provider.dart';
 import 'data/cart_provider.dart';
 import 'data/color_provider.dart';
 
-Future<void> main() async {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); 
+
+  final dbHelper = DBHelper();
+  await dbHelper.database; 
+  await dbHelper.databaseOrder; 
+  
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (context) => CartProvider()),
@@ -17,9 +23,7 @@ Future<void> main() async {
   );
 }
 
-
 class MyApp extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     final colorProvider = context.watch<ColorProvider>();
