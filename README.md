@@ -4,6 +4,7 @@ IEatBread merupakan sebuah aplikasi mobile yang dikembangkan oleh Kelompok Flutt
 IEatBread memberikan pengalaman pemesanan roti dan kue yang praktis serta efisien, menjadikannya solusi sempurna untuk bread & cake lovers yang ingin menikmati hidangan berkualitas tanpa repot.
 
 ## Anggota Pengembang (Flutter.io):
+Mahasiswa FTI Universitas Tarumanagara
 - Stevan Lukas Siahaan		        535220053 (lookas15)
 - Richard Vincentius		        535220077 (XTu17As)
 - Michael Chan			        535220079 (ThePlatypus-Person)
