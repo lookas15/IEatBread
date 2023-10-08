@@ -37,4 +37,4 @@ https://github.com/lookas15/IEatBread.git
 
 
 ## Manual Book IEatBread
-Manual book untuk penggunaan aplikasi IEatBread secara lengkap dapat dilihat di sini: [Manual Book IEatBread](manual_book_ieatbread.pdf)
+Manual book untuk penggunaan aplikasi IEatBread secara lengkap dapat dilihat di sini: [Manual Book IEatBread](Manual_Book_Ieatbread.pdf)
