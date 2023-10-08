@@ -4,6 +4,7 @@ import '../models/order_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:uuid/uuid.dart';
 
 class CartProvider with ChangeNotifier {
   DBHelper dbHelper = DBHelper();
@@ -37,7 +38,9 @@ Future<void> addOrder(List<Cart> cartProducts) async {
 
   String formattedDateTime = DateFormat('HH:mm').format(DateTime.now());
 
-  String id = DateFormat('yyyy-MM-dd').format(DateTime.now());
+  String uuid = Uuid().v4();
+  String date = DateFormat('yyyy-MM-dd').format(DateTime.now());
+  String id = '$date:$uuid';
 
   _orders.insert(
     0,
@@ -61,6 +64,7 @@ Future<void> addOrder(List<Cart> cartProducts) async {
 
   Future<void> loadOrders() async {
     _orders = await dbHelper.getOrders();
+    _orders.sort((a, b) => b.dateTime.compareTo(a.dateTime));  
     notifyListeners();
   }
 
