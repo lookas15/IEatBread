@@ -4,6 +4,7 @@ Aplikasi ini dikembangkan dengan penuh cinta untuk mempermudah pengalaman berbel
 
 IEatBread memberikan pengalaman pemesanan roti dan kue yang praktis serta efisien, menjadikannya solusi sempurna untuk pecinta roti, kue, dan minuman ringan yang ingin menikmati hidangan berkualitas tanpa repot.
 <br />
+<br />
 
 ## Anggota Pengembang (Flutter.io):
 Mahasiswa FTI Universitas Tarumanagara
@@ -34,6 +35,7 @@ Jangan lupa untuk mencoba mengunduh IEatBread pada link di berikut ini.
 https://github.com/lookas15/IEatBread.git
 <br />
 <br />
+
 
 ## Manual Book IEatBread
 Manual book untuk penggunaan aplikasi IEatBread secara lengkap dapat dilihat di sini: [Manual Book IEatBread](manual_book_ieatbread.pdf)
