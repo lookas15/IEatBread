@@ -1,7 +1,9 @@
 # IEatBread
-IEatBread merupakan sebuah aplikasi mobile yang dikembangkan oleh Kelompok Flutter.io. Aplikasi ini memungkinkan pengguna untuk melakukan pemesanan roti dan kue dengan mudah dan nyaman. Aplikasi ini menawarkan beragam pilihan mulai dari roti hingga kue yang lezat dan berkualitas, yang dapat dipesan dengan beberapa ketukan jari. Pengguna dapat menjelajahi berbagai macam pilihan roti ataupun kue serta promo menarik yang sedang berlangsung, memilih item yang diinginkan, menambahkannya ke keranjang belanja, dan melakukan transaksi pesanan dengan cepat.  
+IEatBread merupakan sebuah aplikasi mobile yang dikembangkan oleh kelompok Flutter.io. 
+Aplikasi ini dikembangkan dengan penuh cinta untuk mempermudah pengalaman berbelanja roti, kue, dan minuman ringan bagi pengguna. Di aplikasi IEatBread ini, pengguna akan menemukan beragam pilihan roti segar, kue yang lezat, dan minuman yang menggugah selera. Semuanya dapat dipesan hanya dengan beberapa ketukan jari, dan kami tidak melewatkan untuk menawarkan berbagai promo menarik serta bundle yang menguntungkan.
 
-IEatBread memberikan pengalaman pemesanan roti dan kue yang praktis serta efisien, menjadikannya solusi sempurna untuk bread & cake lovers yang ingin menikmati hidangan berkualitas tanpa repot.
+IEatBread memberikan pengalaman pemesanan roti dan kue yang praktis serta efisien, menjadikannya solusi sempurna untuk pecinta roti, kue, dan minuman ringan yang ingin menikmati hidangan berkualitas tanpa repot.
+<br />
 
 ## Anggota Pengembang (Flutter.io):
 Mahasiswa FTI Universitas Tarumanagara
@@ -11,26 +13,26 @@ Mahasiswa FTI Universitas Tarumanagara
 - Kevin Natanael		        535220084 (vinnatz)
 - Emmanuel Garcia Sumargo	        535220103 (garcia2217)
 - Gabriella Ignatia		        535220104 (dinonichus)
-
+<br />
 
 ## Video Demo Aplikasi
-Tonton video berikut untuk melihat demo IEatBread dan bagaimana aplikasi ini dapat memudahkan Anda dalam memesan roti dan kue favorit Anda.
+Tonton video berikut untuk melihat demo aplikasi IEatBread dan bagaimana aplikasi ini dapat memudahkan pengguna dalam memesan roti, kue, serta minuman favorit mereka.
 [![IEatBread Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
 ### Deskripsi Video
-Selamat datang di IEatBread
-
-Apakah Anda seorang pecinta roti dan kue? Inilah solusi sempurna untuk Anda. IEatBread adalah aplikasi mobile yang memudahkan Anda untuk menemukan, memesan, dan menikmati berbagai macam hidangan lezat dari dunia roti dan kue.
+Selamat datang di IEatBread!
+IEatBread adalah aplikasi mobile yang menawarkan solusi sempurna untuk pecinta roti, kue, dan minuman ringan yang ingin menikmati hidangan berkualitas.
 
 Apa yang membuat IEatBread istimewa?
-- **Pilihan Beragam:** Telusuri menu kami yang kaya dengan berbagai jenis roti dan kue berkualitas.
+- **Pilihan Beragam:** Telusuri menu kami yang kaya dengan berbagai jenis roti, kue serta tambahan menu minuman berkualitas.
 - **Antarmuka Yang Mudah Dipahami:** Aplikasi kami dirancang dengan antarmuka yang ramah pengguna, sehingga Anda dapat dengan cepat menemukan hidangan yang Anda inginkan.
-- **Pemesanan Cepat:** Dengan hanya beberapa ketukan jari, Anda dapat memesan roti atau kue favorit Anda, bahkan saat Anda dalam perjalanan.
+- **Pemesanan Cepat:** Dengan hanya beberapa ketukan jari, Anda dapat memesan roti atau kue favorit Anda.
 - **Promo Menarik:** Jangan lewatkan promo menarik kami yang selalu berubah, dan hematkan uang saat memesan hidangan kesukaan Anda.
 
-Tonton video ini untuk melihat bagaimana IEatBread dapat membuat pengalaman pemesanan roti dan kue menjadi lebih praktis dan efisien daripada sebelumnya. Mulailah menikmati hidangan berkualitas tanpa repot!
+Mulailah menikmati hidangan berkualitas tanpa repot!
 
-Jangan lupa untuk coba mengunduh IEatBread pada link di berikut ini.
+Jangan lupa untuk mencoba mengunduh IEatBread pada link di berikut ini.
 https://github.com/lookas15/IEatBread.git
+<br />
 
 ## Manual Book IEatBread
-Manual book untuk aplikasi IEatBread secara lengkap dapat dilihat di sini: [Manual Book IEatBread](manual_book_ieatbread.pdf)
+Manual book untuk penggunaan aplikasi IEatBread secara lengkap dapat dilihat di sini: [Manual Book IEatBread](manual_book_ieatbread.pdf)
