@@ -18,7 +18,7 @@ Mahasiswa FTI Universitas Tarumanagara
 
 ## Video Demo Aplikasi
 Tonton video berikut untuk melihat demo aplikasi IEatBread dan bagaimana aplikasi ini dapat memudahkan pengguna dalam memesan roti, kue, serta minuman favorit mereka.
-[![IEatBread Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+[![IEatBread Demo]](https://youtu.be/K_wIPT6IJaQ)
 ### Deskripsi Video
 Selamat datang di IEatBread!
 IEatBread adalah aplikasi mobile yang menawarkan solusi sempurna untuk pecinta roti, kue, dan minuman ringan yang ingin menikmati hidangan berkualitas.
