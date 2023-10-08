@@ -76,7 +76,7 @@ final List<MenuModel> listMenu = [
     isFavorite: false,
     category: 'Bread',
     description:
-        'Roti berbentuk bulat yang renyah di bagian luar dan memiliki kejutan di bagian dalam berupa paduan saus tomat, keju dan pepperoni.',
+        'The round bread is crispy on the outside and has a happy surprise inside in the form of a combination of tomato sauce, cheese and pepperoni',
   ),
   MenuModel(
     id: 11,
@@ -86,7 +86,7 @@ final List<MenuModel> listMenu = [
     isFavorite: true,
     category: 'Bread',
     description:
-        'Roti gulung yang berisikan gula palem dengan bubuk kayu manis dan cream cheese frosting sebagai toppingnya.',
+        'Rolls containing palm sugar with cinnamon powder and cream cheese frosting as topping',
   ),
   MenuModel(
     id: 12,
@@ -96,7 +96,7 @@ final List<MenuModel> listMenu = [
     isFavorite: true,
     category: 'Bread',
     description:
-        'Roti dengan brioche yang legit dengan lapisan dan isian coklat yang menggoda.',
+        'A delicious brioche bun with a tempting chocolate coating and filling',
   ),
   MenuModel(
     id: 13,
@@ -106,7 +106,7 @@ final List<MenuModel> listMenu = [
     isFavorite: true,
     category: 'Bread',
     description:
-        'Potongan roti gurih yang dipanggang dengan mentega dan bawang putih yang harum, ditaburi dengan keju leleh yang lezat. Kombinasi yang sempurna antara cita rasa creamy dan rasa bawang putih yang tajam.',
+        'Slices of savory bread toasted with fragrant butter and garlic, sprinkled with delicious melted cheese. The perfect combination of creamy taste and strong garlic taste.',
   ),
   MenuModel(
     id: 14,
@@ -216,7 +216,7 @@ final List<MenuModel> listMenu = [
     isFavorite: true,
     category: 'Drinks',
     description:
-        'Kopi yang diseduh dengan air dingin, tapi tetap lebih dingin sikap gebetan kamu 🙌',
+        "Coffee brewed with cold water, but your crush's attitude will still be cooler 🙌",
   ),
   MenuModel(
     id: 31,
@@ -226,7 +226,7 @@ final List<MenuModel> listMenu = [
     isFavorite: true,
     category: 'Drinks',
     description:
-        'Kopi gaya abad 1940 yang terasa pahit, namun tetap lebih pahit ditolak sama gebetan 🥤',
+        "1940's style coffee that tastes bitter, but still more bitter, is rejected by your crush 🥤",
   ),
   MenuModel(
     id: 32,
@@ -236,7 +236,7 @@ final List<MenuModel> listMenu = [
     isFavorite: false,
     category: 'Drinks',
     description:
-        'Kopi espresso yang dipasangkan dengan susu, ga kayak kamu yang ga punya pasangan 🧍‍♂️🧍‍♀️',
+        "Espresso coffee paired with milk, it's not like you don't have a partner 🧍‍♂️🧍‍♀️",
   ),
   MenuModel(
     id: 33,
@@ -246,7 +246,7 @@ final List<MenuModel> listMenu = [
     isFavorite: true,
     category: 'Drinks',
     description:
-        'Kopi dari Italia yang artinya tenggelam. Bedanya kamu tenggelam sama janji manis dia 🐊',
+        "Coffee from Italy which means drowning. The difference is that you are drowning in his sweet promises 🐊",
   ),
   MenuModel(
     id: 34,
@@ -256,7 +256,7 @@ final List<MenuModel> listMenu = [
     isFavorite: true,
     category: 'Drinks',
     description:
-        'Minuman berupa teh hijau yang harum dipadu dengan susu yang manis, semanis gombalan dia🧉',
+        'The drink is fragrant green tea combined with sweet milk, as sweet as his sweet talk 🧉',
   ),
   MenuModel(
     id: 35,
@@ -266,6 +266,6 @@ final List<MenuModel> listMenu = [
     isFavorite: false,
     category: 'Drinks',
     description:
-        'Teh yang ditambahkan minyak jeruk bergamot yang harum, seharum masa awal-awal pacaran 🍊',
+        'The tea is added with fragrant bergamot orange oil, as fragrant as the early days of dating 🍊',
   ),
 ];
