@@ -23,13 +23,13 @@ class CartProvider with ChangeNotifier {
     return cart;
   }
 
-  final List<Order> _orders = [];
+  List<Order> _orders = [];
 
   List<Order> get orders {
     return [..._orders];
   }
 
-void addOrder(List<Cart> cartProducts) {
+Future<void> addOrder(List<Cart> cartProducts) async {
   double total = 0.0;
   cartProducts.forEach((cartItem) {
     total += cartItem.productPrice! * cartItem.quantity!.value;
@@ -48,7 +48,9 @@ void addOrder(List<Cart> cartProducts) {
       products: cartProducts,
     ),
   );
-
+  
+  await dbHelper.insertOrder(_orders[0]);
+  
   dbHelper.clearCart(); 
   cart.clear(); 
   _counter = 0; 
@@ -56,6 +58,11 @@ void addOrder(List<Cart> cartProducts) {
   _setPrefsItems();
   notifyListeners();
 }
+
+  Future<void> loadOrders() async {
+    _orders = await dbHelper.getOrders();
+    notifyListeners();
+  }
 
   void _setPrefsItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

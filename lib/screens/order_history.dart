@@ -32,13 +32,13 @@ class OrderItem extends StatelessWidget {
   }
 }
 
-class _OrderHistoryState extends State<OrderHistory>
-    with SingleTickerProviderStateMixin {
+class _OrderHistoryState extends State<OrderHistory> with SingleTickerProviderStateMixin {
   DBHelper? dbHelper = DBHelper();
 
   @override
   void initState() {
     super.initState();
+    Provider.of<CartProvider>(context, listen: false).loadOrders();
     context.read<CartProvider>().getData();
   }
 

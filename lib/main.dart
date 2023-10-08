@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import '../screens/splash_screen.dart';
+import '../data/db_helper.dart';
 import 'data/wishlist_provider.dart';
 import 'package:provider/provider.dart';
 import 'data/cart_provider.dart';
 import 'data/color_provider.dart';
 
-void main() {
+Future<void> main() async {
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (context) => CartProvider()),
@@ -16,7 +17,9 @@ void main() {
   );
 }
 
+
 class MyApp extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     final colorProvider = context.watch<ColorProvider>();

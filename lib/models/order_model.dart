@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import '../models/cart_model.dart';
 
 class Order {
@@ -13,4 +12,21 @@ class Order {
     required this.products,
     required this.dateTime, 
   });
+
+  Order.fromMap(Map<String, dynamic> map)
+      : id = map['id'],
+        amount = map['amount'],
+        dateTime = map['dateTime'],
+        products = (map['products'] as List)
+            .map((item) => Cart.fromMap(item))
+            .toList();
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'amount': amount,
+      'dateTime': dateTime,
+      'products': products.map((item) => item.toMap()).toList(),
+    };
+  }
 }
