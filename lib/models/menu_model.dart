@@ -38,7 +38,7 @@ final List<MenuModel> listMenu = [
     isFavorite: true,
     category: 'Deals',
     description:
-        'Gurihnya mentega yang dipadu dengan segarnya kopi, pilihan terbaik untuk menu di pagi hari.',
+        "Wake up to a perfect morning with our Breakfast Bliss Combo Deal! Complement your croissant with our refreshing Cold Brew Coffee, expertly brewed to a smooth, bold finish. It's the perfect companion to your croissant, providing a cool and invigorating caffeine kick.",
   ),
   MenuModel(
     id: 02,
@@ -47,7 +47,7 @@ final List<MenuModel> listMenu = [
     imageUrl: 'assets/img/croau.png',
     isFavorite: false,
     category: 'Deals',
-    description: 'Combo spesial untuk kamu penikmat makanan asin-manis.',
+    description: "Experience the best of French pastries with our French Pastry Duos Combo Deal! Indulge in the perfect pairing of our Pain au Chocolat and Classic Croissant for a taste of authentic French pastry craftsmanship.",
   ),
   MenuModel(
     id: 03,
@@ -56,7 +56,7 @@ final List<MenuModel> listMenu = [
     imageUrl: 'assets/img/chouxpuff.png',
     isFavorite: true,
     category: 'Deals',
-    description: 'Combo pastry yang cocok dipadu dengan minuman apapun',
+    description: "Indulge in a symphony of pastry perfection with our Pastry Delight Duo Combo Deal! Savor the exquisite combination of Choux au Craquelin and Cream Puff, a duo that showcases the best of our pastry craftsmanship.",
   ),
   MenuModel(
     id: 04,
@@ -66,7 +66,7 @@ final List<MenuModel> listMenu = [
     isFavorite: false,
     category: 'Deals',
     description:
-        'Combo coffee bun dan melonpan sangat cocok bagi pecinta manis',
+        "Experience the ultimate baked goodness duet with our Coffee Bun + Melonpan Combo Deal! Enjoy the irresistible combination of our Coffee Bun and Melonpan, a duet that celebrates the art of baking.",
   ),
   MenuModel(
     id: 10,
@@ -76,7 +76,7 @@ final List<MenuModel> listMenu = [
     isFavorite: false,
     category: 'Bread',
     description:
-        'The round bread is crispy on the outside and has a happy surprise inside in the form of a combination of tomato sauce, cheese and pepperoni',
+        "The round bread, crisp on the outside, holds a delightful secret within—a medley of tomato sauce, cheese, and pepperoni, waiting to surprise your taste buds.",
   ),
   MenuModel(
     id: 11,
@@ -86,7 +86,7 @@ final List<MenuModel> listMenu = [
     isFavorite: true,
     category: 'Bread',
     description:
-        'Rolls containing palm sugar with cinnamon powder and cream cheese frosting as topping',
+        "A rolled bread filled with palm sugar, sprinkled with cinnamon powder, and crowned with cream cheese frosting as its topping.",
   ),
   MenuModel(
     id: 12,
@@ -96,7 +96,7 @@ final List<MenuModel> listMenu = [
     isFavorite: true,
     category: 'Bread',
     description:
-        'A delicious brioche bun with a tempting chocolate coating and filling',
+        "A delicious brioche bun with a tempting chocolate coating and filling",
   ),
   MenuModel(
     id: 13,
@@ -106,7 +106,7 @@ final List<MenuModel> listMenu = [
     isFavorite: true,
     category: 'Bread',
     description:
-        'Slices of savory bread toasted with fragrant butter and garlic, sprinkled with delicious melted cheese. The perfect combination of creamy taste and strong garlic taste.',
+        "Slices of savory bread toasted with fragrant butter and garlic, sprinkled with delicious melted cheese. The perfect combination of creamy taste and strong garlic taste.",
   ),
   MenuModel(
     id: 14,
@@ -116,7 +116,7 @@ final List<MenuModel> listMenu = [
     isFavorite: false,
     category: 'Bread',
     description:
-        'Roti lembut dengan tekstur istimewa, berkat adonan tangzhong yang membuatnya lembut dan lezat serta rasa susu yang ringan dan manis.',
+        "Soft bread with a special texture, thanks to the tangzhong dough that makes it soft and delicious, along with a mild and sweet milk flavor.",
   ),
   MenuModel(
     id: 15,
@@ -126,7 +126,7 @@ final List<MenuModel> listMenu = [
     isFavorite: false,
     category: 'Bread',
     description:
-        'Roti lembut  dan lezat yang dikenal karena rasa susu yang khas dan teksturnya yang empuk.',
+        "Soft and delicious bread known for its distinctive milk flavor and tender texture.",
   ),
   MenuModel(
     id: 16,
@@ -136,7 +136,7 @@ final List<MenuModel> listMenu = [
     isFavorite: false,
     category: 'Bread',
     description:
-        'Roti manis Jepang yang memiliki tekstur luar yang renyah karena dilapisi dengan adonan biskuit dan gula yang memberikan sentuhan manis.',
+        "Japanese sweet bread with a crispy outer texture, coated with biscuit dough and sugar that provides a sweet touch.",
   ),
   MenuModel(
     id: 17,
@@ -146,7 +146,7 @@ final List<MenuModel> listMenu = [
     isFavorite: true,
     category: 'Bread',
     description:
-        'Roti manis dengan tekstur yang renyah dan lapisan krim kopi di bagian atasnya.',
+        "Sweet bread with a crispy texture and a layer of coffee cream on top.",
   ),
   MenuModel(
     id: 20,
@@ -156,7 +156,7 @@ final List<MenuModel> listMenu = [
     isFavorite: true,
     category: 'Pastry',
     description:
-        'Pastry berbentuk bulan sabit dengan tekstur renyah di luar dan lembut di dalamnya serta rasa mentega yang khas.',
+        "A crescent-shaped pastry with a crispy exterior, a soft interior, and a distinctive buttery flavor.",
   ),
   MenuModel(
     id: 21,
@@ -166,7 +166,7 @@ final List<MenuModel> listMenu = [
     isFavorite: false,
     category: 'Pastry',
     description:
-        'Roti manis Prancis yang terdiri dari adonan berlapis mentega dan cokelat yang meleleh di dalamnya.',
+        "A French sweet bread composed of layers of buttery dough with melted chocolate within.",
   ),
   MenuModel(
     id: 22,
@@ -176,7 +176,7 @@ final List<MenuModel> listMenu = [
     isFavorite: true,
     category: 'Pastry',
     description:
-        'Pastry asal Portugal yang terdiri dari lapisan kulit pastry yang renyah dan karamelisasi di atasnya, diisi dengan custard lembut beraroma vanila.',
+        "A pastry of Portuguese origin featuring crispy layers of pastry crust with caramelization on top, filled with soft, vanilla-scented custard.",
   ),
   MenuModel(
     id: 23,
@@ -186,7 +186,8 @@ final List<MenuModel> listMenu = [
     isFavorite: false,
     category: 'Pastry',
     description:
-        'Pastry kecil yang terdiri dari adonan tart yang renyah dan diisi dengan isian keju.',
+        "A petite pastry made with a crisp tart crust and filled with a creamy cheese filling."
+,
   ),
   MenuModel(
     id: 24,
@@ -196,7 +197,8 @@ final List<MenuModel> listMenu = [
     isFavorite: false,
     category: 'Pastry',
     description:
-        'Pastry yang berbentuk bulat yang terdiri dari kulit pastry yang ringan dan berongga, diisi dengan custard yang lembut, manis, dan beraroma vanila.',
+        "A round pastry featuring a light and airy puff pastry shell, filled with a soft, sweet, and vanilla-flavored custard."
+,
   ),
   MenuModel(
     id: 25,
@@ -206,7 +208,7 @@ final List<MenuModel> listMenu = [
     isFavorite: true,
     category: 'Pastry',
     description:
-        'Pastry yang dilapisi dengan lapisan craquelin, yang terbuat dari campuran gula, tepung, dan mentega, lalu diisi diplomat cream yang lembut dan manis.',
+        "A pastry coated with a craquelin layer, crafted from a blend of sugar, flour, and butter, and filled with a smooth and sweet diplomat cream.",
   ),
   MenuModel(
     id: 30,
